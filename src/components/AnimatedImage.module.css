@@ -1,0 +1,50 @@
+.image {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.8s ease, opacity 0.8s ease;
+}
+
+.imageHidden {
+  opacity: 0;
+  transform: translateY(30px) scale(1.05);
+}
+
+.imageVisible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.style1 .imageHidden {
+  opacity: 0;
+  transform: translate(0, 0);
+}
+
+.style1 .imageVisible {
+  opacity: 1;
+  transform: translate(0, 0);
+  animation: imageReveal 1s ease-out forwards;
+}
+
+@keyframes imageReveal {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .image,
+  .imageHidden,
+  .imageVisible {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1;
+    transform: none;
+  }
+}
+

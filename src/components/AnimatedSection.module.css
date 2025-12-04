@@ -1,0 +1,51 @@
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(30px);
+}
+
+.fadeInUp {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.fadeIn {
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    visibility: inherit;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fadeInUp,
+  .fadeIn,
+  .hidden {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+    visibility: inherit;
+  }
+}
+
