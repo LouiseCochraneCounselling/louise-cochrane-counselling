@@ -23,40 +23,61 @@ const BookingForm = () => {
 		e.preventDefault();
 		setStatus("sending");
 
-		const form = e.target;
-		const formData = new FormData(form);
+		// Build form data object with all fields
+		// Netlify Forms requires form-name to match the form name attribute
+		const formDataObj = {
+			"form-name": "booking",
+			name: formData.name.trim(),
+			email: formData.email.trim(),
+			phone: (formData.phone || "").trim(),
+			message: (formData.message || "").trim(),
+		};
 
-		// Netlify Forms requires form-name in the submission
-		// This matches the hidden input in the form
-		if (!formData.has("form-name")) {
-			formData.append("form-name", "booking");
-		}
+		// Encode as URLSearchParams for Netlify Forms
+		const encoded = new URLSearchParams(formDataObj).toString();
+
+		console.log("Submitting form with data:", formDataObj);
 
 		try {
 			// Submit to Netlify Forms endpoint
-			// According to Netlify docs: POST to any path on your site with URL-encoded data
-			// See: https://docs.netlify.com/manage/forms/setup/#submit-javascript-rendered-forms-with-ajax
+			// For Next.js Runtime v5, submit directly to root with proper encoding
+			// Netlify Forms intercepts POST requests to any path
 			const response = await fetch("/", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/x-www-form-urlencoded",
 				},
-				body: new URLSearchParams(formData).toString(),
+				body: encoded,
 			});
 
-			// Netlify Forms returns HTML page on success (200 status)
-			// Any 200 response indicates successful submission
-			if (response.ok) {
+			console.log("Form submission response:", {
+				status: response.status,
+				statusText: response.statusText,
+				ok: response.ok,
+				url: response.url,
+			});
+
+			// Netlify Forms returns HTML (200) or redirect (302) on success
+			// Any 2xx status code indicates success
+			if (response.ok || response.status === 302 || response.status === 200) {
 				setStatus("success");
 				form.reset();
 				setFormData({ name: "", phone: "", email: "", message: "" });
 			} else {
-				// Log error for debugging
-				const text = await response.text();
+				// Try to get response text for debugging
+				let errorText = "";
+				try {
+					errorText = await response.text();
+					console.error("Error response body:", errorText.substring(0, 500));
+				} catch (e) {
+					console.error("Could not read error response:", e);
+				}
+				
 				console.error("Form submission failed:", {
 					status: response.status,
 					statusText: response.statusText,
-					preview: text.substring(0, 200),
+					url: response.url,
+					preview: errorText.substring(0, 200),
 				});
 				setStatus("error");
 			}
