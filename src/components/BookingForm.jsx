@@ -52,8 +52,8 @@ const BookingForm = () => {
       </div>
       <div className={styles.content}>
         <div className={styles.textContent}>
-          <h2 className={styles.mainHeading}>Book An Appointment Now!</h2>
-          <p className={styles.subheading}>MAKE A BOOKING WITH OUR ONLINE FORM</p>
+          <h2 className={styles.mainHeading}>Book Your Initial Consultation</h2>
+          <p className={styles.subheading}>Take the first step towards support and healing</p>
         </div>
         <form
           name="booking"
@@ -85,21 +85,19 @@ const BookingForm = () => {
                 aria-required="true"
               />
             </div>
-            <div className={styles.formGroup}>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                required
-                className={styles.formInput}
-                placeholder="Phone *"
-                autoComplete="tel"
-                inputMode="tel"
-                aria-required="true"
-              />
-            </div>
+          <div className={styles.formGroup}>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              className={styles.formInput}
+              placeholder="Phone (optional)"
+              autoComplete="tel"
+              inputMode="tel"
+            />
+          </div>
           </div>
 
           <div className={styles.formGroup}>
@@ -126,9 +124,14 @@ const BookingForm = () => {
               onChange={handleChange}
               rows="6"
               className={styles.formTextarea}
-              placeholder="Message"
+              placeholder="Please let me know what you'd like to discuss, your preferred times for sessions, or any questions you have. All information is confidential."
             />
           </div>
+          
+          <p className={styles.privacyNote}>
+            <i className="fas fa-shield-alt" aria-hidden="true"></i>
+            Your information is confidential and will only be used to contact you about your enquiry.
+          </p>
 
           <button type="submit" className={styles.submitButton} disabled={status === 'sending'}>
             {status === 'sending' ? (
@@ -139,9 +142,10 @@ const BookingForm = () => {
           </button>
 
           {status === 'success' && (
-            <p className={`${styles.formMessage} ${styles.success}`}>
-              Thank you! Your message has been sent. We'll get back to you soon.
-            </p>
+            <div className={`${styles.formMessage} ${styles.success}`}>
+              <p><strong>Thank you! Your message has been sent.</strong></p>
+              <p>I'll respond to you via email within 24-48 hours with next steps. Please check your inbox (and spam folder) for my reply.</p>
+            </div>
           )}
           {status === 'error' && (
             <p className={`${styles.formMessage} ${styles.error}`}>

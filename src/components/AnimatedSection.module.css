@@ -7,20 +7,41 @@
 .fadeInUp {
   opacity: 0;
   visibility: hidden;
-  transform: translateY(30px);
-  animation: fadeInUp 0.8s ease-out forwards;
+  transform: translateY(40px);
+  animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .fadeIn {
   opacity: 0;
-  animation: fadeIn 0.8s ease-out forwards;
+  animation: fadeIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.slideInLeft {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-50px);
+  animation: slideInLeft 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.slideInRight {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(50px);
+  animation: slideInRight 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.scaleIn {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.9);
+  animation: scaleIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes fadeInUp {
   from {
     opacity: 0;
     visibility: hidden;
-    transform: translateY(30px);
+    transform: translateY(40px);
   }
   to {
     opacity: 1;
@@ -38,9 +59,51 @@
   }
 }
 
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    visibility: inherit;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    visibility: inherit;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    visibility: inherit;
+    transform: scale(1);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .fadeInUp,
   .fadeIn,
+  .slideInLeft,
+  .slideInRight,
+  .scaleIn,
   .hidden {
     animation: none !important;
     opacity: 1;

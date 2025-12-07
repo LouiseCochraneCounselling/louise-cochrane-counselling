@@ -39,7 +39,23 @@ const AnimatedSection = ({ children, delay = 0, className = '', animation = 'fad
     };
   }, [isMounted]);
 
-  const animationClass = animation === 'fadeInUp' ? styles.fadeInUp : styles.fadeIn;
+  const getAnimationClass = () => {
+    switch (animation) {
+      case 'fadeIn':
+        return styles.fadeIn;
+      case 'slideInLeft':
+        return styles.slideInLeft;
+      case 'slideInRight':
+        return styles.slideInRight;
+      case 'scaleIn':
+        return styles.scaleIn;
+      case 'fadeInUp':
+      default:
+        return styles.fadeInUp;
+    }
+  };
+
+  const animationClass = getAnimationClass();
 
   // During SSR and initial mount, render without animation to prevent hydration mismatch
   // Use suppressHydrationWarning to prevent React from complaining about class differences

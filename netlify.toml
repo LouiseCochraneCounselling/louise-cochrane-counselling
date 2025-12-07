@@ -2,8 +2,10 @@
   command = "npm run build"
   publish = ".next"
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# Environment variables (add your email here if needed)
+# [build.environment]
+#   NOTIFICATION_EMAIL = "your-email@example.com"
 

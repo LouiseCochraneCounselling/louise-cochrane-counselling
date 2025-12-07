@@ -14,8 +14,7 @@
   text-align: center;
   font-size: clamp(2.5rem, 6vw, 3.75rem);
   font-weight: 700;
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 
-    'Helvetica Neue', 'Arial', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   color: var(--color-text-dark);
   margin-bottom: clamp(3.5rem, 6vw, 5rem);
   line-height: 1.3;
@@ -94,8 +93,7 @@
 .authorName {
   font-size: clamp(1rem, 2vw, 1.1875rem);
   font-weight: 700;
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 
-    'Helvetica Neue', 'Arial', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   color: var(--color-text-dark);
   margin: 0;
   letter-spacing: -0.01em;

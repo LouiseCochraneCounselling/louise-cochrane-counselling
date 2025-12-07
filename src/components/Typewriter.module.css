@@ -1,0 +1,26 @@
+.cursor {
+	display: inline-block;
+	margin-left: 2px;
+	animation: blink 1s infinite;
+	color: inherit;
+	font-weight: 300;
+}
+
+@keyframes blink {
+	0%,
+	50% {
+		opacity: 1;
+	}
+	51%,
+	100% {
+		opacity: 0;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.cursor {
+		animation: none;
+		opacity: 1;
+	}
+}
+
