@@ -26,19 +26,35 @@ const BookingForm = () => {
     const form = e.target;
     const formData = new FormData(form);
 
+    // Ensure form-name is included (required by Netlify)
+    if (!formData.has('form-name')) {
+      formData.append('form-name', 'booking');
+    }
+
     try {
-      // Submit to Netlify Forms endpoint
+      // Submit directly to Netlify Forms endpoint
+      // Netlify Forms expects form-urlencoded data posted to root
       const response = await fetch('/', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        headers: { 
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
         body: new URLSearchParams(formData).toString()
       });
 
-      if (response.ok) {
+      // Netlify Forms returns HTML on success (status 200)
+      // We consider it successful if we get any response (even HTML)
+      if (response.status === 200 || response.status === 302) {
         setStatus('success');
         form.reset();
         setFormData({ name: '', phone: '', email: '', message: '' });
       } else {
+        const text = await response.text();
+        console.error('Form submission failed:', {
+          status: response.status,
+          statusText: response.statusText,
+          response: text.substring(0, 200)
+        });
         setStatus('error');
       }
     } catch (error) {
@@ -62,6 +78,7 @@ const BookingForm = () => {
           method="POST"
           data-netlify="true"
           data-netlify-honeypot="bot-field"
+          action="/"
           onSubmit={handleSubmit}
           className={styles.bookingForm}
         >

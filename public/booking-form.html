@@ -6,7 +6,8 @@
 <body>
   <!-- Static form for Netlify Forms detection -->
   <!-- This file allows Netlify to detect the form structure during build -->
-  <form name="booking" method="POST" netlify netlify-honeypot="bot-field" hidden>
+  <!-- Must be accessible at /booking-form.html for Netlify to detect it -->
+  <form name="booking" method="POST" netlify="true" netlify-honeypot="bot-field" action="/" hidden>
     <input type="hidden" name="form-name" value="booking" />
     <input type="text" name="name" required />
     <input type="tel" name="phone" />
