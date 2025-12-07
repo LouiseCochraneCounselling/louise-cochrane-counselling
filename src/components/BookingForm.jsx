@@ -1,181 +1,193 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import styles from './BookingForm.module.css';
+import { useState } from "react";
+import styles from "./BookingForm.module.css";
 
 const BookingForm = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    email: '',
-    message: ''
-  });
-  const [status, setStatus] = useState('');
+	const [formData, setFormData] = useState({
+		name: "",
+		phone: "",
+		email: "",
+		message: "",
+	});
+	const [status, setStatus] = useState("");
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
+	const handleChange = (e) => {
+		setFormData({
+			...formData,
+			[e.target.name]: e.target.value,
+		});
+	};
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setStatus('sending');
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		setStatus("sending");
 
-    const form = e.target;
-    const formData = new FormData(form);
+		const form = e.target;
+		const formData = new FormData(form);
 
-    // Ensure form-name is included (required by Netlify)
-    if (!formData.has('form-name')) {
-      formData.append('form-name', 'booking');
-    }
+		// Netlify Forms requires form-name in the submission
+		// This matches the hidden input in the form
+		if (!formData.has("form-name")) {
+			formData.append("form-name", "booking");
+		}
 
-    try {
-      // Submit directly to Netlify Forms endpoint
-      // Netlify Forms expects form-urlencoded data posted to root
-      const response = await fetch('/', {
-        method: 'POST',
-        headers: { 
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: new URLSearchParams(formData).toString()
-      });
+		try {
+			// Submit to Netlify Forms endpoint
+			// According to Netlify docs: POST to any path on your site with URL-encoded data
+			// See: https://docs.netlify.com/manage/forms/setup/#submit-javascript-rendered-forms-with-ajax
+			const response = await fetch("/", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/x-www-form-urlencoded",
+				},
+				body: new URLSearchParams(formData).toString(),
+			});
 
-      // Netlify Forms returns HTML on success (status 200)
-      // We consider it successful if we get any response (even HTML)
-      if (response.status === 200 || response.status === 302) {
-        setStatus('success');
-        form.reset();
-        setFormData({ name: '', phone: '', email: '', message: '' });
-      } else {
-        const text = await response.text();
-        console.error('Form submission failed:', {
-          status: response.status,
-          statusText: response.statusText,
-          response: text.substring(0, 200)
-        });
-        setStatus('error');
-      }
-    } catch (error) {
-      console.error('Form submission error:', error);
-      setStatus('error');
-    }
-  };
+			// Netlify Forms returns HTML page on success (200 status)
+			// Any 200 response indicates successful submission
+			if (response.ok) {
+				setStatus("success");
+				form.reset();
+				setFormData({ name: "", phone: "", email: "", message: "" });
+			} else {
+				// Log error for debugging
+				const text = await response.text();
+				console.error("Form submission failed:", {
+					status: response.status,
+					statusText: response.statusText,
+					preview: text.substring(0, 200),
+				});
+				setStatus("error");
+			}
+		} catch (error) {
+			console.error("Form submission error:", error);
+			setStatus("error");
+		}
+	};
 
-  return (
-    <section className={styles.bookingSection}>
-      <div className={styles.backgroundImage}>
-        <div className={styles.overlay}></div>
-      </div>
-      <div className={styles.content}>
-        <div className={styles.textContent}>
-          <h2 className={styles.mainHeading}>Book Your Initial Consultation</h2>
-          <p className={styles.subheading}>Take the first step towards support and healing</p>
-        </div>
-        <form
-          name="booking"
-          method="POST"
-          data-netlify="true"
-          data-netlify-honeypot="bot-field"
-          action="/"
-          onSubmit={handleSubmit}
-          className={styles.bookingForm}
-        >
-          <input type="hidden" name="form-name" value="booking" />
-          <p className={styles.hidden}>
-            <label>
-              Don't fill this out if you're human: <input name="bot-field" />
-            </label>
-          </p>
+	return (
+		<section className={styles.bookingSection}>
+			<div className={styles.backgroundImage}>
+				<div className={styles.overlay}></div>
+			</div>
+			<div className={styles.content}>
+				<div className={styles.textContent}>
+					<h2 className={styles.mainHeading}>Book Your Initial Consultation</h2>
+					<p className={styles.subheading}>
+						Take the first step towards support and healing
+					</p>
+				</div>
+				<form
+					name="booking"
+					method="POST"
+					data-netlify="true"
+					data-netlify-honeypot="bot-field"
+					action="/"
+					onSubmit={handleSubmit}
+					className={styles.bookingForm}>
+					<input type="hidden" name="form-name" value="booking" />
+					<p className={styles.hidden}>
+						<label>
+							Don't fill this out if you're human: <input name="bot-field" />
+						</label>
+					</p>
 
-          <div className={styles.formRow}>
-            <div className={styles.formGroup}>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                className={styles.formInput}
-                placeholder="Name *"
-                autoComplete="name"
-                aria-required="true"
-              />
-            </div>
-          <div className={styles.formGroup}>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              className={styles.formInput}
-              placeholder="Phone (optional)"
-              autoComplete="tel"
-              inputMode="tel"
-            />
-          </div>
-          </div>
+					<div className={styles.formRow}>
+						<div className={styles.formGroup}>
+							<input
+								type="text"
+								id="name"
+								name="name"
+								value={formData.name}
+								onChange={handleChange}
+								required
+								className={styles.formInput}
+								placeholder="Name *"
+								autoComplete="name"
+								aria-required="true"
+							/>
+						</div>
+						<div className={styles.formGroup}>
+							<input
+								type="tel"
+								id="phone"
+								name="phone"
+								value={formData.phone}
+								onChange={handleChange}
+								className={styles.formInput}
+								placeholder="Phone (optional)"
+								autoComplete="tel"
+								inputMode="tel"
+							/>
+						</div>
+					</div>
 
-          <div className={styles.formGroup}>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              className={styles.formInput}
-              placeholder="E-mail Address *"
-              autoComplete="email"
-              inputMode="email"
-              aria-required="true"
-            />
-          </div>
+					<div className={styles.formGroup}>
+						<input
+							type="email"
+							id="email"
+							name="email"
+							value={formData.email}
+							onChange={handleChange}
+							required
+							className={styles.formInput}
+							placeholder="E-mail Address *"
+							autoComplete="email"
+							inputMode="email"
+							aria-required="true"
+						/>
+					</div>
 
-          <div className={styles.formGroup}>
-            <textarea
-              id="message"
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              rows="6"
-              className={styles.formTextarea}
-              placeholder="Please let me know what you'd like to discuss, your preferred times for sessions, or any questions you have. All information is confidential."
-            />
-          </div>
-          
-          <p className={styles.privacyNote}>
-            <i className="fas fa-shield-alt" aria-hidden="true"></i>
-            Your information is confidential and will only be used to contact you about your enquiry.
-          </p>
+					<div className={styles.formGroup}>
+						<textarea
+							id="message"
+							name="message"
+							value={formData.message}
+							onChange={handleChange}
+							rows="6"
+							className={styles.formTextarea}
+							placeholder="Please let me know what you'd like to discuss, your preferred times for sessions, or any questions you have. All information is confidential."
+						/>
+					</div>
 
-          <button type="submit" className={styles.submitButton} disabled={status === 'sending'}>
-            {status === 'sending' ? (
-              <span className={styles.spinner}></span>
-            ) : (
-              'Send Message'
-            )}
-          </button>
+					<p className={styles.privacyNote}>
+						<i className="fas fa-shield-alt" aria-hidden="true"></i>
+						Your information is confidential and will only be used to contact
+						you about your enquiry.
+					</p>
 
-          {status === 'success' && (
-            <div className={`${styles.formMessage} ${styles.success}`}>
-              <p><strong>Thank you! Your message has been sent.</strong></p>
-              <p>I'll respond to you via email within 24-48 hours with next steps. Please check your inbox (and spam folder) for my reply.</p>
-            </div>
-          )}
-          {status === 'error' && (
-            <p className={`${styles.formMessage} ${styles.error}`}>
-              Sorry, there was an error sending your message. Please try again.
-            </p>
-          )}
-        </form>
-      </div>
-    </section>
-  );
+					<button
+						type="submit"
+						className={styles.submitButton}
+						disabled={status === "sending"}>
+						{status === "sending" ? (
+							<span className={styles.spinner}></span>
+						) : (
+							"Send Message"
+						)}
+					</button>
+
+					{status === "success" && (
+						<div className={`${styles.formMessage} ${styles.success}`}>
+							<p>
+								<strong>Thank you! Your message has been sent.</strong>
+							</p>
+							<p>
+								I'll respond to you via email within 24-48 hours with next
+								steps. Please check your inbox (and spam folder) for my reply.
+							</p>
+						</div>
+					)}
+					{status === "error" && (
+						<p className={`${styles.formMessage} ${styles.error}`}>
+							Sorry, there was an error sending your message. Please try again.
+						</p>
+					)}
+				</form>
+			</div>
+		</section>
+	);
 };
 
 export default BookingForm;
-

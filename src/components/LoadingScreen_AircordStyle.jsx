@@ -1,11 +1,20 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import styles from "./LoadingScreen_AircordStyle.module.css";
 
 const LoadingScreen_AircordStyle = ({ onLoaded }) => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [progress, setProgress] = useState(0);
+	
+	// Use ref to store callback so effect only runs once on mount
+	// This prevents the interval from being cleared and recreated on every render
+	const onLoadedRef = useRef(onLoaded);
+	
+	// Update ref when callback changes (but don't trigger effect re-run)
+	useEffect(() => {
+		onLoadedRef.current = onLoaded;
+	}, [onLoaded]);
 
 	useEffect(() => {
 		const interval = setInterval(() => {
@@ -14,7 +23,8 @@ const LoadingScreen_AircordStyle = ({ onLoaded }) => {
 					clearInterval(interval);
 					setTimeout(() => {
 						setIsLoading(false);
-						onLoaded?.();
+						// Use ref to access latest callback without dependency
+						onLoadedRef.current?.();
 					}, 300);
 					return 100;
 				}
@@ -23,7 +33,9 @@ const LoadingScreen_AircordStyle = ({ onLoaded }) => {
 		}, 30);
 
 		return () => clearInterval(interval);
-	}, [onLoaded]);
+		// Empty dependency array - effect only runs once on mount
+		// onLoaded is accessed via ref to avoid re-running effect
+	}, []);
 
 	if (!isLoading) return null;
 

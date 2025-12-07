@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Booking Form</title>
-</head>
-<body>
-  <!-- Static form for Netlify Forms detection -->
-  <!-- This file allows Netlify to detect the form structure during build -->
-  <!-- Must be accessible at /booking-form.html for Netlify to detect it -->
-  <form name="booking" method="POST" netlify="true" netlify-honeypot="bot-field" action="/" hidden>
-    <input type="hidden" name="form-name" value="booking" />
-    <input type="text" name="name" required />
-    <input type="tel" name="phone" />
-    <input type="email" name="email" required />
-    <textarea name="message"></textarea>
-    <input type="text" name="bot-field" />
-  </form>
-</body>
+	<head>
+		<title>Booking Form</title>
+	</head>
+	<body>
+		<!-- Static HTML form for Netlify Forms detection -->
+		<!-- Required for Next.js/SSR: Netlify needs to parse static HTML during build -->
+		<!-- This form must match the JavaScript-rendered form exactly -->
+		<!-- See: https://docs.netlify.com/manage/forms/setup/#forms-for-nextjs-or-ssr-frameworks -->
+		<form
+			name="booking"
+			method="POST"
+			data-netlify="true"
+			data-netlify-honeypot="bot-field"
+			hidden>
+			<input type="hidden" name="form-name" value="booking" />
+			<input type="text" name="name" required />
+			<input type="tel" name="phone" />
+			<input type="email" name="email" required />
+			<textarea name="message"></textarea>
+			<input type="text" name="bot-field" />
+		</form>
+	</body>
 </html>
-
