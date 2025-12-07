@@ -23,6 +23,8 @@ const BookingForm = () => {
 		e.preventDefault();
 		setStatus("sending");
 
+		const form = e.target;
+
 		// Build form data object with all fields
 		// Netlify Forms requires form-name to match the form name attribute
 		const formDataObj = {
