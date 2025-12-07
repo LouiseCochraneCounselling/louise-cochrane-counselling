@@ -24,13 +24,14 @@ const BookingForm = () => {
     setStatus('sending');
 
     const form = e.target;
-    const data = new FormData(form);
+    const formData = new FormData(form);
 
     try {
+      // Submit to Netlify Forms endpoint
       const response = await fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(data).toString()
+        body: new URLSearchParams(formData).toString()
       });
 
       if (response.ok) {
@@ -41,6 +42,7 @@ const BookingForm = () => {
         setStatus('error');
       }
     } catch (error) {
+      console.error('Form submission error:', error);
       setStatus('error');
     }
   };
@@ -59,7 +61,7 @@ const BookingForm = () => {
           name="booking"
           method="POST"
           data-netlify="true"
-          netlify-honeypot="bot-field"
+          data-netlify-honeypot="bot-field"
           onSubmit={handleSubmit}
           className={styles.bookingForm}
         >

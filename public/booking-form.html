@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Booking Form</title>
+</head>
+<body>
+  <!-- Static form for Netlify Forms detection -->
+  <!-- This file allows Netlify to detect the form structure during build -->
+  <form name="booking" method="POST" netlify netlify-honeypot="bot-field" hidden>
+    <input type="hidden" name="form-name" value="booking" />
+    <input type="text" name="name" required />
+    <input type="tel" name="phone" />
+    <input type="email" name="email" required />
+    <textarea name="message"></textarea>
+    <input type="text" name="bot-field" />
+  </form>
+</body>
+</html>
+

@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import BookingForm from "../components/BookingForm";
@@ -30,11 +30,16 @@ export default function Home() {
 		}
 	}, []);
 
+	// AIRCORD STYLE - Memoize callback to prevent useEffect re-runs in LoadingScreen
+	const handleLoaded = useCallback(() => {
+		setIsLoaded(true);
+	}, []);
+
 	return (
 		<>
 			{/* AIRCORD STYLE - Remove this component to revert */}
 			{USE_AIRCORD_STYLE && (
-				<LoadingScreen_AircordStyle onLoaded={() => setIsLoaded(true)} />
+				<LoadingScreen_AircordStyle onLoaded={handleLoaded} />
 			)}
 
 			{(!USE_AIRCORD_STYLE || isLoaded) && (
