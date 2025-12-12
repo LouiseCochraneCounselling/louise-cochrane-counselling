@@ -24,16 +24,28 @@ const ContactForm = () => {
     setStatus('sending');
 
     const form = e.target;
-    const data = new FormData(form);
+    
+    // Validate required fields
+    if (!formData.name || !formData.email) {
+      setStatus('error');
+      return;
+    }
 
     try {
-      const response = await fetch('/', {
+      const response = await fetch('/api/submit-booking', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(data).toString()
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          phone: (formData.phone || '').trim(),
+          message: (formData.message || '').trim(),
+        })
       });
 
-      if (response.ok) {
+      const result = await response.json();
+      
+      if (response.ok && result.success) {
         setStatus('success');
         form.reset();
         setFormData({ name: '', email: '', phone: '', message: '' });
@@ -50,17 +62,9 @@ const ContactForm = () => {
       <form 
         name="contact" 
         method="POST" 
-        data-netlify="true" 
-        netlify-honeypot="bot-field"
         onSubmit={handleSubmit}
         className={styles.contactForm}
       >
-        <input type="hidden" name="form-name" value="contact" />
-        <p className={styles.hidden}>
-          <label>
-            Don't fill this out if you're human: <input name="bot-field" />
-          </label>
-        </p>
 
         <div className={styles.formHeader}>
           <h2 className={styles.formTitle}>Get in Touch</h2>

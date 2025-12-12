@@ -7,10 +7,10 @@ export default function Contact() {
 	return (
 		<>
 			<Head>
-				<title>Contact Us - LC Counselling</title>
+				<title>Contact Us - The Holding Space</title>
 				<meta
 					name="description"
-					content="Get in touch with our counselling services. We're here to support you on your journey to better mental health."
+					content="Get in touch with The Holding Space counselling services. We're here to support you on your journey to better mental health."
 				/>
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/favicon.ico" />

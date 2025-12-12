@@ -46,11 +46,11 @@ export default function Home() {
 				<>
 					<Head>
 						<title>
-							Counselling Services - Professional Support for Your Wellbeing
+							The Holding Space - Professional Support for Your Wellbeing
 						</title>
 						<meta
 							name="description"
-							content="Professional counselling services offering support for your mental health and wellbeing."
+							content="The Holding Space offers professional counselling services and support for your mental health and wellbeing."
 						/>
 						<meta
 							name="viewport"
@@ -88,21 +88,9 @@ export default function Home() {
 												<Typewriter
 													as="h1"
 													className={styles.heroTitleAircord}
-													text="Louise Cochrane"
+													text="The Holding Space"
 													speed={80}
 													delay={1200}
-													showCursor={false}
-													loop={false}
-												/>
-											</AnimatedSection>
-
-											<AnimatedSection delay={600} animation="fadeInUp">
-												<Typewriter
-													as="h1"
-													className={styles.heroTitleAircord}
-													text="Counselling Services."
-													speed={80}
-													delay={2000}
 													showCursor={false}
 													loop={false}
 												/>
@@ -113,7 +101,7 @@ export default function Home() {
 											<Typewriter
 												as="h1"
 												className={styles.heroTitle}
-												text="Welcome to LC Counselling"
+												text="Welcome to The Holding Space"
 												speed={80}
 												delay={300}
 												showCursor={true}

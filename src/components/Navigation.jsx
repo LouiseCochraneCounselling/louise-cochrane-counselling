@@ -47,12 +47,12 @@ const Navigation = () => {
               {!logoError ? (
                 <img 
                   src="/images/logo.svg" 
-                  alt="Counselling Logo" 
+                  alt="The Holding Space Logo" 
                   className={styles.logoImg}
                   onError={() => setLogoError(true)}
                 />
               ) : (
-                <span className={styles.logoText}>Counselling</span>
+                <span className={styles.logoText}>The Holding Space</span>
               )}
             </div>
           </Link>

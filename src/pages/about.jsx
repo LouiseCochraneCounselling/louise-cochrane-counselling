@@ -9,10 +9,10 @@ export default function About() {
 	return (
 		<>
 			<Head>
-				<title>About Me - Louise Cochrane</title>
+				<title>About - The Holding Space</title>
 				<meta
 					name="description"
-					content="Learn about my counselling services and approach to supporting your mental health and wellbeing."
+					content="Learn about The Holding Space counselling services and approach to supporting your mental health and wellbeing."
 				/>
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/favicon.ico" />

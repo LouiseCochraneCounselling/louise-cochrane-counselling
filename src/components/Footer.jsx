@@ -8,7 +8,7 @@ const Footer = () => {
       <div className={styles.container}>
         <div className={styles.content}>
           <div className={styles.section}>
-            <h3>Counselling Services</h3>
+            <h3>The Holding Space</h3>
             <p>Professional counselling support for your wellbeing.</p>
           </div>
           <div className={styles.section}>
@@ -25,7 +25,7 @@ const Footer = () => {
           </div>
         </div>
         <div className={styles.copyright}>
-          <p>&copy; {currentYear} Counselling Services. All rights reserved.</p>
+          <p>&copy; {currentYear} The Holding Space. All rights reserved.</p>
         </div>
       </div>
     </footer>

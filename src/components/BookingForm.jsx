@@ -26,61 +26,37 @@ const BookingForm = () => {
 		const form = e.target;
 
 		// Build form data object with all fields
-		// Netlify Forms requires form-name to match the form name attribute
 		const formDataObj = {
-			"form-name": "booking",
 			name: formData.name.trim(),
 			email: formData.email.trim(),
 			phone: (formData.phone || "").trim(),
 			message: (formData.message || "").trim(),
 		};
 
-		// Encode as URLSearchParams for Netlify Forms
-		const encoded = new URLSearchParams(formDataObj).toString();
-
-		console.log("Submitting form with data:", formDataObj);
+		// Validate required fields
+		if (!formDataObj.name || !formDataObj.email) {
+			setStatus("error");
+			return;
+		}
 
 		try {
-			// Submit to Netlify Forms endpoint
-			// For Next.js Runtime v5, submit directly to root with proper encoding
-			// Netlify Forms intercepts POST requests to any path
-			const response = await fetch("/", {
+			// Submit to Next.js API route
+			const response = await fetch("/api/submit-booking", {
 				method: "POST",
 				headers: {
-					"Content-Type": "application/x-www-form-urlencoded",
+					"Content-Type": "application/json",
 				},
-				body: encoded,
+				body: JSON.stringify(formDataObj),
 			});
 
-			console.log("Form submission response:", {
-				status: response.status,
-				statusText: response.statusText,
-				ok: response.ok,
-				url: response.url,
-			});
+			const result = await response.json();
 
-			// Netlify Forms returns HTML (200) or redirect (302) on success
-			// Any 2xx status code indicates success
-			if (response.ok || response.status === 302 || response.status === 200) {
+			if (response.ok && result.success) {
 				setStatus("success");
 				form.reset();
 				setFormData({ name: "", phone: "", email: "", message: "" });
 			} else {
-				// Try to get response text for debugging
-				let errorText = "";
-				try {
-					errorText = await response.text();
-					console.error("Error response body:", errorText.substring(0, 500));
-				} catch (e) {
-					console.error("Could not read error response:", e);
-				}
-				
-				console.error("Form submission failed:", {
-					status: response.status,
-					statusText: response.statusText,
-					url: response.url,
-					preview: errorText.substring(0, 200),
-				});
+				console.error("Form submission failed:", result);
 				setStatus("error");
 			}
 		} catch (error) {
@@ -104,17 +80,8 @@ const BookingForm = () => {
 				<form
 					name="booking"
 					method="POST"
-					data-netlify="true"
-					data-netlify-honeypot="bot-field"
-					action="/"
 					onSubmit={handleSubmit}
 					className={styles.bookingForm}>
-					<input type="hidden" name="form-name" value="booking" />
-					<p className={styles.hidden}>
-						<label>
-							Don't fill this out if you're human: <input name="bot-field" />
-						</label>
-					</p>
 
 					<div className={styles.formRow}>
 						<div className={styles.formGroup}>

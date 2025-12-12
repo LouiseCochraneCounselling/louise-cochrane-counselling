@@ -1,7 +1,7 @@
 {
-  "name": "lcounselling-website",
+  "name": "the-holding-space-website",
   "version": "1.0.0",
-  "description": "Counselling business website",
+  "description": "The Holding Space - Professional counselling services website",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,6 +9,7 @@
     "export": "next export"
   },
   "dependencies": {
+    "@getbrevo/brevo": "^3.0.1",
     "next": "^14.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
@@ -18,4 +19,3 @@
     "eslint-config-next": "^14.0.0"
   }
 }
-
