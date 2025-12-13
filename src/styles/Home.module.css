@@ -20,9 +20,9 @@
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-image: url("/images/mainhero.jpg");
-	background-size: 100% auto;
-	background-position: center top;
+	background-image: url("/images/logo.png");
+	background-size: 37.5%;
+	background-position: center center;
 	background-repeat: no-repeat;
 	z-index: -1;
 	will-change: transform;
@@ -36,7 +36,7 @@
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background: rgba(211, 211, 211, 0.7);
+	background: rgba(215, 206, 210, 0.3);
 }
 
 .heroContainer {
@@ -229,7 +229,7 @@
 /* About Section */
 .aboutSection {
 	padding: clamp(5rem, 10vw, 8rem) clamp(1.5rem, 5vw, 3rem);
-	background-color: var(--color-white);
+	background-color: var(--color-bg-mauve);
 }
 
 .aboutContainer {
@@ -465,7 +465,7 @@
 /* Services Section */
 .servicesSection {
 	padding: clamp(5rem, 10vw, 8rem) clamp(1.5rem, 5vw, 3rem);
-	background-color: var(--color-bg-light);
+	background-color: var(--color-bg-mauve);
 }
 
 .servicesContainer {
@@ -601,7 +601,7 @@
 /* Why Choose Us Section */
 .whyChooseSection {
 	padding: clamp(5rem, 10vw, 8rem) clamp(1.5rem, 5vw, 3rem);
-	background-color: var(--color-white);
+	background-color: var(--color-bg-mauve);
 }
 
 .whyChooseContainer {
@@ -747,7 +747,7 @@
 /* CTA Section */
 .ctaSection {
 	padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 5vw, 3rem);
-	background-color: var(--color-bg-light);
+	background-color: var(--color-bg-mauve);
 	text-align: center;
 }
 

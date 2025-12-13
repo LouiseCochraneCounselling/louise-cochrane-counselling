@@ -65,71 +65,7 @@ export default function Home() {
 							<div className={styles.heroBackground}></div>
 							<div className={styles.heroContainer}>
 								<div className={styles.heroContent}>
-									{/* AIRCORD STYLE - Original code below, uncomment to revert */}
-									{USE_AIRCORD_STYLE ? (
-										<>
-											<AnimatedSection delay={0} animation="fadeIn">
-												<div className={styles.heroLabel}></div>
-											</AnimatedSection>
-
-											<AnimatedSection delay={200} animation="fadeInUp">
-												<Typewriter
-													as="h1"
-													className={styles.heroTitleAircord}
-													text="Welcome to"
-													speed={80}
-													delay={400}
-													showCursor={false}
-													loop={false}
-												/>
-											</AnimatedSection>
-
-											<AnimatedSection delay={400} animation="fadeInUp">
-												<Typewriter
-													as="h1"
-													className={styles.heroTitleAircord}
-													text="The Holding Space"
-													speed={80}
-													delay={1200}
-													showCursor={false}
-													loop={false}
-												/>
-											</AnimatedSection>
-										</>
-									) : (
-										<>
-											<Typewriter
-												as="h1"
-												className={styles.heroTitle}
-												text="Welcome to The Holding Space"
-												speed={80}
-												delay={300}
-												showCursor={true}
-												loop={false}
-											/>
-
-											<AnimatedSection delay={2000} animation="fadeInUp">
-												<ul className={styles.heroList}>
-													<li>
-														<i className="far fa-check-circle"></i>
-														<span>Individual Counselling</span>
-													</li>
-													<li>
-														<i className="far fa-check-circle"></i>
-														<span>Couple Counselling</span>
-													</li>
-													<li>
-														<i className="far fa-check-circle"></i>
-														<span>Child Counselling</span>
-													</li>
-													<li>
-														<i className="far fa-check-circle"></i>
-														<span>Family Counselling</span>
-													</li>
-												</ul>
-											</AnimatedSection>
-										</>
-									)}
+									{/* Hero content removed - logo is now the hero background */}
 								</div>
 							</div>
 						</section>

@@ -6,7 +6,6 @@ import styles from "./Navigation.module.css";
 
 const Navigation = () => {
 	const [isOpen, setIsOpen] = useState(false);
-	const [logoError, setLogoError] = useState(false);
 
 	const toggleMenu = () => {
 		setIsOpen(!isOpen);
@@ -48,16 +47,7 @@ const Navigation = () => {
 				<div className={styles.logoSection}>
 					<Link href="/" className={styles.logoLink}>
 						<div className={styles.logoContainer}>
-							{!logoError ? (
-								<img
-									src="/images/logo.svg"
-									alt="The Holding Space Logo"
-									className={styles.logoImg}
-									onError={() => setLogoError(true)}
-								/>
-							) : (
-								<span className={styles.logoText}>The Holding Space</span>
-							)}
+							<span className={styles.logoText}>The Holding Space</span>
 						</div>
 					</Link>
 				</div>
