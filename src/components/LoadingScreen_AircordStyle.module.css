@@ -5,7 +5,7 @@
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background: #000;
+	background: #d7ced2;
 	z-index: 9999;
 	display: flex;
 	align-items: center;
@@ -39,4 +39,3 @@
 	background: #fff;
 	transition: width 0.1s linear;
 }
-

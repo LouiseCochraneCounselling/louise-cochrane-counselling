@@ -21,12 +21,13 @@
 	right: 0;
 	bottom: 0;
 	background-image: url("/images/logo.png");
-	background-size: 37.5%;
+	background-size: contain;
 	background-position: center center;
 	background-repeat: no-repeat;
 	z-index: -1;
 	will-change: transform;
 	transition: transform 0.1s ease-out;
+	transform: translateY(-8%);
 }
 
 .heroBackground::after {

@@ -7,6 +7,7 @@ import AnimatedSection from "../components/AnimatedSection";
 import AnimatedHeading from "../components/AnimatedHeading";
 import AnimatedImage from "../components/AnimatedImage";
 import Typewriter from "../components/Typewriter";
+import ScrollIndicator from "../components/ScrollIndicator";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
 // AIRCORD STYLE - Remove this import to revert
@@ -60,15 +61,16 @@ export default function Home() {
 					</Head>
 					<Header />
 					<main className={styles.main}>
-						{/* Hero Section */}
-						<section className={styles.heroSection}>
-							<div className={styles.heroBackground}></div>
-							<div className={styles.heroContainer}>
-								<div className={styles.heroContent}>
-									{/* Hero content removed - logo is now the hero background */}
-								</div>
+					{/* Hero Section */}
+					<section className={styles.heroSection}>
+						<div className={styles.heroBackground}></div>
+						<div className={styles.heroContainer}>
+							<div className={styles.heroContent}>
+								{/* Hero content removed - logo is now the hero background */}
 							</div>
-						</section>
+						</div>
+						<ScrollIndicator />
+					</section>
 
 						{/* About Section */}
 						<section id="about-section" className={styles.aboutSection}>

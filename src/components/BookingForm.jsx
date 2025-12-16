@@ -82,7 +82,6 @@ const BookingForm = () => {
 					method="POST"
 					onSubmit={handleSubmit}
 					className={styles.bookingForm}>
-
 					<div className={styles.formRow}>
 						<div className={styles.formGroup}>
 							<input
@@ -93,7 +92,7 @@ const BookingForm = () => {
 								onChange={handleChange}
 								required
 								className={styles.formInput}
-								placeholder="Name *"
+								placeholder="First Name *"
 								autoComplete="name"
 								aria-required="true"
 							/>
@@ -164,8 +163,18 @@ const BookingForm = () => {
 								<strong>Thank you! Your message has been sent.</strong>
 							</p>
 							<p>
-								I'll respond to you via email within 24-48 hours with next
-								steps. Please check your inbox (and spam folder) for my reply.
+								I will respond to you via email within 24-48 hours with next
+								steps. Please check your inbox (and spam folder) for my reply.{" "}
+								<br />
+								<br />
+								If you haven't received a reply within 48 hours, please check
+								your spam folder or contact me directly at <br />
+								<a
+									href="mailto:hello@theholdingspace.co.uk"
+									className={styles.emailLink}>
+									hello@theholdingspace.co.uk
+								</a>
+								.
 							</p>
 						</div>
 					)}
