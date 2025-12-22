@@ -808,7 +808,13 @@
 
 @media (max-width: 768px) {
 	.heroSection {
-		min-height: 80vh;
+		height: 100vh;
+		height: 100dvh; /* Dynamic viewport height for mobile browsers */
+		min-height: 100vh;
+		min-height: 100dvh;
+		padding: 0;
+		padding-bottom: clamp(4rem, 8vw, 6rem);
+		margin-top: 0;
 	}
 
 	.heroStats {
@@ -837,8 +843,13 @@
 
 @media (max-width: 480px) {
 	.heroSection {
-		padding: 2rem 1rem;
-		min-height: 70vh;
+		height: 100vh;
+		height: 100dvh; /* Dynamic viewport height for mobile browsers */
+		min-height: 100vh;
+		min-height: 100dvh;
+		padding: 0;
+		padding-bottom: clamp(3rem, 6vw, 4rem);
+		margin-top: 0;
 	}
 
 	.heroList {

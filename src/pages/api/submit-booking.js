@@ -1,11 +1,7 @@
-import * as brevo from "@getbrevo/brevo";
+import { Resend } from "resend";
 
-// Initialize Brevo API
-const apiInstance = new brevo.TransactionalEmailsApi();
-apiInstance.setApiKey(
-	brevo.TransactionalEmailsApiApiKeys.apiKey,
-	process.env.BREVO_API_KEY
-);
+// Initialize Resend API
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export default async function handler(req, res) {
 	// Only allow POST requests
@@ -25,9 +21,9 @@ export default async function handler(req, res) {
 			});
 		}
 
-		// Validate Brevo API key is configured
-		if (!process.env.BREVO_API_KEY) {
-			console.error("BREVO_API_KEY is not configured");
+		// Validate Resend API key is configured
+		if (!process.env.RESEND_API_KEY) {
+			console.error("RESEND_API_KEY is not configured");
 			return res.status(500).json({
 				message:
 					"Email service is not configured. Please contact the site administrator.",
@@ -35,12 +31,14 @@ export default async function handler(req, res) {
 			});
 		}
 
-		// Get recipient email from environment variable (default to a fallback)
-		const recipientEmail =
-			process.env.CONTACT_EMAIL || process.env.BREVO_FROM_EMAIL;
+		// Get recipient email from environment variable
+		const recipientEmail = process.env.CONTACT_EMAIL;
+
+		// Get sender email (should be verified in Resend)
+		const senderEmail = process.env.RESEND_FROM_EMAIL || "hello@theholdingspace.co.uk";
 
 		if (!recipientEmail) {
-			console.error("CONTACT_EMAIL or BREVO_FROM_EMAIL is not configured");
+			console.error("CONTACT_EMAIL is not configured");
 			return res.status(500).json({
 				message: "Email recipient is not configured.",
 				error: "configuration_error",
@@ -125,29 +123,25 @@ Submitted at: ${new Date().toLocaleString("en-GB", {
 		})}
 		`.trim();
 
-		// Send email using Brevo
-		const sendSmtpEmail = new brevo.SendSmtpEmail();
-		sendSmtpEmail.subject = emailSubject;
-		sendSmtpEmail.htmlContent = emailHtml;
-		sendSmtpEmail.textContent = emailText;
-		sendSmtpEmail.sender = {
-			name: "The Holding Space",
-			email: process.env.BREVO_FROM_EMAIL || "hello@theholdingspace.co.uk",
-		};
-		sendSmtpEmail.to = [{ email: recipientEmail }];
-		sendSmtpEmail.replyTo = { email: email };
-
+		// Send email using Resend
 		try {
-			const data = await apiInstance.sendTransacEmail(sendSmtpEmail);
+			const data = await resend.emails.send({
+				from: `The Holding Space <${senderEmail}>`,
+				to: [recipientEmail],
+				replyTo: email,
+				subject: emailSubject,
+				html: emailHtml,
+				text: emailText,
+			});
 
 			// Success
 			return res.status(200).json({
 				message: "Form submitted successfully",
 				success: true,
-				emailId: data.messageId,
+				emailId: data.id,
 			});
-		} catch (brevoError) {
-			console.error("Brevo error:", brevoError);
+		} catch (resendError) {
+			console.error("Resend error:", resendError);
 			return res.status(500).json({
 				message: "Failed to send email. Please try again later.",
 				error: "email_send_error",
