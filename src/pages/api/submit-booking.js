@@ -23,11 +23,18 @@ export default async function handler(req, res) {
 
 		// Validate Resend API key is configured
 		if (!process.env.RESEND_API_KEY) {
-			console.error("RESEND_API_KEY is not configured");
+			console.error(
+				"[API Error] RESEND_API_KEY environment variable is not configured"
+			);
+			console.error(
+				"[API Error] Please set RESEND_API_KEY in Vercel Project Settings → Environment Variables"
+			);
 			return res.status(500).json({
 				message:
 					"Email service is not configured. Please contact the site administrator.",
 				error: "configuration_error",
+				details:
+					"RESEND_API_KEY is missing. Please configure it in Vercel environment variables.",
 			});
 		}
 
@@ -35,15 +42,35 @@ export default async function handler(req, res) {
 		const recipientEmail = process.env.CONTACT_EMAIL;
 
 		// Get sender email (should be verified in Resend)
-		const senderEmail = process.env.RESEND_FROM_EMAIL || "hello@theholdingspace.co.uk";
+		const senderEmail =
+			process.env.RESEND_FROM_EMAIL || "hello@theholdingspace.co.uk";
 
 		if (!recipientEmail) {
-			console.error("CONTACT_EMAIL is not configured");
+			console.error(
+				"[API Error] CONTACT_EMAIL environment variable is not configured"
+			);
+			console.error(
+				"[API Error] Please set CONTACT_EMAIL in Vercel Project Settings → Environment Variables"
+			);
+			console.error("[API Error] Current environment:", {
+				hasResendKey: !!process.env.RESEND_API_KEY,
+				hasContactEmail: false,
+				hasFromEmail: !!process.env.RESEND_FROM_EMAIL,
+			});
 			return res.status(500).json({
 				message: "Email recipient is not configured.",
 				error: "configuration_error",
+				details:
+					"CONTACT_EMAIL is missing. Please set it in Vercel environment variables.",
 			});
 		}
+
+		// Log configuration status (without sensitive data)
+		console.log("[API Info] Email configuration:", {
+			recipientEmail: recipientEmail,
+			senderEmail: senderEmail,
+			hasResendKey: !!process.env.RESEND_API_KEY,
+		});
 
 		// Format the email content
 		const emailSubject = `New Booking Enquiry from ${name}`;
@@ -141,17 +168,49 @@ Submitted at: ${new Date().toLocaleString("en-GB", {
 				emailId: data.id,
 			});
 		} catch (resendError) {
-			console.error("Resend error:", resendError);
+			console.error("[API Error] Resend API error:", {
+				message: resendError?.message,
+				name: resendError?.name,
+				statusCode: resendError?.statusCode,
+				details: resendError,
+			});
+
+			// Provide more specific error messages based on common Resend errors
+			let errorMessage = "Failed to send email. Please try again later.";
+			if (resendError?.message?.includes("domain")) {
+				errorMessage =
+					"Email sending failed: Domain verification issue. Please verify your sender domain in Resend.";
+			} else if (
+				resendError?.message?.includes("API key") ||
+				resendError?.statusCode === 401
+			) {
+				errorMessage =
+					"Email sending failed: Invalid API key. Please check your RESEND_API_KEY configuration.";
+			} else if (resendError?.message?.includes("rate limit")) {
+				errorMessage =
+					"Email sending failed: Rate limit exceeded. Please try again later.";
+			}
+
 			return res.status(500).json({
-				message: "Failed to send email. Please try again later.",
+				message: errorMessage,
 				error: "email_send_error",
+				details:
+					process.env.NODE_ENV === "development"
+						? resendError?.message
+						: undefined,
 			});
 		}
 	} catch (error) {
-		console.error("Form submission error:", error);
+		console.error("[API Error] Unexpected form submission error:", {
+			message: error?.message,
+			name: error?.name,
+			stack: error?.stack,
+		});
 		return res.status(500).json({
 			message: "An unexpected error occurred. Please try again later.",
 			error: "server_error",
+			details:
+				process.env.NODE_ENV === "development" ? error?.message : undefined,
 		});
 	}
 }
