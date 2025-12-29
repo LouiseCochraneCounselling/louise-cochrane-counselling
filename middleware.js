@@ -4,15 +4,27 @@ export function middleware(request) {
   const { pathname } = request.nextUrl;
   const hostname = request.headers.get('host') || '';
 
-  // Check if coming soon mode is enabled (defaults to enabled)
-  // Accepts: undefined, 'true', '1', or any value except 'false' or '0'
-  const enableComingSoon = process.env.ENABLE_COMING_SOON;
-  const isComingSoonEnabled = 
-    enableComingSoon === undefined || 
-    enableComingSoon === '' || 
-    enableComingSoon === 'true' || 
-    enableComingSoon === '1' ||
-    (enableComingSoon !== 'false' && enableComingSoon !== '0');
+  // Check environment variable (case-insensitive check)
+  // Try both uppercase and the exact case the user might have set
+  const enableComingSoon = 
+    process.env.ENABLE_COMING_SOON || 
+    process.env.Enable_coming_soon ||
+    process.env.enable_coming_soon;
+
+  // Coming soon is enabled if:
+  // - Variable is not set (defaults to enabled)
+  // - Variable is set to 'true', '1', or any truthy value except 'false' or '0'
+  let isComingSoonEnabled = true; // Default to enabled
+  
+  if (enableComingSoon) {
+    const value = enableComingSoon.toLowerCase().trim();
+    if (value === 'false' || value === '0') {
+      isComingSoonEnabled = false;
+    } else if (value === 'true' || value === '1') {
+      isComingSoonEnabled = true;
+    }
+    // If it's any other value, default to enabled
+  }
 
   // If coming soon is disabled, allow all requests
   if (!isComingSoonEnabled) {
@@ -31,10 +43,21 @@ export function middleware(request) {
     hostname === 'theholdingspacejersey.co.uk' ||
     hostname === 'www.theholdingspacejersey.co.uk';
 
+  // Debug logging (will appear in Vercel function logs)
+  console.log('[Middleware Debug]', {
+    hostname,
+    pathname,
+    enableComingSoon,
+    isComingSoonEnabled,
+    isVercelDeployment,
+    isCustomDomain,
+  });
+
   // If accessing via custom domain and not already on coming-soon page, redirect
   if (isCustomDomain && pathname !== '/coming-soon') {
     const url = request.nextUrl.clone();
     url.pathname = '/coming-soon';
+    console.log('[Middleware] Redirecting to /coming-soon');
     return NextResponse.redirect(url);
   }
 
