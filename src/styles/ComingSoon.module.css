@@ -1,0 +1,77 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-mauve);
+  padding: 2rem;
+}
+
+.content {
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
+}
+
+.title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--color-text-dark);
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.message {
+  font-size: 1.5rem;
+  color: var(--color-text-medium);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.submessage {
+  font-size: 1.1rem;
+  color: var(--color-text-light);
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+.contactLink {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background: var(--color-text-dark);
+  color: var(--color-white);
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.contactLink:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.contactLink:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .message {
+    font-size: 1.25rem;
+  }
+
+  .submessage {
+    font-size: 1rem;
+  }
+
+  .contactLink {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+  }
+}
