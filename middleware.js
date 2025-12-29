@@ -1,6 +1,14 @@
 import { NextResponse } from 'next/server';
 
 export function middleware(request) {
+  // Check if coming soon mode is enabled (defaults to enabled)
+  const isComingSoonEnabled = process.env.ENABLE_COMING_SOON !== 'false';
+
+  // If coming soon is disabled, allow all requests
+  if (!isComingSoonEnabled) {
+    return NextResponse.next();
+  }
+
   const { pathname } = request.nextUrl;
   const hostname = request.headers.get('host') || '';
 
