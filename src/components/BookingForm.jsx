@@ -1,9 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/router";
 import styles from "./BookingForm.module.css";
 
 const BookingForm = () => {
+	const router = useRouter();
 	const [formData, setFormData] = useState({
 		name: "",
 		phone: "",
@@ -52,9 +54,10 @@ const BookingForm = () => {
 			const result = await response.json();
 
 			if (response.ok && result.success) {
-				setStatus("success");
 				form.reset();
 				setFormData({ name: "", phone: "", email: "", message: "" });
+				// Redirect to success page
+				router.push("/booking-success");
 			} else {
 				console.error("Form submission failed:", result);
 				setStatus("error");
@@ -157,27 +160,6 @@ const BookingForm = () => {
 						)}
 					</button>
 
-					{status === "success" && (
-						<div className={`${styles.formMessage} ${styles.success}`}>
-							<p>
-								<strong>Thank you! Your message has been sent.</strong>
-							</p>
-							<p>
-								I will respond to you via email within 24-48 hours with next
-								steps. Please check your inbox (and spam folder) for my reply.{" "}
-								<br />
-								<br />
-								If you haven't received a reply within 48 hours, please check
-								your spam folder or contact me directly at <br />
-								<a
-									href="mailto:hello@theholdingspace.co.uk"
-									className={styles.emailLink}>
-									hello@theholdingspace.co.uk
-								</a>
-								.
-							</p>
-						</div>
-					)}
 					{status === "error" && (
 						<p className={`${styles.formMessage} ${styles.error}`}>
 							Sorry, there was an error sending your message. Please try again.

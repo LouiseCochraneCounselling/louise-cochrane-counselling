@@ -18,6 +18,20 @@ export default function Home() {
 	// AIRCORD STYLE - Remove this state to revert
 	const [isLoaded, setIsLoaded] = useState(!USE_AIRCORD_STYLE);
 
+	// #region agent log
+	useEffect(() => {
+		if (typeof window !== 'undefined') {
+			const heroBg = document.querySelector(`.${styles.heroBackground}`);
+			const heroSection = document.querySelector(`.${styles.heroSection}`);
+			const computedBg = heroBg ? window.getComputedStyle(heroBg) : null;
+			const computedSection = heroSection ? window.getComputedStyle(heroSection) : null;
+			const cssVar = getComputedStyle(document.documentElement).getPropertyValue('--color-bg-mauve');
+			
+			fetch('http://127.0.0.1:7243/ingest/a21c6cec-5927-421c-b6eb-9c88a6d6b774',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'index.jsx:useEffect',message:'Hero background debug',data:{heroBgExists:!!heroBg,heroSectionExists:!!heroSection,heroBgWidth:heroBg?.offsetWidth,heroBgHeight:heroBg?.offsetHeight,heroBgBgColor:computedBg?.backgroundColor,heroBgBgImage:computedBg?.backgroundImage,heroSectionBgColor:computedSection?.backgroundColor,cssVarValue:cssVar.trim(),heroBgOpacity:computedBg?.opacity,heroBgZIndex:computedBg?.zIndex},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A,B,C,D,E'})}).catch(()=>{});
+		}
+	}, [isLoaded, styles.heroBackground, styles.heroSection]);
+	// #endregion agent log
+
 	// AIRCORD STYLE - Remove this useEffect to revert
 	useEffect(() => {
 		if (USE_AIRCORD_STYLE) {
@@ -35,6 +49,30 @@ export default function Home() {
 	const handleLoaded = useCallback(() => {
 		setIsLoaded(true);
 	}, []);
+
+	// #region agent log
+	useEffect(() => {
+		if (typeof window !== 'undefined' && isLoaded) {
+			setTimeout(() => {
+				const heroBg = document.querySelector(`.${styles.heroBackground}`);
+				const heroSection = document.querySelector(`.${styles.heroSection}`);
+				if (heroBg && heroSection) {
+					const computedBg = window.getComputedStyle(heroBg);
+					const computedSection = window.getComputedStyle(heroSection);
+					const cssVar = getComputedStyle(document.documentElement).getPropertyValue('--color-bg-mauve');
+					const rect = heroBg.getBoundingClientRect();
+					
+					// Check pseudo-elements via computed styles
+					const beforeBgColor = window.getComputedStyle(heroBg, '::before').backgroundColor;
+					const afterBgImage = window.getComputedStyle(heroBg, '::after').backgroundImage;
+					const afterOpacity = window.getComputedStyle(heroBg, '::after').opacity;
+					
+					fetch('http://127.0.0.1:7243/ingest/a21c6cec-5927-421c-b6eb-9c88a6d6b774',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'index.jsx:useEffect-delayed-postfix',message:'Post-fix verification',data:{heroBgWidth:rect.width,heroBgHeight:rect.height,heroBgBgColor:computedBg.backgroundColor,heroBgBgImage:computedBg.backgroundImage,beforeBgColor:beforeBgColor,afterBgImage:afterBgImage,afterOpacity:afterOpacity,heroSectionBgColor:computedSection.backgroundColor,cssVarValue:cssVar.trim()},timestamp:Date.now(),sessionId:'debug-session',runId:'post-fix',hypothesisId:'FIX'})}).catch(()=>{});
+				}
+			}, 500);
+		}
+	}, [isLoaded, styles.heroBackground, styles.heroSection]);
+	// #endregion agent log
 
 	return (
 		<>

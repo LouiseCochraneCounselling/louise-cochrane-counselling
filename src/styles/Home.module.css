@@ -12,6 +12,7 @@
 	overflow: visible;
 	padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 5vw, 3rem);
 	padding-bottom: clamp(8rem, 12vw, 10rem);
+	background-color: var(--color-bg-mauve);
 }
 
 .heroBackground {
@@ -20,24 +21,29 @@
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-image: url("/images/logo.png");
-	background-size: contain;
-	background-position: center center;
-	background-repeat: no-repeat;
-	z-index: -1;
+	background-color: var(--color-bg-mauve);
+	background-image: 
+		linear-gradient(var(--color-bg-mauve), var(--color-bg-mauve)),
+		url("/images/logo.png");
+	background-size: 
+		100% 100%,
+		contain;
+	background-position: 
+		center center,
+		center center;
+	background-repeat: 
+		no-repeat,
+		no-repeat;
+	z-index: 1;
 	will-change: transform;
 	transition: transform 0.1s ease-out;
 	transform: translateY(-8%);
+	opacity: 0.6;
+	pointer-events: none;
 }
 
 .heroBackground::after {
-	content: "";
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background: rgba(215, 206, 210, 0.3);
+	display: none;
 }
 
 .heroContainer {
@@ -902,7 +908,7 @@
 
 /* Override hero background overlay for Aircord style */
 .heroSection .heroBackground::after {
-	background: rgba(255, 255, 255, 0.3);
+	background: rgba(255, 255, 255, 0);
 }
 
 /* ============================================
