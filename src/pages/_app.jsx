@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import '../styles/globals.css';
 
 export default function App({ Component, pageProps }) {
@@ -12,6 +13,7 @@ export default function App({ Component, pageProps }) {
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
       </Head>
       <Component {...pageProps} />
+      <SpeedInsights />
     </>
   );
 }
