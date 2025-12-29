@@ -43,7 +43,9 @@ export default function BookingSuccess() {
 					</AnimatedSection>
 
 					<AnimatedSection delay={200} animation="fadeInUp">
-						<h1 className={styles.title}>Thank You! Your Message Has Been Sent</h1>
+						<h1 className={styles.title}>
+							Thank You! Your Message Has Been Sent
+						</h1>
 					</AnimatedSection>
 
 					<AnimatedSection delay={400} animation="fadeInUp">
@@ -75,9 +77,9 @@ export default function BookingSuccess() {
 									If you haven't received a reply within 48 hours, please check
 									your spam folder or contact me directly at{" "}
 									<a
-										href="mailto:hello@theholdingspace.co.uk"
+										href="mailto:hello@theholdingspacejersey.co.uk"
 										className={styles.emailLink}>
-										hello@theholdingspace.co.uk
+										hello@theholdingspacejersey.co.uk
 									</a>
 								</p>
 							</div>

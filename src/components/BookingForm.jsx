@@ -6,6 +6,7 @@ import styles from "./BookingForm.module.css";
 
 const BookingForm = () => {
 	const router = useRouter();
+	const MAX_MESSAGE_LENGTH = 2500;
 	const [formData, setFormData] = useState({
 		name: "",
 		phone: "",
@@ -140,7 +141,18 @@ const BookingForm = () => {
 							rows="6"
 							className={styles.formTextarea}
 							placeholder="Please let me know what you'd like to discuss, your preferred times for sessions, or any questions you have. All information is confidential."
+							maxLength={MAX_MESSAGE_LENGTH}
 						/>
+						<div className={styles.characterCounter}>
+							<span
+								className={
+									formData.message.length > MAX_MESSAGE_LENGTH * 0.9
+										? styles.characterCounterWarning
+										: ""
+								}>
+								{formData.message.length} / {MAX_MESSAGE_LENGTH}
+							</span>
+						</div>
 					</div>
 
 					<p className={styles.privacyNote}>

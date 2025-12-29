@@ -43,7 +43,7 @@ export default async function handler(req, res) {
 
 		// Get sender email (should be verified in Resend)
 		const senderEmail =
-			process.env.RESEND_FROM_EMAIL || "hello@theholdingspace.co.uk";
+			process.env.RESEND_FROM_EMAIL || "hello@theholdingspacejersey.co.uk";
 
 		if (!recipientEmail) {
 			console.error(
