@@ -1,16 +1,23 @@
 import { NextResponse } from 'next/server';
 
 export function middleware(request) {
+  const { pathname } = request.nextUrl;
+  const hostname = request.headers.get('host') || '';
+
   // Check if coming soon mode is enabled (defaults to enabled)
-  const isComingSoonEnabled = process.env.ENABLE_COMING_SOON !== 'false';
+  // Accepts: undefined, 'true', '1', or any value except 'false' or '0'
+  const enableComingSoon = process.env.ENABLE_COMING_SOON;
+  const isComingSoonEnabled = 
+    enableComingSoon === undefined || 
+    enableComingSoon === '' || 
+    enableComingSoon === 'true' || 
+    enableComingSoon === '1' ||
+    (enableComingSoon !== 'false' && enableComingSoon !== '0');
 
   // If coming soon is disabled, allow all requests
   if (!isComingSoonEnabled) {
     return NextResponse.next();
   }
-
-  const { pathname } = request.nextUrl;
-  const hostname = request.headers.get('host') || '';
 
   // Allow access to Vercel deployment URLs (includes preview deployments)
   const isVercelDeployment = 
@@ -26,7 +33,9 @@ export function middleware(request) {
 
   // If accessing via custom domain and not already on coming-soon page, redirect
   if (isCustomDomain && pathname !== '/coming-soon') {
-    return NextResponse.redirect(new URL('/coming-soon', request.url));
+    const url = request.nextUrl.clone();
+    url.pathname = '/coming-soon';
+    return NextResponse.redirect(url);
   }
 
   // Allow all other requests (Vercel URLs, localhost, etc.)
