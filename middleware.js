@@ -55,14 +55,32 @@ export function middleware(request) {
 
   // If accessing via custom domain and not already on coming-soon page, redirect
   if (isCustomDomain && pathname !== '/coming-soon') {
-    const url = request.nextUrl.clone();
-    url.pathname = '/coming-soon';
-    console.log('[Middleware] Redirecting to /coming-soon');
-    return NextResponse.redirect(url);
+    // Create absolute URL for redirect
+    const url = new URL('/coming-soon', request.url);
+    console.log('[Middleware] Redirecting to /coming-soon', {
+      from: request.url,
+      to: url.toString(),
+      hostname,
+      pathname,
+    });
+    
+    // Add debug header to verify middleware ran
+    const response = NextResponse.redirect(url);
+    response.headers.set('X-Middleware-Executed', 'true');
+    response.headers.set('X-Middleware-Hostname', hostname);
+    response.headers.set('X-Middleware-Path', pathname);
+    response.headers.set('X-Middleware-Redirect-To', url.toString());
+    return response;
   }
 
   // Allow all other requests (Vercel URLs, localhost, etc.)
-  return NextResponse.next();
+  // Add debug header even when not redirecting
+  const response = NextResponse.next();
+  response.headers.set('X-Middleware-Executed', 'true');
+  response.headers.set('X-Middleware-Hostname', hostname);
+  response.headers.set('X-Middleware-Path', pathname);
+  response.headers.set('X-Middleware-Should-Redirect', isCustomDomain && pathname !== '/coming-soon' ? 'true' : 'false');
+  return response;
 }
 
 export const config = {
