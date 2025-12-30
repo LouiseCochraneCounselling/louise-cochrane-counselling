@@ -18,6 +18,21 @@ export default function Home() {
 	// AIRCORD STYLE - Remove this state to revert
 	const [isLoaded, setIsLoaded] = useState(!USE_AIRCORD_STYLE);
 
+	// Debug middleware - check if we should be redirected
+	useEffect(() => {
+		if (typeof window !== 'undefined') {
+			fetch('/api/debug-middleware')
+				.then(res => res.json())
+				.then(data => {
+					console.log('🔍 [Middleware Debug]', data);
+					if (data.middlewareShouldRedirect) {
+						console.warn('⚠️ [Middleware] You should be redirected to /coming-soon but middleware may not be working');
+					}
+				})
+				.catch(err => console.error('❌ [Middleware Debug] Error:', err));
+		}
+	}, []);
+
 	// #region agent log
 	useEffect(() => {
 		if (typeof window !== 'undefined') {
