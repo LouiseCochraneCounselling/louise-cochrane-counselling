@@ -53,8 +53,11 @@ export function middleware(request) {
     isCustomDomain,
   });
 
-  // If accessing via custom domain and not already on coming-soon page, redirect
-  if (isCustomDomain && pathname !== '/coming-soon') {
+  // Allow booking-success page even when coming soon is enabled (needed after form submission)
+  const allowedPaths = ['/coming-soon', '/booking-success'];
+  
+  // If accessing via custom domain and not on an allowed path, redirect
+  if (isCustomDomain && !allowedPaths.includes(pathname)) {
     // Create absolute URL for redirect
     const url = new URL('/coming-soon', request.url);
     console.log('[Middleware] Redirecting to /coming-soon', {
@@ -79,7 +82,8 @@ export function middleware(request) {
   response.headers.set('X-Middleware-Executed', 'true');
   response.headers.set('X-Middleware-Hostname', hostname);
   response.headers.set('X-Middleware-Path', pathname);
-  response.headers.set('X-Middleware-Should-Redirect', isCustomDomain && pathname !== '/coming-soon' ? 'true' : 'false');
+  const shouldRedirect = isCustomDomain && !allowedPaths.includes(pathname);
+  response.headers.set('X-Middleware-Should-Redirect', shouldRedirect ? 'true' : 'false');
   return response;
 }
 
