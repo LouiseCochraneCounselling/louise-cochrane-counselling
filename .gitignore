@@ -37,3 +37,10 @@ next-env.d.ts
 /Logs/
 Logs/
 
+# Documentation
+tasks.md
+developer_technical_documentation.md
+launch_checklist.md
+client_quick_start.md
+client_handover_documentation.md
+
