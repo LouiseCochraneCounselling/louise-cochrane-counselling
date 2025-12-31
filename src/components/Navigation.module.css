@@ -9,6 +9,12 @@
 	font-family: "Roboto", sans-serif;
 }
 
+@media (max-width: 1024px) {
+	.nav {
+		z-index: 10000;
+	}
+}
+
 .headerContainer {
 	max-width: 1200px;
 	margin: 0 auto;
@@ -228,6 +234,7 @@
 		width: 100%;
 		max-width: 100%;
 		height: 100vh;
+		height: 100dvh;
 		background-color: var(--color-accent);
 		border-radius: 0;
 		flex-direction: column;
@@ -235,7 +242,7 @@
 		justify-content: flex-start;
 		padding: 0;
 		transition: right 0.3s ease;
-		z-index: 1001;
+		z-index: 10000;
 		overflow-y: auto;
 	}
 
