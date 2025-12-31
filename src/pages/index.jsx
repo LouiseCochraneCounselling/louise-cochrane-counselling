@@ -324,8 +324,6 @@ export default function Home() {
 							</a>
 						</div>
 					</AnimatedSection>
-					{/* Section Divider */}
-					<div className={styles.sectionDivider}></div>
 				</section>
 
 				{/* Booking Form */}
