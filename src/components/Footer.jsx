@@ -13,13 +13,6 @@ const Footer = () => {
 							Qualified Counsellor and BACP Registered Member
 						</p>
 					</div>
-					<div className={styles.linksSection}>
-						<nav className={styles.nav}>
-							<a href="/services">Services</a>
-							<a href="/contact">Contact</a>
-							<a href="/confidentiality">Confidentiality</a>
-						</nav>
-					</div>
 					<div className={styles.locationSection}>
 						<p className={styles.locationText}>
 							Suite 19 Bourne House, Francis Street
