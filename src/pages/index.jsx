@@ -39,8 +39,8 @@ export default function Home() {
 								/>
 							</div>
 						</div>
+						<ScrollCue />
 					</div>
-					<ScrollCue />
 				</section>
 
 				{/* About Section */}
