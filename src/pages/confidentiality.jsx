@@ -1,9 +1,11 @@
 import Head from "next/head";
+import Link from "next/link";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import AnimatedSection from "../components/AnimatedSection";
 import Typewriter from "../components/Typewriter";
 import styles from "../styles/Page.module.css";
+import homeStyles from "../styles/Home.module.css";
 
 export default function Confidentiality() {
 	return (
@@ -75,6 +77,16 @@ export default function Confidentiality() {
 								I work collaboratively and transparently wherever possible, keeping your wellbeing at the centre of any decisions made.
 							</p>
 						</section>
+					</AnimatedSection>
+
+					<AnimatedSection delay={500} animation="fadeIn">
+						<div className={styles.backButtonContainer}>
+							<Link href="/" className={homeStyles.scrollToContactLink}>
+								<span className={homeStyles.scrollToContactText}>
+									Return back to home
+								</span>
+							</Link>
+						</div>
 					</AnimatedSection>
 				</div>
 			</main>

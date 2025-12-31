@@ -23,12 +23,6 @@ export default async function handler(req, res) {
 
 		// Validate Resend API key is configured
 		if (!process.env.RESEND_API_KEY) {
-			console.error(
-				"[API Error] RESEND_API_KEY environment variable is not configured"
-			);
-			console.error(
-				"[API Error] Please set RESEND_API_KEY in Vercel Project Settings → Environment Variables"
-			);
 			return res.status(500).json({
 				message:
 					"Email service is not configured. Please contact the site administrator.",
@@ -93,7 +87,7 @@ export default async function handler(req, res) {
 			<body>
 				<div class="container">
 					<div class="header">
-						<h2>New Booking Enquiry - The Holding Space</h2>
+						<h2>New Booking Enquiry - The Holding Space Jersey</h2>
 					</div>
 					<div class="content">
 						<div class="field">
@@ -153,7 +147,7 @@ Submitted at: ${new Date().toLocaleString("en-GB", {
 		// Send email using Resend
 		try {
 			const data = await resend.emails.send({
-				from: `The Holding Space <${senderEmail}>`,
+				from: `The Holding Space Jersey <${senderEmail}>`,
 				to: [recipientEmail],
 				replyTo: email,
 				subject: emailSubject,
@@ -168,13 +162,6 @@ Submitted at: ${new Date().toLocaleString("en-GB", {
 				emailId: data.id,
 			});
 		} catch (resendError) {
-			console.error("[API Error] Resend API error:", {
-				message: resendError?.message,
-				name: resendError?.name,
-				statusCode: resendError?.statusCode,
-				details: resendError,
-			});
-
 			// Provide more specific error messages based on common Resend errors
 			let errorMessage = "Failed to send email. Please try again later.";
 			if (resendError?.message?.includes("domain")) {
@@ -201,11 +188,6 @@ Submitted at: ${new Date().toLocaleString("en-GB", {
 			});
 		}
 	} catch (error) {
-		console.error("[API Error] Unexpected form submission error:", {
-			message: error?.message,
-			name: error?.name,
-			stack: error?.stack,
-		});
 		return res.status(500).json({
 			message: "An unexpected error occurred. Please try again later.",
 			error: "server_error",

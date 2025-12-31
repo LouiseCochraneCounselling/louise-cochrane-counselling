@@ -43,16 +43,6 @@ export function middleware(request) {
     hostname === 'theholdingspacejersey.co.uk' ||
     hostname === 'www.theholdingspacejersey.co.uk';
 
-  // Debug logging (will appear in Vercel function logs)
-  console.log('[Middleware Debug]', {
-    hostname,
-    pathname,
-    enableComingSoon,
-    isComingSoonEnabled,
-    isVercelDeployment,
-    isCustomDomain,
-  });
-
   // Allow booking-success page even when coming soon is enabled (needed after form submission)
   const allowedPaths = ['/coming-soon', '/booking-success'];
   
@@ -60,31 +50,11 @@ export function middleware(request) {
   if (isCustomDomain && !allowedPaths.includes(pathname)) {
     // Create absolute URL for redirect
     const url = new URL('/coming-soon', request.url);
-    console.log('[Middleware] Redirecting to /coming-soon', {
-      from: request.url,
-      to: url.toString(),
-      hostname,
-      pathname,
-    });
-    
-    // Add debug header to verify middleware ran
-    const response = NextResponse.redirect(url);
-    response.headers.set('X-Middleware-Executed', 'true');
-    response.headers.set('X-Middleware-Hostname', hostname);
-    response.headers.set('X-Middleware-Path', pathname);
-    response.headers.set('X-Middleware-Redirect-To', url.toString());
-    return response;
+    return NextResponse.redirect(url);
   }
 
   // Allow all other requests (Vercel URLs, localhost, etc.)
-  // Add debug header even when not redirecting
-  const response = NextResponse.next();
-  response.headers.set('X-Middleware-Executed', 'true');
-  response.headers.set('X-Middleware-Hostname', hostname);
-  response.headers.set('X-Middleware-Path', pathname);
-  const shouldRedirect = isCustomDomain && !allowedPaths.includes(pathname);
-  response.headers.set('X-Middleware-Should-Redirect', shouldRedirect ? 'true' : 'false');
-  return response;
+  return NextResponse.next();
 }
 
 export const config = {

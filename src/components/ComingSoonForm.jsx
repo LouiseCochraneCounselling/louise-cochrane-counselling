@@ -60,11 +60,9 @@ const ComingSoonForm = () => {
 				// Redirect to success page
 				router.push("/booking-success");
 			} else {
-				console.error("Form submission failed:", result);
 				setStatus("error");
 			}
 		} catch (error) {
-			console.error("Form submission error:", error);
 			setStatus("error");
 		}
 	};
