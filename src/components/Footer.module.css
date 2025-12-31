@@ -126,8 +126,9 @@
 		text-align: center;
 	}
 
+	.linksSection,
 	.nav {
-		align-items: center;
+		display: none;
 	}
 
 	.locationSection {

@@ -16,7 +16,7 @@ export default function Contact() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<Header />
-			<main style={{ paddingTop: 0 }}>
+			<main style={{ paddingTop: 0, paddingBottom: 'clamp(3rem, 6vw, 4rem)', minHeight: 'auto' }}>
 				<BookingForm />
 			</main>
 			<Footer />
