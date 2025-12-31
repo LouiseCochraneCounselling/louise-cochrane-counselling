@@ -38,8 +38,8 @@ export default function Home() {
 									className={styles.heroLogo}
 								/>
 							</div>
+							<ScrollCue />
 						</div>
-						<ScrollCue />
 					</div>
 				</section>
 
