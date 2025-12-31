@@ -1,9 +1,11 @@
 import Head from "next/head";
+import Link from "next/link";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import AnimatedSection from "../components/AnimatedSection";
 import Typewriter from "../components/Typewriter";
 import styles from "../styles/Page.module.css";
+import homeStyles from "../styles/Home.module.css";
 
 export default function Approach() {
 	return (
@@ -52,6 +54,16 @@ export default function Approach() {
 								I have extensive experience working alongside families, schools, and multidisciplinary teams, recognising the importance of creating supportive environments around young people to foster lasting, positive change.
 							</p>
 						</section>
+					</AnimatedSection>
+
+					<AnimatedSection delay={400} animation="fadeIn">
+						<div className={styles.backButtonContainer}>
+							<Link href="/" className={homeStyles.scrollToContactLink}>
+								<span className={homeStyles.scrollToContactText}>
+									Return back to home
+								</span>
+							</Link>
+						</div>
 					</AnimatedSection>
 				</div>
 			</main>

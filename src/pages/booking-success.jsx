@@ -4,12 +4,13 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import AnimatedSection from "../components/AnimatedSection";
 import styles from "../styles/BookingSuccess.module.css";
+import homeStyles from "../styles/Home.module.css";
 
 export default function BookingSuccess() {
 	return (
 		<>
 			<Head>
-				<title>Message Sent - The Holding Space</title>
+				<title>Message Sent - The Holding Space Jersey</title>
 				<meta
 					name="description"
 					content="Your booking enquiry has been successfully submitted. We'll be in touch within 24-48 hours."
@@ -85,8 +86,10 @@ export default function BookingSuccess() {
 							</div>
 
 							<div className={styles.actions}>
-								<Link href="/" className={styles.homeButton}>
-									Return to Home
+								<Link href="/" className={homeStyles.scrollToContactLink}>
+									<span className={homeStyles.scrollToContactText}>
+										Return back to home
+									</span>
 								</Link>
 							</div>
 						</div>

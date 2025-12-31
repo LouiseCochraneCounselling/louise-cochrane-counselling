@@ -153,7 +153,8 @@
 .emailLink {
 	color: var(--color-primary);
 	text-decoration: none;
-	font-weight: 600;
+	font-weight: 700;
+	font-size: clamp(1.125rem, 2.2vw, 1.25rem);
 	transition: color 0.3s ease;
 }
 
@@ -166,6 +167,11 @@
 	display: flex;
 	justify-content: center;
 	margin-top: 2.5rem;
+}
+
+.actions .scrollToContactLink {
+	flex-direction: row;
+	align-items: center;
 }
 
 .homeButton {

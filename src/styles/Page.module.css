@@ -120,6 +120,11 @@
 	transform: translateY(-2px);
 }
 
+.backButtonContainer .scrollToContactLink {
+	flex-direction: row;
+	align-items: center;
+}
+
 .serviceList {
 	list-style: none;
 	padding-left: 0;
@@ -173,6 +178,45 @@
 		margin-top: 2rem;
 		padding-top: 2rem;
 	}
+}
+
+.socialLinks {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+.linkedinLink {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.75rem;
+	color: var(--color-text-dark);
+	text-decoration: none;
+	font-size: clamp(0.9375rem, 1.6vw, 1rem);
+	font-family: "Roboto", sans-serif;
+	font-weight: 500;
+	padding: 0.75rem 1.5rem;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-radius: 8px;
+	transition: all 0.3s ease;
+	background-color: rgba(255, 255, 255, 0.5);
+}
+
+.linkedinLink:hover {
+	background-color: rgba(255, 255, 255, 0.8);
+	border-color: rgba(0, 0, 0, 0.2);
+	transform: translateY(-2px);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.linkedinLink svg {
+	flex-shrink: 0;
+	transition: transform 0.3s ease;
+}
+
+.linkedinLink:hover svg {
+	transform: scale(1.1);
 }
 
 /* Tablet breakpoint */

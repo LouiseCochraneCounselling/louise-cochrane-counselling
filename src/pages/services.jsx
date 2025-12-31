@@ -5,15 +5,16 @@ import Footer from "../components/Footer";
 import AnimatedSection from "../components/AnimatedSection";
 import Typewriter from "../components/Typewriter";
 import styles from "../styles/Page.module.css";
+import homeStyles from "../styles/Home.module.css";
 
 export default function Services() {
 	return (
 		<>
 			<Head>
-				<title>Our Services - The Holding Space</title>
+				<title>Our Services - The Holding Space Jersey</title>
 				<meta
 					name="description"
-					content="Explore The Holding Space range of counselling services designed to support your mental health and wellbeing."
+					content="Explore The Holding Space Jersey range of counselling services designed to support your mental health and wellbeing."
 				/>
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/favicon.ico" />
@@ -40,8 +41,8 @@ export default function Services() {
 								<h2>Children – 8 years +</h2>
 								<p>
 									Child counselling provides a safe and supportive space for
-									children to express their thoughts, feelings, and experiences in
-									ways that feel comfortable to them. Through play, books,
+									children to express their thoughts, feelings, and experiences
+									in ways that feel comfortable to them. Through play, books,
 									conversation, and age-appropriate activities, children can
 									explore emotions, develop a toolbox of coping strategies, and
 									build resilience.
@@ -94,9 +95,10 @@ export default function Services() {
 								<p>
 									Adult counselling offers a safe, non-judgemental space to
 									explore life's challenges and develop strategies for positive
-									change. Adults may seek support for a range of issues, including
-									anxiety, depression, stress, relationship difficulties, grief,
-									life transitions, or challenges related to work and family.
+									change. Adults may seek support for a range of issues,
+									including anxiety, depression, stress, relationship
+									difficulties, grief, life transitions, or challenges related
+									to work and family.
 								</p>
 								<p>
 									The counselling process is collaborative and tailored to each
@@ -112,8 +114,10 @@ export default function Services() {
 
 					<AnimatedSection delay={500} animation="fadeIn">
 						<div className={styles.backButtonContainer}>
-							<Link href="/" className={styles.backButton}>
-								Back to Home
+							<Link href="/" className={homeStyles.scrollToContactLink}>
+								<span className={homeStyles.scrollToContactText}>
+									Return back to home
+								</span>
 							</Link>
 						</div>
 					</AnimatedSection>
