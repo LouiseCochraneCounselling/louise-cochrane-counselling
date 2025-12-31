@@ -4,6 +4,18 @@
 	padding-top: 0;
 }
 
+.visuallyHidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border-width: 0;
+}
+
 /* Hero Section */
 .heroSection {
 	position: relative;
@@ -17,7 +29,7 @@
 	overflow: hidden;
 	padding: 0 clamp(1.5rem, 5vw, 3rem);
 	padding-bottom: clamp(8rem, 12vw, 10rem);
-	margin-top: -80px;
+	margin-top: clamp(-100px, -10vh, -60px);
 	background-color: #d7ced2 !important;
 	background: #d7ced2 !important;
 	scroll-snap-align: start;
@@ -75,7 +87,7 @@
 
 .heroLogo {
 	max-width: 100%;
-	max-height: 95vh;
+	max-height: clamp(200px, 50vh, 600px);
 	width: auto;
 	height: auto;
 	object-fit: contain;
@@ -293,10 +305,10 @@
 }
 
 .customerImages img {
-	width: 50px;
-	height: 50px;
+	width: clamp(40px, 8vw, 50px);
+	height: clamp(40px, 8vw, 50px);
 	border-radius: 50%;
-	border: 2px solid var(--color-white);
+	border: clamp(1.5px, 0.3vw, 2px) solid var(--color-white);
 	margin-left: -10px;
 }
 
@@ -412,29 +424,30 @@
 	margin-top: clamp(1rem, 2vw, 1.5rem);
 }
 
-.aboutMainImage {
-	width: 100%;
+.aboutMainImage,
+.aboutImages img.aboutMainImage,
+.aboutImages .aboutMainImage {
+	width: clamp(400px, 40vw, 480px) !important;
 	max-width: 100%;
-	height: auto;
-	max-height: 500px;
-	border-radius: 12px;
+	height: clamp(450px, 45vw, 540px) !important;
+	border-radius: clamp(8px, 1.5vw, 12px);
 	object-fit: cover;
 	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 	object-position: center;
 }
 
 .aboutImg1 {
-	width: 222px;
+	width: clamp(180px, 18vw, 222px);
 	height: auto;
-	border-radius: 12px;
+	border-radius: clamp(8px, 1.5vw, 12px);
 }
 
 .aboutImg2 {
-	width: 366px;
+	width: clamp(300px, 30vw, 366px);
 	height: auto;
-	border-radius: 12px;
-	margin-top: -100px;
-	margin-left: 100px;
+	border-radius: clamp(8px, 1.5vw, 12px);
+	margin-top: clamp(-100px, -10vh, -60px);
+	margin-left: clamp(60px, 8vw, 100px);
 }
 
 .aboutRating {
@@ -466,7 +479,7 @@
 
 .ratingPrefix {
 	font-size: 0.75rem;
-	color: var(--color-text-light);
+	color: var(--color-text-medium);
 }
 
 .ratingNumber {
@@ -517,7 +530,7 @@
 	font-weight: 600;
 	text-transform: uppercase;
 	letter-spacing: 2px;
-	color: var(--color-text-light);
+	color: var(--color-text-medium);
 	margin-bottom: 0;
 }
 
@@ -527,7 +540,7 @@
 	line-height: 1.2;
 	color: var(--color-text-dark);
 	font-family: "Roboto", sans-serif;
-	margin-bottom: 0;
+	margin-bottom: clamp(1.5rem, 3vw, 2rem);
 }
 
 .aboutDescription {
@@ -595,10 +608,10 @@
 	display: inline-block;
 	background-color: var(--color-accent);
 	color: var(--color-white);
-	padding: 10px 18px;
-	border-radius: 8px;
+	padding: clamp(0.5rem, 1.5vw, 0.625rem) clamp(1rem, 2vw, 1.125rem);
+	border-radius: clamp(6px, 1vw, 8px);
 	text-decoration: none;
-	font-size: 16px;
+	font-size: clamp(0.875rem, 1.5vw, 1rem);
 	font-weight: 600;
 	line-height: 1.6em;
 	transition: all 0.3s ease;
@@ -631,7 +644,7 @@
 		rgba(0, 0, 0, 0.15) 80%,
 		transparent
 	);
-	margin: clamp(-3.5rem, -7vw, -3rem) 0 clamp(0.25rem, 0.75vw, 0.5rem) 0;
+	margin: clamp(-3.5rem, -7vw, -3rem) 0 clamp(-4rem, -8vw, -3rem) 0;
 	position: relative;
 	z-index: 1;
 	display: block;
@@ -664,13 +677,13 @@
 	justify-content: space-between;
 	align-items: center;
 	min-height: 0;
-	padding-top: clamp(10rem, 20vw, 15rem);
+	padding-top: clamp(3rem, 6vw, 5rem);
 	gap: clamp(1rem, 2vw, 1.5rem);
 }
 
 .servicesHeader {
 	text-align: center;
-	margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
+	margin-bottom: 0;
 }
 
 .servicesTitle {
@@ -703,8 +716,8 @@
 
 .servicesGrid {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-	gap: 2rem;
+	grid-template-columns: 1fr;
+	gap: clamp(1rem, 2.5vw, 2rem);
 	flex: 1;
 	min-height: 0;
 	width: 100%;
@@ -712,6 +725,22 @@
 	align-content: center;
 	margin-top: clamp(-3rem, -6vw, -2.5rem);
 	align-items: stretch;
+}
+
+/* Tablet (640px - 1024px) */
+@media (min-width: 640px) and (max-width: 1024px) {
+	.servicesGrid {
+		grid-template-columns: repeat(2, 1fr);
+		gap: clamp(1rem, 2.5vw, 1.5rem);
+	}
+}
+
+/* Desktop (1025px+) */
+@media (min-width: 1025px) {
+	.servicesGrid {
+		grid-template-columns: repeat(3, 1fr);
+		gap: clamp(1.5rem, 2.5vw, 2rem);
+	}
 }
 
 .serviceItem {
@@ -724,7 +753,7 @@
 	height: 100%;
 	display: flex;
 	flex-direction: column;
-	min-height: 400px;
+	min-height: clamp(300px, 40vw, 400px);
 }
 
 .serviceItem:hover {
@@ -735,11 +764,11 @@
 .serviceImage {
 	width: 100%;
 	height: 100%;
-	min-height: 400px;
+	min-height: clamp(300px, 40vw, 400px);
 	object-fit: cover;
 	flex-shrink: 0;
 	display: block;
-	object-position: center;
+	object-position: center center;
 }
 
 .serviceItemTitle {
@@ -759,25 +788,26 @@
 
 .serviceButton {
 	position: absolute;
-	bottom: 0.4rem;
-	left: 50%;
-	transform: translateX(-50%);
+	bottom: clamp(0.5rem, 1.5vw, 0.75rem);
+	right: clamp(0.5rem, 1.5vw, 0.75rem);
 	display: inline-block;
 	background-color: var(--color-accent);
 	color: var(--color-white);
-	padding: 10px 18px;
-	border-radius: 8px;
+	padding: clamp(6px, 1.5vw, 8px) clamp(12px, 2.5vw, 16px);
+	border-radius: clamp(4px, 1vw, 6px);
 	text-decoration: none;
-	font-size: 16px;
+	font-size: clamp(12px, 2.5vw, 14px);
 	font-weight: 600;
-	line-height: 1.6em;
+	line-height: 1.1em;
 	transition: all 0.3s ease;
 	font-family: "Roboto", sans-serif;
+	min-height: auto;
+	height: auto;
 }
 
 .serviceButton:hover {
 	background-color: var(--color-primary);
-	transform: translateX(-50%) translateY(-2px);
+	transform: translateY(-2px);
 }
 
 .serviceButton svg {
@@ -999,7 +1029,7 @@
 	align-items: center;
 	width: 100%;
 	padding-top: clamp(1rem, 2vw, 1.5rem);
-	padding-bottom: clamp(1rem, 2vw, 1.5rem);
+	padding-bottom: 0;
 	position: relative;
 	z-index: 10;
 	flex-shrink: 0;
@@ -1035,6 +1065,22 @@
 	opacity: 0.7;
 	width: 24px;
 	height: 24px;
+}
+
+/* Mobile (up to 639px) */
+@media (max-width: 639px) {
+	.exploreMoreText {
+		display: none;
+	}
+
+	.exploreMoreButton {
+		gap: 0;
+	}
+
+	.servicesSection .exploreMoreContainer {
+		padding-top: 0;
+		margin-top: clamp(-3rem, -6vw, -2.5rem);
+	}
 }
 
 /* CTA Section */
@@ -1088,21 +1134,21 @@
 }
 
 /* Hide on desktop when hideDesktop class is present */
-@media (min-width: 969px) {
+@media (min-width: 1025px) {
 	.hideDesktop {
 		display: none !important;
 	}
 }
 
 /* Hide on tablet when hideTablet class is present */
-@media (min-width: 769px) and (max-width: 968px) {
+@media (min-width: 640px) and (max-width: 1024px) {
 	.hideTablet {
 		display: none !important;
 	}
 }
 
 /* Hide on mobile when hideMobile class is present */
-@media (max-width: 768px) {
+@media (max-width: 639px) {
 	.hideMobile {
 		display: none !important;
 	}
@@ -1116,25 +1162,27 @@
 		justify-content: center;
 	}
 
-	.aboutMainImage {
-		height: auto;
-		max-height: 500px;
+	.aboutImages .aboutMainImage,
+	.aboutImages img.aboutMainImage {
+		width: clamp(400px, 40vw, 480px);
+		height: clamp(450px, 45vw, 540px);
 	}
 
 	.servicesGrid {
 		grid-template-columns: repeat(3, 1fr);
+		gap: clamp(1.5rem, 2.5vw, 2rem);
 	}
 }
 
-/* iPad and Tablet (768px - 1024px) */
-@media (max-width: 1024px) and (min-width: 769px) {
+/* Tablet (640px - 1024px) */
+@media (min-width: 640px) and (max-width: 1024px) {
 	.aboutSection,
 	.servicesSection,
 	.whyChooseSection {
-		height: 100vh;
-		height: 100dvh;
+		height: auto;
 		min-height: 100vh;
 		min-height: 100dvh;
+		padding: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 3vw, 2rem);
 	}
 
 	.aboutContainer {
@@ -1145,24 +1193,28 @@
 	.aboutImages {
 		height: auto;
 		justify-content: flex-start;
+		max-width: 100%;
+		width: 100%;
+		margin: 0 auto;
 	}
 
-	.aboutMainImage {
-		max-width: 100%;
+	.aboutImages .aboutMainImage,
+	.aboutImages img.aboutMainImage {
+		width: 100%;
+		max-width: clamp(350px, 50vw, 480px);
 		height: auto;
-		min-height: auto;
-		max-height: 500px;
+		aspect-ratio: 8 / 9;
 	}
 
 	.aboutContentLinks {
 		flex-wrap: wrap;
 		justify-content: center;
-		gap: 0.75rem;
+		gap: clamp(0.5rem, 1.5vw, 0.75rem);
 	}
 
 	.servicesGrid {
 		grid-template-columns: repeat(2, 1fr);
-		gap: 1.5rem;
+		gap: clamp(1rem, 2.5vw, 1.5rem);
 	}
 
 	.serviceItem {
@@ -1171,9 +1223,9 @@
 	}
 
 	.serviceImage {
-		height: 280px;
-		min-height: 280px;
-		max-height: 280px;
+		height: clamp(200px, 25vw, 280px);
+		min-height: clamp(200px, 25vw, 280px);
+		max-height: clamp(200px, 25vw, 280px);
 	}
 
 	.bookingSectionWrapper {
@@ -1183,8 +1235,8 @@
 	}
 }
 
-/* Tablet (up to 968px) */
-@media (max-width: 968px) {
+/* Mobile (up to 639px) - Additional mobile-specific styles */
+@media (max-width: 639px) {
 	.aboutContainer {
 		grid-template-columns: 1fr;
 		gap: clamp(2rem, 4vw, 3rem);
@@ -1196,10 +1248,9 @@
 	}
 
 	.aboutMainImage {
-		max-width: 100%;
-		height: auto;
-		min-height: auto;
-		max-height: 500px;
+		width: 100%;
+		max-width: 480px;
+		height: 540px !important;
 	}
 
 	.aboutContentLinks {
@@ -1290,21 +1341,42 @@
 	}
 }
 
-/* Mobile (up to 768px) */
-@media (max-width: 768px) {
+/* Mobile (up to 639px) */
+@media (max-width: 639px) {
 	.heroSection {
 		height: 100vh;
 		height: 100dvh; /* Dynamic viewport height for mobile browsers */
 		min-height: 100vh;
 		min-height: 100dvh;
-		padding: 0 clamp(1rem, 4vw, 1.5rem);
-		padding-bottom: clamp(4rem, 8vw, 6rem);
+		padding: 0 clamp(0.75rem, 4vw, 1.5rem);
+		padding-bottom: clamp(1rem, 3vw, 2rem);
+		padding-top: 0;
+		margin-top: clamp(-100px, -12vh, -60px);
+		margin-bottom: clamp(3rem, 8vw, 6rem);
+	}
+
+	.heroContainer {
+		align-items: flex-start;
+		padding-top: 0;
+		margin-top: 0;
+	}
+
+	.heroContent {
+		justify-content: flex-start;
+		padding-top: 0;
+		margin-top: 0;
+	}
+
+	.heroLogoWrapper {
+		padding-top: 0;
 		margin-top: 0;
 	}
 
 	.heroLogo {
-		max-width: 90%;
-		max-height: 80vh;
+		max-width: 100%;
+		max-height: none;
+		width: auto;
+		height: auto;
 	}
 
 	.heroStats {
@@ -1352,14 +1424,18 @@
 	.aboutImages {
 		height: auto;
 		justify-content: flex-start;
+		max-width: 280px;
+		width: 100%;
+		margin: 0 auto;
 	}
 
-	.aboutMainImage {
-		width: 100%;
-		max-width: 100%;
-		height: auto;
-		min-height: auto;
-		max-height: 400px;
+	.aboutMainImage,
+	.aboutImages img.aboutMainImage,
+	.aboutImages .aboutMainImage {
+		width: 100% !important;
+		max-width: 280px !important;
+		height: auto !important;
+		aspect-ratio: 8 / 9;
 	}
 
 	.aboutContent {
@@ -1395,23 +1471,60 @@
 
 	.servicesGrid {
 		grid-template-columns: 1fr;
-		gap: 1.5rem;
-		margin-top: 0;
+		gap: clamp(1rem, 2.5vw, 1.5rem);
+		margin-top: clamp(-30rem, -60vw, -28rem);
+		margin-bottom: clamp(-3rem, -6vw, -2.5rem);
 		width: 100%;
+	}
+
+	.serviceItemWrapper {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+	}
+
+	.serviceItemTitle {
+		position: static;
+		transform: none;
+		left: auto;
+		bottom: auto;
+		width: 100%;
+		color: #000000 !important;
+		text-shadow: none;
+		text-align: center;
+		margin-bottom: clamp(0.1rem, 0.25vw, 0.25rem);
+		padding: 0;
+		font-size: clamp(1.25rem, 3vw, 1.5rem);
+	}
+
+	.serviceButton {
+		bottom: clamp(0.5rem, 2vw, 0.75rem);
+		right: clamp(0.5rem, 2vw, 0.75rem);
+		left: auto;
+		transform: none;
+		padding: clamp(6px, 2vw, 8px) clamp(12px, 3.5vw, 16px);
+		font-size: clamp(12px, 3vw, 14px);
+		line-height: 1.2em;
+		min-height: 44px;
+		min-width: 44px;
 	}
 
 	.serviceItem {
 		width: 100%;
-		min-height: auto;
+		min-height: clamp(280px, 50vw, 320px);
 		height: auto;
-		max-width: 100%;
+		max-width: 85%;
+		margin: 0 auto;
+		padding-bottom: clamp(2.5rem, 6vw, 3rem);
 	}
 
 	.serviceImage {
-		height: 250px;
-		min-height: 250px;
-		max-height: 250px;
+		height: clamp(150px, 35vw, 180px);
+		min-height: clamp(150px, 35vw, 180px);
+		max-height: clamp(150px, 35vw, 180px);
 		width: 100%;
+		object-fit: cover;
+		object-position: center center;
 	}
 
 	.servicesContainer {
@@ -1420,8 +1533,22 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-start;
-		padding-top: clamp(2rem, 4vw, 3rem);
-		gap: clamp(1rem, 2vw, 1.5rem);
+		padding-top: clamp(0.25rem, 0.5vw, 0.5rem);
+		gap: 0;
+	}
+
+	.servicesTitle {
+		font-size: clamp(1.5rem, 4vw, 2rem);
+		margin-bottom: 0;
+	}
+
+	.servicesHeader {
+		margin-bottom: 0;
+	}
+
+	.servicesGrid {
+		margin-top: clamp(-30rem, -60vw, -28rem);
+		margin-bottom: clamp(-3rem, -6vw, -2.5rem);
 	}
 
 	.whyChooseContainer {
@@ -1465,13 +1592,34 @@
 		min-height: 100vh;
 		min-height: 100dvh;
 		padding: 0 1rem;
-		padding-bottom: clamp(3rem, 6vw, 4rem);
+		padding-bottom: clamp(1rem, 2vw, 1.5rem);
+		padding-top: 0;
+		margin-top: -90px;
+		margin-bottom: clamp(4rem, 8vw, 6rem);
+	}
+
+	.heroContainer {
+		align-items: flex-start;
+		padding-top: 0;
+		margin-top: 0;
+	}
+
+	.heroContent {
+		justify-content: flex-start;
+		padding-top: 0;
+		margin-top: 0;
+	}
+
+	.heroLogoWrapper {
+		padding-top: 0;
 		margin-top: 0;
 	}
 
 	.heroLogo {
-		max-width: 95%;
-		max-height: 75vh;
+		max-width: 100%;
+		max-height: none;
+		width: auto;
+		height: auto;
 	}
 
 	.heroList {
@@ -1517,8 +1665,22 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-start;
-		padding-top: clamp(1.5rem, 3vw, 2rem);
-		gap: clamp(0.75rem, 1.5vw, 1rem);
+		padding-top: 0;
+		gap: 0;
+	}
+
+	.servicesTitle {
+		font-size: clamp(1.25rem, 3.5vw, 1.75rem);
+		margin-bottom: 0;
+	}
+
+	.servicesHeader {
+		margin-bottom: 0;
+	}
+
+	.servicesGrid {
+		margin-top: clamp(-30rem, -60vw, -28rem);
+		margin-bottom: clamp(-3rem, -6vw, -2.5rem);
 	}
 
 	.whyChooseContainer {
@@ -1535,15 +1697,16 @@
 	}
 
 	.aboutMainImage {
+		width: 100%;
+		max-width: 280px;
 		height: auto;
-		min-height: auto;
-		max-height: 350px;
+		aspect-ratio: 8 / 9;
 	}
 
 	.serviceImage {
-		height: 200px;
-		min-height: 200px;
-		max-height: 200px;
+		height: clamp(120px, 30vw, 150px);
+		min-height: clamp(120px, 30vw, 150px);
+		max-height: clamp(120px, 30vw, 150px);
 	}
 
 	.aboutContentLinks {
@@ -1556,21 +1719,55 @@
 	}
 
 	.servicesGrid {
-		gap: 1rem;
-		margin-top: 0;
+		gap: 0.75rem;
+		margin-top: clamp(-12rem, -24vw, -11rem);
 		width: 100%;
 	}
 
 	.serviceItem {
-		max-width: 100%;
+		max-width: 85%;
+		margin: 0 auto;
 	}
 
 	.serviceImage {
 		width: 100%;
+		height: clamp(120px, 30vw, 150px);
+		min-height: clamp(120px, 30vw, 150px);
+		max-height: clamp(120px, 30vw, 150px);
+		object-fit: cover;
+		object-position: center center;
+	}
+
+	.serviceItemWrapper {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
 	}
 
 	.serviceItemTitle {
-		font-size: clamp(1.5rem, 4vw, 2rem);
+		position: static;
+		transform: none;
+		left: auto;
+		bottom: auto;
+		width: 100%;
+		color: #000000 !important;
+		text-shadow: none;
+		text-align: center;
+		margin-bottom: clamp(0.1rem, 0.25vw, 0.25rem);
+		padding: 0;
+		font-size: clamp(1.25rem, 3vw, 1.5rem);
+	}
+
+	.serviceButton {
+		bottom: clamp(0.375rem, 1.5vw, 0.5rem);
+		right: clamp(0.375rem, 1.5vw, 0.5rem);
+		left: auto;
+		transform: none;
+		padding: clamp(4px, 1.5vw, 6px) clamp(10px, 3vw, 14px);
+		font-size: clamp(11px, 2.5vw, 13px);
+		line-height: 1.1em;
+		min-height: auto;
+		height: auto;
 	}
 
 	.whyChooseItem {

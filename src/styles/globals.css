@@ -20,9 +20,9 @@ body {
 	font-family: "Roboto", sans-serif;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 639px) {
 	html {
-		font-size: 14px;
+		font-size: clamp(14px, 3.5vw, 16px);
 	}
 }
 
@@ -63,7 +63,7 @@ body {
 	padding-right: env(safe-area-inset-right);
 	font-feature-settings: "kern" 1;
 	text-rendering: optimizeLegibility;
-	font-size: 1.0625rem;
+	font-size: 1rem;
 }
 
 a {
@@ -150,8 +150,29 @@ select {
 
 /* Focus styles for accessibility */
 *:focus-visible {
-	outline: 1px solid #6b7280;
+	outline: 2px solid var(--color-primary);
 	outline-offset: 2px;
+	border-radius: 2px;
+}
+
+/* Skip link for keyboard navigation */
+.skip-link {
+	position: absolute;
+	left: -9999px;
+	top: 1rem;
+	z-index: 9999;
+	background-color: var(--color-primary);
+	color: var(--color-white);
+	padding: 0.75rem 1.5rem;
+	border-radius: 4px;
+	text-decoration: none;
+	font-weight: 600;
+	font-size: 1rem;
+	transition: left 0.3s ease;
+}
+
+.skip-link:focus {
+	left: 1rem;
 }
 
 /* Smooth scrolling */
@@ -257,6 +278,15 @@ html {
 	color: var(--color-text-dark);
 	text-align: center;
 	margin-top: clamp(-6rem, -6vw, -4rem);
+	margin-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+/* Mobile (up to 639px) */
+@media (max-width: 639px) {
+	.scrollCue {
+		margin-top: clamp(-1rem, -2vw, -0.5rem);
+		margin-bottom: clamp(3rem, 6vw, 5rem);
+	}
 }
 
 .scrollCueLabel {
@@ -271,4 +301,24 @@ html {
 
 .scrollCue:hover .scrollCueLabel {
 	opacity: 0.7;
+}
+
+/* Override for about section image - removed !important, using specificity instead */
+.aboutImages img.aboutMainImage,
+.aboutImages .aboutMainImage {
+	width: clamp(400px, 40vw, 480px);
+	height: clamp(450px, 45vw, 540px);
+	max-width: 100%;
+	object-fit: cover;
+}
+
+/* Mobile (up to 639px) */
+@media (max-width: 639px) {
+	.aboutImages img.aboutMainImage,
+	.aboutImages .aboutMainImage {
+		width: 100%;
+		max-width: clamp(240px, 65vw, 280px);
+		height: auto;
+		aspect-ratio: 8 / 9;
+	}
 }

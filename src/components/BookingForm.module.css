@@ -91,6 +91,25 @@
   flex-direction: column;
 }
 
+.formLabel {
+  display: block;
+  font-size: clamp(0.875rem, 1.8vw, 1rem);
+  font-weight: 600;
+  color: var(--color-text-dark);
+  margin-bottom: 0.5rem;
+  font-family: "Roboto", sans-serif;
+}
+
+.formLabel span[aria-label="required"] {
+  color: var(--color-primary);
+}
+
+.optionalLabel {
+  font-weight: 400;
+  color: var(--color-text-light);
+  font-size: 0.875em;
+}
+
 .formInput,
 .formTextarea {
   width: 100%;
@@ -250,7 +269,8 @@
   overflow: hidden;
 }
 
-@media (max-width: 968px) {
+/* Mobile (up to 639px) */
+@media (max-width: 639px) {
   .bookingSection {
     min-height: auto;
     overflow: visible;
@@ -271,6 +291,7 @@
   }
 }
 
+/* Very Small Mobile (up to 480px) - Additional refinements */
 @media (max-width: 480px) {
   .bookingSection {
     min-height: auto;

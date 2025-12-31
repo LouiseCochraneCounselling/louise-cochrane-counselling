@@ -78,7 +78,7 @@
 	border-top: 1px solid rgba(0, 0, 0, 0.05);
 	padding-top: clamp(0.75rem, 1.5vw, 1rem);
 	text-align: center;
-	color: var(--color-text-light);
+	color: var(--color-text-medium);
 	font-size: clamp(0.8125rem, 1.4vw, 0.875rem);
 	font-family: "Roboto", sans-serif;
 	font-weight: 400;
@@ -89,7 +89,8 @@
 	margin: 0;
 }
 
-@media (max-width: 768px) {
+/* Mobile (up to 639px) */
+@media (max-width: 639px) {
 	.footer {
 		padding: clamp(0.5rem, 1vw, 0.75rem) 0 clamp(1.25rem, 2.5vw, 1.5rem);
 	}
@@ -121,6 +122,7 @@
 	}
 }
 
+/* Very Small Mobile (up to 480px) - Additional refinements */
 @media (max-width: 480px) {
 	.footer {
 		padding: clamp(0.5rem, 1vw, 0.75rem) 0 clamp(1rem, 2vw, 1.25rem);
