@@ -1224,7 +1224,9 @@
 		max-height: 280px;
 	}
 
-	.aboutSection {
+	.aboutSection,
+	.servicesSection,
+	.whyChooseSection {
 		height: 100vh;
 		height: 100dvh;
 		min-height: 100vh;
