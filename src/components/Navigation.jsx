@@ -69,6 +69,14 @@ const Navigation = () => {
 							className={`${styles.menuContainer} ${
 								isOpen ? styles.menuOpen : ""
 							}`}>
+							<div className={styles.menuClosePanel}>
+								<button
+									className={styles.menuClose}
+									onClick={closeMenu}
+									aria-label="Close menu">
+									×
+								</button>
+							</div>
 							<ul className={styles.navList}>
 								<li>
 									<Link href="/" onClick={closeMenu} className={styles.navLink}>
@@ -100,14 +108,6 @@ const Navigation = () => {
 									</Link>
 								</li>
 							</ul>
-							<div className={styles.menuClosePanel}>
-								<button
-									className={styles.menuClose}
-									onClick={closeMenu}
-									aria-label="Close menu">
-									×
-								</button>
-							</div>
 						</div>
 
 						{/* Overlay */}
