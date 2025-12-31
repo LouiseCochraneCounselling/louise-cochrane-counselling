@@ -47,7 +47,7 @@ const Navigation = () => {
 				<div className={styles.logoSection}>
 					<Link href="/" className={styles.logoLink}>
 						<div className={styles.logoContainer}>
-							<span className={styles.logoText}>The Holding Space</span>
+							<span className={styles.logoText}>The Holding Space Jersey</span>
 						</div>
 					</Link>
 				</div>
@@ -77,14 +77,6 @@ const Navigation = () => {
 								</li>
 								<li>
 									<Link
-										href="/about"
-										onClick={closeMenu}
-										className={styles.navLink}>
-										About Me
-									</Link>
-								</li>
-								<li>
-									<Link
 										href="/services"
 										onClick={closeMenu}
 										className={styles.navLink}>
@@ -93,10 +85,10 @@ const Navigation = () => {
 								</li>
 								<li>
 									<Link
-										href="/contact"
+										href="/confidentiality"
 										onClick={closeMenu}
 										className={styles.navLink}>
-										Contact
+										Confidentiality
 									</Link>
 								</li>
 								<li className={styles.mobileOnly}>
@@ -104,7 +96,7 @@ const Navigation = () => {
 										href="/contact"
 										onClick={closeMenu}
 										className={styles.navLink}>
-										Book Appointment
+										Contact Me
 									</Link>
 								</li>
 							</ul>
@@ -127,10 +119,10 @@ const Navigation = () => {
 						)}
 					</div>
 
-					{/* Book Appointment Button - Hidden on tablet/mobile */}
+					{/* Contact Me Button - Hidden on tablet/mobile */}
 					<div className={styles.buttonSection}>
 						<Link href="/contact" className={styles.appointmentButton}>
-							<span className={styles.buttonText}>Book An Appointment</span>
+							<span className={styles.buttonText}>Contact Me</span>
 						</Link>
 					</div>
 				</div>

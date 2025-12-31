@@ -102,7 +102,7 @@
   color: var(--color-primary);
   line-height: 1;
   margin-bottom: 0.25rem;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .countdownLabel {
@@ -111,7 +111,7 @@
   color: #1f2937;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 /* Right Section - Form */

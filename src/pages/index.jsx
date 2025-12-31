@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { useState, useEffect, useCallback } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import BookingForm from "../components/BookingForm";
@@ -7,76 +6,41 @@ import AnimatedSection from "../components/AnimatedSection";
 import AnimatedHeading from "../components/AnimatedHeading";
 import AnimatedImage from "../components/AnimatedImage";
 import Typewriter from "../components/Typewriter";
-import ScrollIndicator from "../components/ScrollIndicator";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
-// AIRCORD STYLE - Remove this import to revert
-import { USE_AIRCORD_STYLE } from "../config/featureFlags";
-import LoadingScreen_AircordStyle from "../components/LoadingScreen_AircordStyle";
 
 export default function Home() {
-	// AIRCORD STYLE - Remove this state to revert
-	const [isLoaded, setIsLoaded] = useState(!USE_AIRCORD_STYLE);
-
-	// AIRCORD STYLE - Remove this useEffect to revert
-	useEffect(() => {
-		if (USE_AIRCORD_STYLE) {
-			if (document.fonts) {
-				document.fonts.ready.then(() => {
-					setTimeout(() => setIsLoaded(true), 500);
-				});
-			} else {
-				setTimeout(() => setIsLoaded(true), 1500);
-			}
-		}
-	}, []);
-
-	// AIRCORD STYLE - Memoize callback to prevent useEffect re-runs in LoadingScreen
-	const handleLoaded = useCallback(() => {
-		setIsLoaded(true);
-	}, []);
-
 	return (
 		<>
-			{/* AIRCORD STYLE - Remove this component to revert */}
-			{USE_AIRCORD_STYLE && (
-				<LoadingScreen_AircordStyle onLoaded={handleLoaded} />
-			)}
-
-			{(!USE_AIRCORD_STYLE || isLoaded) && (
-				<>
-					<Head>
-						<title>
-							The Holding Space - Professional Support for Your Wellbeing
-						</title>
-						<meta
-							name="description"
-							content="The Holding Space offers professional counselling services and support for your mental health and wellbeing."
-						/>
-						<meta
-							name="viewport"
-							content="width=device-width, initial-scale=1"
-						/>
-						<link rel="icon" href="/favicon.ico" />
-					</Head>
-					<Header />
-					<main className={styles.main}>
-					{/* Hero Section */}
-					<section className={styles.heroSection}>
-						<div className={styles.heroBackground}></div>
-						<div className={styles.heroContainer}>
-							<div className={styles.heroContent}>
-								{/* Hero content removed - logo is now the hero background */}
+			<Head>
+				<title>
+					The Holding Space - Professional Support for Your Wellbeing
+				</title>
+				<meta
+					name="description"
+					content="The Holding Space offers professional counselling services and support for your mental health and wellbeing."
+				/>
+				<meta
+					name="viewport"
+					content="width=device-width, initial-scale=1"
+				/>
+				<link rel="icon" href="/favicon.ico" />
+			</Head>
+			<Header />
+			<main className={styles.main}>
+				{/* Hero Section */}
+				<section className={styles.heroSection}>
+							<div className={styles.heroBackground}></div>
+							<div className={styles.heroContainer}>
+								<div className={styles.heroContent}>
+									{/* Hero content removed - logo is now the hero background */}
+								</div>
 							</div>
-						</div>
-						<ScrollIndicator />
-					</section>
+						</section>
 
-						{/* About Section */}
-						<section id="about-section" className={styles.aboutSection}>
-							<div
-								className={styles.aboutContainer}
-								data-scroll-button-container>
+				{/* About Section */}
+				<section id="about-section" className={styles.aboutSection}>
+							<div className={styles.aboutContainer}>
 								<div className={styles.aboutImages}>
 									<AnimatedImage
 										src="/images/me.jpg"
@@ -85,6 +49,18 @@ export default function Home() {
 										animationStyle="style-1"
 										delay={0}
 									/>
+									<div className={styles.aboutButtons}>
+										<AnimatedSection delay={300} animation="scaleIn">
+											<Link href="/approach" className={styles.aboutButton}>
+												My Journey
+											</Link>
+										</AnimatedSection>
+										<AnimatedSection delay={350} animation="scaleIn">
+											<Link href="/approach" className={styles.aboutButton}>
+												My Approach
+											</Link>
+										</AnimatedSection>
+									</div>
 								</div>
 								<div className={styles.aboutContent}>
 									<AnimatedSection delay={0} animation="fadeIn">
@@ -101,66 +77,44 @@ export default function Home() {
 									/>
 									<AnimatedSection delay={200} animation="slideInRight">
 										<p className={styles.aboutDescription}>
-											Born and raised in Jersey, I have dedicated my career to
-											helping individuals navigate life's challenges. After
-											completing comprehensive counselling training and
-											qualifications, I gained valuable experience working as a
-											counsellor in Singapore, where I supported diverse clients
-											from various cultural backgrounds. Now back in Jersey, I
-											am committed to providing compassionate, professional
-											counselling services to my local community.
+											I am an empathetic and passionate, person-centred
+											Counsellor with over eight years of experience supporting
+											the mental health and wellbeing of children, young people,
+											adults and families. I have worked across a range of
+											settings, including schools, agencies, private practice,
+											and international environments, with a strong focus on
+											creating safe, trusting therapeutic relationships.
+										</p>
+										<p className={styles.aboutDescription}>
+											I lived and worked in Singapore for three years, gaining
+											valuable international experience in both private practice
+											and an international school setting. Working with clients
+											from diverse cultural backgrounds has deepened my
+											understanding of identity, transition, belonging, and the
+											unique challenges faced by children, young people, and
+											families living in international or multicultural
+											contexts.
 										</p>
 									</AnimatedSection>
-									<div className={styles.aboutGrid}>
-										<AnimatedSection delay={300} animation="slideInLeft">
-											<div className={styles.aboutCard}>
-												<h2 className={styles.aboutCardTitle}>My Journey</h2>
-												<p>
-													From Jersey to Singapore and back again, my journey
-													has been shaped by diverse experiences and a deep
-													commitment to helping others. I've completed all
-													required counselling qualifications and gained
-													invaluable experience working with clients across
-													different cultures and backgrounds.
-												</p>
-											</div>
-										</AnimatedSection>
-										<AnimatedSection delay={400} animation="slideInRight">
-											<div className={styles.aboutCard}>
-												<h2 className={styles.aboutCardTitle}>My Approach</h2>
-												<ul className={styles.missionList}>
-													<li>
-														<i className="far fa-check-circle"></i>
-														<span>Qualified and Experienced Counsellor</span>
-													</li>
-													<li>
-														<i className="far fa-check-circle"></i>
-														<span>International Experience in Singapore</span>
-													</li>
-													<li>
-														<i className="far fa-check-circle"></i>
-														<span>Compassionate, Client-Centred Care</span>
-													</li>
-												</ul>
-											</div>
-										</AnimatedSection>
-									</div>
-									<div className={styles.aboutButtons}>
-										<AnimatedSection delay={500} animation="scaleIn">
-											<Link href="/about" className={styles.aboutButton}>
-												Learn More
-											</Link>
-										</AnimatedSection>
+									{/* Scroll to Contact */}
+									<div className={styles.scrollToContact}>
+										<a href="#booking-section" className={styles.scrollToContactLink}>
+											<span className={styles.scrollToContactText}>Scroll down to contact me</span>
+											<svg className={styles.scrollToContactIcon} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M7 10L12 15L17 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+											</svg>
+										</a>
 									</div>
 								</div>
 							</div>
 						</section>
 
+						{/* Section Divider */}
+						<div className={styles.sectionDivider}></div>
+
 						{/* Services Section */}
 						<section id="services-section" className={styles.servicesSection}>
-							<div
-								className={styles.servicesContainer}
-								data-scroll-button-container>
+							<div className={styles.servicesContainer}>
 								<div className={styles.servicesHeader}>
 									<AnimatedSection delay={0} animation="fadeIn">
 										<h3 className={styles.sectionTitleSmall}>SERVICES</h3>
@@ -174,43 +128,26 @@ export default function Home() {
 										showCursor={true}
 										loop={false}
 									/>
-									<AnimatedSection delay={200} animation="scaleIn">
-										<Link href="/services" className={styles.viewAllButton}>
-											View All Services
-										</Link>
-									</AnimatedSection>
 								</div>
 								<div className={styles.servicesGrid}>
 									{[
 										{
-											title: "personalised individual therapy",
+											title: "Children – 8 years +",
 											image:
-												"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=800&fit=crop&q=80",
-											link: "/services/individual",
+												"/ch8.jpg",
+											link: "/services#children",
 										},
 										{
-											title: "supportive couples counselling",
+											title: "Adolescents",
 											image:
-												"https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=1200&h=800&fit=crop&q=80",
-											link: "/services/couples",
+												"/adolescent.jpg",
+											link: "/services#adolescents",
 										},
 										{
-											title: "youth and adolescent counselling",
+											title: "Adults",
 											image:
-												"https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=1200&h=800&fit=crop&q=80",
-											link: "/services/youth",
-										},
-										{
-											title: "anxiety and depression support",
-											image:
-												"https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=1200&h=800&fit=crop&q=80",
-											link: "/services/anxiety",
-										},
-										{
-											title: "stress and anger management",
-											image:
-												"https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&h=800&fit=crop&q=80",
-											link: "/services/stress",
+												"/adult.jpg",
+											link: "/services#adults",
 										},
 									].map((service, index) => (
 										<AnimatedSection key={index} delay={index * 100}>
@@ -246,32 +183,17 @@ export default function Home() {
 							</div>
 						</section>
 
-						{/* Why Choose Us Section */}
+						{/* Section Divider */}
+						<div className={styles.sectionDivider}></div>
+
+						{/* How I Can Help Section */}
 						<section
 							id="why-choose-section"
 							className={styles.whyChooseSection}>
-							<div
-								className={styles.whyChooseContainer}
-								data-scroll-button-container>
-								<div className={styles.whyChooseImages}>
-									<AnimatedImage
-										src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&h=1000&fit=crop&q=80"
-										alt="Professional Counselling in Jersey"
-										className={styles.whyChooseImg1}
-										animationStyle="style-1"
-										delay={0}
-									/>
-									<AnimatedImage
-										src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop&q=80"
-										alt="Compassionate Counselling Services"
-										className={styles.whyChooseImg2}
-										animationStyle="style-1"
-										delay={100}
-									/>
-								</div>
+							<div className={styles.whyChooseContainer}>
 								<div className={styles.whyChooseContent}>
 									<AnimatedSection delay={0} animation="fadeIn">
-										<h3 className={styles.sectionTitleSmall}>WHY CHOOSE US</h3>
+										<h3 className={styles.sectionTitleSmall}>HOW I CAN HELP</h3>
 									</AnimatedSection>
 									<Typewriter
 										as="h2"
@@ -291,7 +213,7 @@ export default function Home() {
 											compassionate care tailored to each individual's needs.
 										</p>
 									</AnimatedSection>
-									<div className={styles.whyChooseGrid}>
+									<div className={styles.whyChooseList}>
 										{[
 											{
 												icon: "fas fa-graduation-cap",
@@ -323,53 +245,38 @@ export default function Home() {
 													<div className={styles.whyChooseIcon}>
 														<i className={item.icon}></i>
 													</div>
-													<h3 className={styles.whyChooseItemTitle}>
-														{item.title}
-													</h3>
-													<p className={styles.whyChooseItemDescription}>
-														{item.description}
-													</p>
+													<div className={styles.whyChooseItemContent}>
+														<h3 className={styles.whyChooseItemTitle}>
+															{item.title}
+														</h3>
+														<p className={styles.whyChooseItemDescription}>
+															{item.description}
+														</p>
+													</div>
 												</div>
 											</AnimatedSection>
 										))}
-									</div>
-									<div className={styles.whyChooseBottom}>
-										<AnimatedSection delay={700}>
-											<Typewriter
-												as="h2"
-												className={styles.whyChooseBottomTitle}
-												text="Choosing Us for Mental Wellness"
-												speed={60}
-												delay={800}
-												showCursor={true}
-												loop={false}
-											/>
-											<p>
-												Choosing me as your counsellor means working with
-												someone who is fully qualified, experienced, and
-												dedicated to your wellbeing. My journey from Jersey to
-												Singapore and back has enriched my practice, allowing me
-												to offer compassionate, culturally aware counselling
-												that respects your unique story and supports your path
-												toward healing and growth.
-											</p>
-											<Link href="/contact" className={styles.whyChooseButton}>
-												Contact Us
-											</Link>
-										</AnimatedSection>
 									</div>
 								</div>
 							</div>
 						</section>
 
+						{/* Contact Me Animation */}
+						<div className={styles.contactMeSection}>
+							<a href="#booking-section" className={styles.contactMeLink}>
+								<span className={styles.contactMeText}>Contact Me</span>
+								<svg className={styles.contactMeIcon} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M7 10L12 15L17 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+								</svg>
+							</a>
+						</div>
+
 						{/* Booking Form */}
 						<div id="booking-section">
 							<BookingForm />
 						</div>
-					</main>
-					<Footer />
-				</>
-			)}
+			</main>
+			<Footer />
 		</>
 	);
 }

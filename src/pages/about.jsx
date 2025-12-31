@@ -35,15 +35,23 @@ export default function About() {
 
 					<AnimatedSection delay={200} animation="fadeInUp">
 						<section className={styles.contentSection}>
-							<h2>My Story</h2>
 							<p>
-								Born and raised in Jersey, I have dedicated my career to helping
-								individuals navigate life's challenges. After completing
-								comprehensive counselling training and qualifications, I gained
-								valuable experience working as a counsellor in Singapore, where I
-								supported diverse clients from various cultural backgrounds. Now
-								back in Jersey, I am committed to providing compassionate,
-								professional counselling services to my local community.
+								I am an empathetic and passionate, person-centred Counsellor
+								with over eight years of experience supporting the mental health
+								and wellbeing of children, young people, adults and families. I
+								have worked across a range of settings, including schools,
+								agencies, private practice, and international environments, with
+								a strong focus on creating safe, trusting therapeutic
+								relationships.
+							</p>
+							<p>
+								I lived and worked in Singapore for three years, gaining
+								valuable international experience in both private practice and
+								an international school setting. Working with clients from
+								diverse cultural backgrounds has deepened my understanding of
+								identity, transition, belonging, and the unique challenges faced
+								by children, young people, and families living in international
+								or multicultural contexts.
 							</p>
 						</section>
 					</AnimatedSection>
@@ -52,39 +60,30 @@ export default function About() {
 						<section className={styles.contentSection}>
 							<h2>My Approach</h2>
 							<p>
-								I believe in creating a safe, non-judgemental space where clients
-								can explore their thoughts, feelings, and experiences. As a
-								qualified counsellor, I use evidence-based approaches to support
-								you in understanding yourself better and developing strategies to
-								navigate life's challenges. My practice is client-centred, ensuring
-								that each person receives personalised support tailored to their
-								unique circumstances and needs.
+								My approach is collaborative, thoughtful, and tailored to the
+								individual needs of each client. I am trained in Cognitive
+								Behavioural Therapy (CBT) and integrate elements from other
+								evidence-based approaches, including Dialectical Behaviour
+								Therapy (DBT) and Acceptance and Commitment Therapy (ACT), using
+								age-appropriate interventions that support emotional regulation,
+								resilience, and self-understanding.
+							</p>
+							<p>
+								I have extensive experience working alongside families, schools,
+								and multidisciplinary teams, recognising the importance of
+								creating supportive environments around young people to foster
+								lasting, positive change.
 							</p>
 						</section>
 					</AnimatedSection>
 
 					<AnimatedSection delay={400} animation="slideInRight">
 						<section className={styles.contentSection}>
-							<h2>What to Expect</h2>
+							<h2>My Commitment</h2>
 							<p>
-								When you reach out to me, we'll work together to understand your
-								needs and determine the best way forward. Our sessions are
-								confidential, and I'm committed to providing a supportive
-								environment where you can feel heard and understood. Each session
-								is typically 50 minutes long and can be arranged to suit your
-								schedule.
-							</p>
-						</section>
-					</AnimatedSection>
-
-					<AnimatedSection delay={500} animation="fadeInUp">
-						<section className={styles.contentSection}>
-							<h2>Get in Touch</h2>
-							<p>
-								If you'd like to learn more about my services or discuss how I
-								might be able to support you, please don't hesitate to contact me.
-								I'm here to help you on your journey towards improved mental health
-								and wellbeing.
+								Above all, I aim to offer a warm, non-judgemental space where
+								clients feel heard, respected, and supported to move forward at
+								their own pace.
 							</p>
 						</section>
 					</AnimatedSection>

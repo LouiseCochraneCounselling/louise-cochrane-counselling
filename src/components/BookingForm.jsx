@@ -78,7 +78,7 @@ const BookingForm = () => {
 				<div className={styles.textContent}>
 					<h2 className={styles.mainHeading}>Book Your Initial Consultation</h2>
 					<p className={styles.subheading}>
-						Take the first step towards support and healing
+						Contact to book/answer any enquires
 					</p>
 				</div>
 				<form
