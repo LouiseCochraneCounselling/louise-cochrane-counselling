@@ -155,6 +155,11 @@
 		padding-top: clamp(0.75rem, 1.5vw, 1rem);
 	}
 
+	.linksSection,
+	.nav {
+		display: none;
+	}
+
 	.copyright {
 		padding-top: 0.75rem;
 	}
