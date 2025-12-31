@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   padding: clamp(4rem, 8vw, 6rem) 0 clamp(0.5rem, 1vw, 0.75rem) 0;
-  overflow: hidden;
+  overflow: visible;
   width: 100%;
 }
 
@@ -250,6 +250,11 @@
 }
 
 @media (max-width: 968px) {
+  .bookingSection {
+    min-height: auto;
+    overflow: visible;
+  }
+
   .content {
     grid-template-columns: 1fr;
     gap: clamp(2rem, 4vw, 3rem);
@@ -266,8 +271,9 @@
 
 @media (max-width: 480px) {
   .bookingSection {
-    min-height: 500px;
+    min-height: auto;
     padding: clamp(2rem, 5vw, 3rem) clamp(1rem, 3vw, 1.5rem) clamp(1rem, 2vw, 1.5rem) clamp(1rem, 3vw, 1.5rem);
+    overflow: visible;
   }
 
   .bookingForm {
