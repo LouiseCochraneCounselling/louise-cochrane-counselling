@@ -51,30 +51,11 @@
 }
 
 .linksSection {
-	display: flex;
-	justify-content: center;
+	display: none;
 }
 
 .nav {
-	display: flex;
-	flex-direction: column;
-	gap: 1rem;
-	align-items: flex-start;
-}
-
-.nav a {
-	color: var(--color-text-medium);
-	text-decoration: none;
-	font-size: clamp(0.9375rem, 1.6vw, 1rem);
-	font-family: "Roboto", sans-serif;
-	font-weight: 400;
-	line-height: 1.6;
-	transition: color 0.2s ease;
-	padding: 0.25rem 0;
-}
-
-.nav a:hover {
-	color: var(--color-text-dark);
+	display: none;
 }
 
 .locationSection {

@@ -247,9 +247,15 @@ html {
 .scrollCue {
 	position: absolute;
 	left: 50%;
-	bottom: 250px;
+	bottom: clamp(2rem, 4vw, 3rem);
 	transform: translateX(-50%);
 	background: transparent;
+	border: 0;
+	padding: 12px 20px;
+	cursor: pointer;
+	z-index: 10;
+	color: var(--color-text-dark);
+	text-align: center;
 	border: 0;
 	padding: 12px 20px;
 	cursor: pointer;
