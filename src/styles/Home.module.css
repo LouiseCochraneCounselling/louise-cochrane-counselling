@@ -394,7 +394,7 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: flex-start;
-	height: fit-content;
+	height: auto;
 	gap: clamp(1.25rem, 2.5vw, 1.75rem);
 }
 
@@ -1098,6 +1098,11 @@
 /* Responsive Styles */
 /* Desktop (above 1024px) - Ensure proper sizing */
 @media (min-width: 1025px) {
+	.aboutImages {
+		height: 100%;
+		justify-content: center;
+	}
+
 	.aboutMainImage {
 		height: 100%;
 		min-height: 750px;
@@ -1124,9 +1129,15 @@
 		gap: clamp(2rem, 4vw, 3rem);
 	}
 
+	.aboutImages {
+		height: auto;
+		justify-content: flex-start;
+	}
+
 	.aboutMainImage {
 		max-width: 100%;
 		height: auto;
+		min-height: auto;
 		max-height: 500px;
 	}
 
@@ -1139,6 +1150,17 @@
 	.servicesGrid {
 		grid-template-columns: repeat(2, 1fr);
 		gap: 1.5rem;
+	}
+
+	.serviceItem {
+		min-height: auto;
+		height: auto;
+	}
+
+	.serviceImage {
+		height: 280px;
+		min-height: 280px;
+		max-height: 280px;
 	}
 
 	.bookingSectionWrapper {
@@ -1155,9 +1177,15 @@
 		gap: clamp(2rem, 4vw, 3rem);
 	}
 
+	.aboutImages {
+		height: auto;
+		justify-content: flex-start;
+	}
+
 	.aboutMainImage {
 		max-width: 100%;
 		height: auto;
+		min-height: auto;
 		max-height: 500px;
 	}
 
@@ -1179,6 +1207,17 @@
 	.servicesGrid {
 		grid-template-columns: 1fr;
 		gap: 1.5rem;
+	}
+
+	.serviceItem {
+		min-height: auto;
+		height: auto;
+	}
+
+	.serviceImage {
+		height: 280px;
+		min-height: 280px;
+		max-height: 280px;
 	}
 
 	.aboutSection,
@@ -1266,10 +1305,16 @@
 		gap: clamp(1.5rem, 4vw, 2rem);
 	}
 
+	.aboutImages {
+		height: auto;
+		justify-content: flex-start;
+	}
+
 	.aboutMainImage {
 		width: 100%;
 		max-width: 100%;
 		height: auto;
+		min-height: auto;
 		max-height: 400px;
 	}
 
@@ -1311,6 +1356,14 @@
 
 	.serviceItem {
 		width: 100%;
+		min-height: auto;
+		height: auto;
+	}
+
+	.serviceImage {
+		height: 250px;
+		min-height: 250px;
+		max-height: 250px;
 	}
 
 	.servicesContainer,
@@ -1401,7 +1454,15 @@
 	}
 
 	.aboutMainImage {
+		height: auto;
+		min-height: auto;
 		max-height: 350px;
+	}
+
+	.serviceImage {
+		height: 200px;
+		min-height: 200px;
+		max-height: 200px;
 	}
 
 	.aboutContentLinks {
