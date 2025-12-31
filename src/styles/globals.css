@@ -245,10 +245,10 @@ html {
 
 /* Scroll Cue Styles */
 .scrollCue {
-	position: absolute;
-	left: 50%;
-	bottom: clamp(2rem, 4vw, 3rem);
-	transform: translateX(-50%);
+	position: relative;
+	left: auto;
+	bottom: auto;
+	transform: none;
 	background: transparent;
 	border: 0;
 	padding: 12px 20px;
@@ -256,12 +256,7 @@ html {
 	z-index: 10;
 	color: var(--color-text-dark);
 	text-align: center;
-	border: 0;
-	padding: 12px 20px;
-	cursor: pointer;
-	z-index: 1000;
-	color: var(--color-text-dark);
-	text-align: center;
+	margin-top: clamp(2rem, 4vw, 3rem);
 }
 
 .scrollCueLabel {
