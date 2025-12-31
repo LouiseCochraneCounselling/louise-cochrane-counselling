@@ -42,8 +42,14 @@
 	border-radius: 12px;
 	padding: clamp(2rem, 4vw, 3rem);
 	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-	margin-top: clamp(3rem, 4vw, 3.5rem);
+	margin-top: clamp(2rem, 4vw, 3rem);
+	margin-bottom: clamp(2rem, 4vw, 3rem);
 	transition: all 0.3s ease;
+}
+
+.serviceCard:not(:first-of-type) {
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+	padding-top: clamp(2.5rem, 5vw, 3rem);
 }
 
 .serviceCard:hover {
@@ -56,10 +62,11 @@
 	color: var(--color-text-dark);
 	font-weight: 300;
 	font-family: "Roboto", sans-serif;
-	margin-bottom: 1.25rem;
+	margin-bottom: 1.5rem;
 	margin-top: 0;
 	line-height: 1.2;
 	letter-spacing: -0.02em;
+	text-align: center;
 }
 
 .serviceCard h2 {
@@ -67,7 +74,7 @@
 	color: var(--color-text-dark);
 	font-weight: 300;
 	font-family: "Roboto", sans-serif;
-	margin-bottom: 1.25rem;
+	margin-bottom: 1.5rem;
 	margin-top: 0;
 	line-height: 1.2;
 	letter-spacing: -0.02em;

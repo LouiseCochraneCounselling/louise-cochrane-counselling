@@ -2,6 +2,7 @@ import Head from "next/head";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import BookingForm from "../components/BookingForm";
+import styles from "../styles/Page.module.css";
 
 export default function Contact() {
 	return (
@@ -16,8 +17,10 @@ export default function Contact() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<Header />
-			<main style={{ paddingTop: 0, paddingBottom: 'clamp(3rem, 6vw, 4rem)', minHeight: 'auto' }}>
-				<BookingForm />
+			<main className={styles.main}>
+				<div className={styles.container}>
+					<BookingForm />
+				</div>
 			</main>
 			<Footer />
 		</>

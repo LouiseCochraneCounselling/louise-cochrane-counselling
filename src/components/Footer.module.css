@@ -17,8 +17,8 @@
 
 .content {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: clamp(2rem, 4vw, 3rem);
+	grid-template-columns: 1fr;
+	gap: clamp(1.5rem, 3vw, 2rem);
 	margin-bottom: clamp(1.5rem, 3vw, 2rem);
 	margin-top: 0;
 	padding-top: clamp(1rem, 2vw, 1.5rem);
@@ -119,6 +119,22 @@
 
 	.locationText {
 		text-align: center;
+	}
+}
+
+/* Tablet (640px+) - 2 column layout */
+@media (min-width: 640px) {
+	.content {
+		grid-template-columns: 1fr 1fr;
+		gap: clamp(2rem, 4vw, 3rem);
+	}
+
+	.locationSection {
+		justify-content: flex-end;
+	}
+
+	.locationText {
+		text-align: right;
 	}
 }
 
