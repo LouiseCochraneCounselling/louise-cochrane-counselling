@@ -46,6 +46,9 @@ export default function Home() {
 					</div>
 				</section>
 
+				{/* Section Divider */}
+				<div className={styles.sectionDivider}></div>
+
 				{/* About Section */}
 				<section
 					id="about-section"
@@ -84,8 +87,7 @@ export default function Home() {
 									environments, with a strong focus on creating safe, trusting
 									therapeutic relationships.
 									<br />
-									<br />
-									I lived and worked in Singapore for three years, gaining
+									<br />I lived and worked in Singapore for three years, gaining
 									valuable international experience in both private practice and
 									an international school setting. Working with clients from
 									diverse cultural backgrounds has deepened my understanding of
@@ -97,14 +99,6 @@ export default function Home() {
 							{/* All Links - Horizontal */}
 							<AnimatedSection delay={300} animation="fadeIn">
 								<div className={styles.aboutContentLinks}>
-									<a
-										href="#services-section"
-										className={styles.scrollToContactLink}>
-										<span className={styles.scrollToContactText}>
-											Click to view my services
-										</span>
-									</a>
-									<span className={styles.linkSeparator}></span>
 									<Link href="/approach" className={styles.scrollToContactLink}>
 										<span className={styles.scrollToContactText}>
 											Click to read about my journey
@@ -152,12 +146,12 @@ export default function Home() {
 					<div className={styles.servicesContainer}>
 						<div className={styles.servicesHeader}>
 							<AnimatedSection delay={0} animation="fadeIn">
-								<h3 className={styles.sectionTitleSmall}>SERVICES</h3>
+								<h3 className={styles.sectionTitleSmall}>SERVICES I OFFER</h3>
 							</AnimatedSection>
 							<Typewriter
 								as="h2"
 								className={styles.servicesTitle}
-								text="Comprehensive services care for mind and wellness"
+								text="Comprehensive Counselling Services"
 								speed={60}
 								delay={500}
 								showCursor={true}
@@ -185,25 +179,48 @@ export default function Home() {
 								<AnimatedSection key={index} delay={index * 100}>
 									<div className={styles.serviceItemWrapper}>
 										<h2 className={styles.serviceItemTitle}>{service.title}</h2>
-										<div className={styles.serviceItem}>
-											<AnimatedImage
-												src={service.image}
-												alt={service.title}
-												className={styles.serviceImage}
-												animationStyle="style-1"
-												delay={index * 50}
-											/>
-											<Link href={service.link} className={styles.serviceButton}>
-												Read More
-											</Link>
-										</div>
+										<Link
+											href={service.link}
+											className={styles.serviceItemLink}
+											aria-label={`Learn more about ${service.title} services`}>
+											<div className={styles.serviceItem}>
+												<AnimatedImage
+													src={service.image}
+													alt={service.title}
+													className={styles.serviceImage}
+													animationStyle="style-1"
+													delay={index * 50}
+												/>
+												<h3 className={styles.serviceCardTitle}>{service.title}</h3>
+												<div className={styles.serviceCardIndicator}>
+													<span className={styles.serviceCardIndicatorText}>View Details</span>
+													<svg
+														className={styles.serviceCardIndicatorIcon}
+														width="20"
+														height="20"
+														viewBox="0 0 24 24"
+														fill="none"
+														xmlns="http://www.w3.org/2000/svg">
+														<path
+															d="M9 18L15 12L9 6"
+															stroke="currentColor"
+															strokeWidth="2"
+															strokeLinecap="round"
+															strokeLinejoin="round"
+														/>
+													</svg>
+												</div>
+											</div>
+										</Link>
 									</div>
 								</AnimatedSection>
 							))}
 						</div>
 						<AnimatedSection delay={600} animation="fadeIn">
 							<div className={styles.exploreMoreContainer}>
-								<a href="#why-choose-section" className={styles.exploreMoreButton}>
+								<a
+									href="#why-choose-section"
+									className={styles.exploreMoreButton}>
 									<span className={styles.exploreMoreText}>Explore More</span>
 									<svg
 										className={styles.exploreMoreIcon}
@@ -227,7 +244,7 @@ export default function Home() {
 				</section>
 
 				{/* Section Divider */}
-				<div className={`${styles.sectionDivider} ${styles.showDesktop} ${styles.showTablet} ${styles.hideMobile}`}></div>
+				<div className={styles.sectionDivider}></div>
 
 				{/* How I Can Help Section */}
 				<section id="why-choose-section" className={styles.whyChooseSection}>
@@ -246,11 +263,11 @@ export default function Home() {
 						/>
 						<AnimatedSection delay={200} animation="slideInLeft">
 							<p className={styles.whyChooseDescription}>
-								As a qualified counsellor with international experience, I
-								bring a unique perspective to my practice. Having worked in
-								Singapore and now serving the Jersey community, I understand
-								the importance of culturally sensitive, compassionate care
-								tailored to each individual's needs.
+								As a qualified counsellor with international experience, I bring
+								a unique perspective to my practice. Having worked in Singapore
+								and now serving the Jersey community, I understand the
+								importance of culturally sensitive, compassionate care tailored
+								to each individual's needs.
 							</p>
 						</AnimatedSection>
 						<div className={styles.whyChooseList}>
@@ -321,6 +338,9 @@ export default function Home() {
 						</div>
 					</AnimatedSection>
 				</section>
+
+				{/* Section Divider */}
+				<div className={styles.sectionDivider}></div>
 
 				{/* Booking Form */}
 				<div id="booking-section" className={styles.bookingSectionWrapper}>

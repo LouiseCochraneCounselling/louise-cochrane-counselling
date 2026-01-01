@@ -644,7 +644,8 @@
 		rgba(0, 0, 0, 0.15) 80%,
 		transparent
 	);
-	margin: clamp(-3.5rem, -7vw, -3rem) 0 clamp(-4rem, -8vw, -3rem) 0;
+	padding-top: clamp(2rem, 4vw, 3rem);
+	padding-bottom: clamp(2rem, 4vw, 3rem);
 	position: relative;
 	z-index: 1;
 	display: block;
@@ -682,7 +683,7 @@
 
 .servicesHeader {
 	text-align: center;
-	margin-bottom: 0;
+	margin-bottom: clamp(2rem, 4vw, 3rem);
 }
 
 .servicesTitle {
@@ -722,7 +723,7 @@
 	width: 100%;
 	max-width: 100%;
 	align-content: center;
-	margin-top: clamp(-3rem, -6vw, -2.5rem);
+	margin-top: clamp(2rem, 4vw, 3rem);
 	align-items: stretch;
 }
 
@@ -742,6 +743,16 @@
 	}
 }
 
+.serviceItemLink {
+	display: block;
+	text-decoration: none;
+	color: inherit;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+	position: relative;
+}
+
 .serviceItem {
 	position: relative;
 	border-radius: 12px;
@@ -753,11 +764,44 @@
 	display: flex;
 	flex-direction: column;
 	min-height: clamp(300px, 40vw, 400px);
+	cursor: pointer;
 }
 
-.serviceItem:hover {
+.serviceItemLink:hover .serviceItem,
+.serviceItemLink:focus .serviceItem {
 	transform: translateY(-8px) scale(1.02);
 	box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.serviceItemLink:hover .serviceImage,
+.serviceItemLink:focus .serviceImage {
+	transform: scale(1.05);
+	transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.serviceItemLink:focus-visible {
+	outline: 2px solid var(--color-primary);
+	outline-offset: 4px;
+	border-radius: 12px;
+}
+
+.serviceItemLink::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.05);
+	pointer-events: none;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+	border-radius: 12px;
+	z-index: 1;
+}
+
+.serviceItemLink:hover::after {
+	opacity: 1;
 }
 
 .serviceImage {
@@ -768,11 +812,33 @@
 	flex-shrink: 0;
 	display: block;
 	object-position: center center;
+	transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .serviceItemTitle {
+	display: none;
+}
+
+@media (max-width: 639px) {
+	.serviceItemTitle {
+		display: block;
+		position: static;
+		transform: none;
+		left: auto;
+		bottom: auto;
+		width: 100%;
+		color: #000000 !important;
+		text-shadow: none;
+		text-align: center;
+		margin-bottom: clamp(0.1rem, 0.25vw, 0.25rem);
+		padding: 0;
+		font-size: clamp(1.25rem, 3vw, 1.5rem);
+	}
+}
+
+.serviceCardTitle {
 	position: absolute;
-	bottom: 30px;
+	bottom: 10px;
 	left: 50%;
 	transform: translateX(-50%);
 	width: calc(100% - 3rem);
@@ -783,6 +849,51 @@
 	font-family: "Roboto", sans-serif;
 	text-transform: capitalize;
 	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+	z-index: 2;
+	pointer-events: none;
+	margin: 0;
+}
+
+.serviceCardIndicator {
+	position: absolute;
+	bottom: clamp(0.75rem, 1.5vw, 1rem);
+	right: clamp(0.75rem, 1.5vw, 1rem);
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	background-color: rgba(91, 107, 140, 0.9);
+	backdrop-filter: blur(4px);
+	color: var(--color-white);
+	padding: clamp(0.5rem, 1vw, 0.625rem) clamp(0.75rem, 1.5vw, 1rem);
+	border-radius: clamp(6px, 1vw, 8px);
+	font-size: clamp(0.75rem, 1.2vw, 0.875rem);
+	font-weight: 600;
+	z-index: 3;
+	pointer-events: none;
+	opacity: 0;
+	transform: translateY(10px);
+	transition: all 0.3s ease;
+	font-family: "Roboto", sans-serif;
+}
+
+.serviceItemLink:hover .serviceCardIndicator {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.serviceCardIndicatorText {
+	white-space: nowrap;
+}
+
+.serviceCardIndicatorIcon {
+	width: clamp(16px, 2vw, 20px);
+	height: clamp(16px, 2vw, 20px);
+	flex-shrink: 0;
+	transition: transform 0.3s ease;
+}
+
+.serviceItemLink:hover .serviceCardIndicatorIcon {
+	transform: translateX(4px);
 }
 
 .serviceButton {
@@ -1031,7 +1142,7 @@
 	padding-top: 0;
 	padding-bottom: 0;
 	position: relative;
-	z-index: 10;
+	z-index: 100;
 	flex-shrink: 0;
 }
 
@@ -1181,6 +1292,41 @@
 	.servicesGrid {
 		grid-template-columns: repeat(3, 1fr);
 		gap: clamp(1.5rem, 2.5vw, 2rem);
+	}
+
+	.heroContainer {
+		padding-top: clamp(4rem, 6vh, 6rem);
+	}
+}
+
+/* Large Desktop (1440px+) - Adjust hero logo placement */
+@media (min-width: 1440px) {
+	.heroSection {
+		margin-top: clamp(-60px, -5vh, -40px);
+	}
+
+	.heroContainer {
+		padding-top: clamp(6rem, 8vh, 8rem);
+		align-items: flex-start;
+	}
+
+	.heroContent {
+		padding-top: clamp(2rem, 3vh, 3rem);
+	}
+}
+
+/* Extra Large Desktop (2560px+) - Further adjust for very large screens */
+@media (min-width: 2560px) {
+	.heroSection {
+		margin-top: clamp(-40px, -3vh, -20px);
+	}
+
+	.heroContainer {
+		padding-top: clamp(8rem, 10vh, 10rem);
+	}
+
+	.heroContent {
+		padding-top: clamp(3rem, 4vh, 4rem);
 	}
 }
 
@@ -1347,7 +1493,8 @@
 	}
 
 	.sectionDivider {
-		display: none;
+		padding-top: clamp(1.5rem, 3vw, 2rem);
+		padding-bottom: clamp(1.5rem, 3vw, 2rem);
 	}
 
 	.contactMeSection {
@@ -1512,34 +1659,41 @@
 		font-size: clamp(1.25rem, 3vw, 1.5rem);
 	}
 
-	.serviceButton {
-		bottom: clamp(0.5rem, 2vw, 0.75rem);
-		right: clamp(0.5rem, 2vw, 0.75rem);
-		left: auto;
-		transform: none;
-		padding: clamp(6px, 2vw, 8px) clamp(12px, 3.5vw, 16px);
-		font-size: clamp(12px, 3vw, 14px);
-		line-height: 1.2em;
-		min-height: 44px;
-		min-width: 44px;
+	.serviceCardTitle {
+		display: none;
+	}
+
+	.serviceCardIndicator {
+		display: flex;
+		opacity: 1;
+		transform: translateY(0);
+		background-color: rgba(91, 107, 140, 0.95);
+		bottom: clamp(0.5rem, 1.5vw, 0.75rem);
+		right: clamp(0.5rem, 1.5vw, 0.75rem);
+		padding: clamp(0.4rem, 1vw, 0.5rem) clamp(0.6rem, 1.2vw, 0.8rem);
+		font-size: clamp(0.7rem, 1.5vw, 0.8rem);
 	}
 
 	.serviceItem {
 		width: 100%;
-		min-height: clamp(280px, 50vw, 320px);
 		height: auto;
 		max-width: 85%;
 		margin: 0 auto;
-		padding-bottom: clamp(2.5rem, 6vw, 3rem);
+		padding-bottom: 0;
+		display: flex;
+		flex-direction: column;
+		overflow: hidden;
+		position: relative;
 	}
 
 	.serviceImage {
-		height: clamp(150px, 35vw, 180px);
-		min-height: clamp(150px, 35vw, 180px);
-		max-height: clamp(150px, 35vw, 180px);
 		width: 100%;
+		height: clamp(280px, 70vw, 350px);
+		min-height: clamp(280px, 70vw, 350px);
+		flex-shrink: 0;
 		object-fit: cover;
 		object-position: center center;
+		display: block;
 	}
 
 	.servicesContainer {
@@ -1558,12 +1712,12 @@
 	}
 
 	.servicesHeader {
-		margin-bottom: 0;
+		margin-bottom: clamp(2rem, 4vw, 3rem);
 	}
 
 	.servicesGrid {
-		margin-top: clamp(-30rem, -60vw, -28rem);
-		margin-bottom: clamp(-3rem, -6vw, -2.5rem);
+		margin-top: clamp(2rem, 4vw, 3rem);
+		margin-bottom: clamp(2rem, 4vw, 3rem);
 	}
 
 	.whyChooseContainer {
@@ -1590,7 +1744,8 @@
 	}
 
 	.sectionDivider {
-		display: none;
+		padding-top: clamp(1.5rem, 3vw, 2rem);
+		padding-bottom: clamp(1.5rem, 3vw, 2rem);
 	}
 
 	.contactMeSection {
@@ -1690,12 +1845,12 @@
 	}
 
 	.servicesHeader {
-		margin-bottom: 0;
+		margin-bottom: clamp(2rem, 4vw, 3rem);
 	}
 
 	.servicesGrid {
-		margin-top: clamp(-30rem, -60vw, -28rem);
-		margin-bottom: clamp(-3rem, -6vw, -2.5rem);
+		margin-top: clamp(2rem, 4vw, 3rem);
+		margin-bottom: clamp(2rem, 4vw, 3rem);
 	}
 
 	.whyChooseContainer {
@@ -1735,22 +1890,27 @@
 
 	.servicesGrid {
 		gap: 0.75rem;
-		margin-top: clamp(-12rem, -24vw, -11rem);
+		margin-top: clamp(2rem, 4vw, 3rem);
 		width: 100%;
 	}
 
 	.serviceItem {
 		max-width: 85%;
 		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+		overflow: hidden;
 	}
 
 	.serviceImage {
 		width: 100%;
-		height: clamp(120px, 30vw, 150px);
-		min-height: clamp(120px, 30vw, 150px);
-		max-height: clamp(120px, 30vw, 150px);
+		height: auto;
+		min-height: clamp(250px, 65vw, 320px);
+		flex: 1;
+		flex-shrink: 0;
 		object-fit: cover;
 		object-position: center center;
+		display: block;
 	}
 
 	.serviceItemWrapper {
@@ -1773,16 +1933,19 @@
 		font-size: clamp(1.25rem, 3vw, 1.5rem);
 	}
 
-	.serviceButton {
-		bottom: clamp(0.375rem, 1.5vw, 0.5rem);
-		right: clamp(0.375rem, 1.5vw, 0.5rem);
-		left: auto;
-		transform: none;
-		padding: clamp(4px, 1.5vw, 6px) clamp(10px, 3vw, 14px);
-		font-size: clamp(11px, 2.5vw, 13px);
-		line-height: 1.1em;
-		min-height: auto;
-		height: auto;
+	.serviceCardTitle {
+		display: none;
+	}
+
+	.serviceCardIndicator {
+		display: flex;
+		opacity: 1;
+		transform: translateY(0);
+		background-color: rgba(91, 107, 140, 0.95);
+		bottom: clamp(0.375rem, 1.2vw, 0.5rem);
+		right: clamp(0.375rem, 1.2vw, 0.5rem);
+		padding: clamp(0.35rem, 0.9vw, 0.45rem) clamp(0.5rem, 1vw, 0.7rem);
+		font-size: clamp(0.65rem, 1.3vw, 0.75rem);
 	}
 
 	.whyChooseItem {

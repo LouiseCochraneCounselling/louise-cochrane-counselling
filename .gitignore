@@ -51,3 +51,6 @@ phase2-summary.md
 # Layout plan documentation files
 layout-plan-*.md
 
+# Local audit and documentation
+docs__local/
+

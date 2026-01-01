@@ -35,6 +35,7 @@
 
 .contentSection {
 	margin-bottom: 4rem;
+	scroll-margin-top: clamp(80px, 10vh, 100px);
 }
 
 .serviceCard {
@@ -174,6 +175,7 @@
 
 	.contentSection {
 		margin-bottom: 2rem;
+		scroll-margin-top: clamp(60px, 8vh, 80px);
 	}
 
 	.formSection {

@@ -114,7 +114,7 @@ export default function Services() {
 
 					<AnimatedSection delay={500} animation="fadeIn">
 						<div className={styles.backButtonContainer}>
-							<Link href="/" className={homeStyles.scrollToContactLink}>
+							<Link href="/#services-section" className={homeStyles.scrollToContactLink}>
 								<span className={homeStyles.scrollToContactText}>
 									Return back to home
 								</span>
