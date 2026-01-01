@@ -1687,6 +1687,11 @@
 		position: relative;
 	}
 
+	.serviceItemLink:hover .serviceItem,
+	.serviceItemLink:focus .serviceItem {
+		transform: scale(1.02);
+	}
+
 	.serviceImage {
 		width: 100%;
 		height: clamp(280px, 70vw, 350px);
@@ -1901,6 +1906,11 @@
 		display: flex;
 		flex-direction: column;
 		overflow: hidden;
+	}
+
+	.serviceItemLink:hover .serviceItem,
+	.serviceItemLink:focus .serviceItem {
+		transform: scale(1.02);
 	}
 
 	.serviceImage {
