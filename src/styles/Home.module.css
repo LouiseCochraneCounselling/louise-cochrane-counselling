@@ -1410,8 +1410,9 @@
 
 	.aboutMainImage {
 		width: 100%;
-		max-width: 480px;
-		height: 540px !important;
+		max-width: clamp(280px, 70vw, 360px);
+		height: auto;
+		aspect-ratio: 8 / 9;
 	}
 
 	.aboutContentLinks {

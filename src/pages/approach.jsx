@@ -58,7 +58,7 @@ export default function Approach() {
 
 					<AnimatedSection delay={400} animation="fadeIn">
 						<div className={styles.backButtonContainer}>
-							<Link href="/" className={homeStyles.scrollToContactLink}>
+							<Link href="/#about-section" className={homeStyles.scrollToContactLink}>
 								<span className={homeStyles.scrollToContactText}>
 									Return back to home
 								</span>
