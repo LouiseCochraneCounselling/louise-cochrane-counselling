@@ -243,6 +243,94 @@
   border: 1px solid #fecaca;
 }
 
+.infoAccordion {
+  margin: 0.5rem 0;
+}
+
+.infoToggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.875rem 1rem;
+  background-color: rgba(91, 107, 140, 0.08);
+  border: 1px solid rgba(91, 107, 140, 0.15);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-dark);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: "Roboto", sans-serif;
+  text-align: left;
+}
+
+.infoToggle:hover {
+  background-color: rgba(91, 107, 140, 0.12);
+  border-color: rgba(91, 107, 140, 0.25);
+}
+
+.infoToggle:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(91, 107, 140, 0.1);
+}
+
+.infoToggleIcon {
+  flex-shrink: 0;
+  margin-left: 1rem;
+  transition: transform 0.3s ease;
+  color: var(--color-text-medium);
+}
+
+.infoToggleIconOpen {
+  transform: rotate(180deg);
+}
+
+.infoContent {
+  margin-top: 0.75rem;
+  padding: 1rem 1.25rem;
+  background-color: rgba(91, 107, 140, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(91, 107, 140, 0.1);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.infoContent p {
+  margin: 0 0 0.75rem 0;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--color-text-medium);
+}
+
+.infoContent p:last-child {
+  margin-bottom: 0;
+}
+
+.infoLink {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+
+.infoLink:hover,
+.infoLink:focus {
+  color: var(--color-text-dark);
+  text-decoration-thickness: 2px;
+}
+
 .privacyNote {
   font-size: 0.875rem;
   color: var(--color-text-medium);

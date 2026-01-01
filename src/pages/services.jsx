@@ -48,17 +48,10 @@ export default function Services() {
 									build resilience.
 								</p>
 								<p>
-									Counselling can support children experiencing a range of
-									different challenges, including anxiety, low mood, behavioural
-									challenges, relationship difficulties, or difficulties at
-									school. It also helps them navigate life transitions, family
-									changes or experiences that feel overwhelming.
+									Your child might benefit from counselling if they're struggling with worries or anxiety, having trouble at school, experiencing friendship difficulties, or dealing with big changes like a family separation or moving house. Maybe they seem withdrawn, have angry outbursts, or are having trouble sleeping. Perhaps they're finding it hard to express how they're feeling, or you've noticed they're not quite themselves lately.
 								</p>
 								<p>
-									The focus is always on the child's unique needs, working at
-									their pace, and collaborating with families and schools where
-									appropriate to create a supportive environment that fosters
-									lasting, positive change.
+									Sessions with children often involve play, drawing, stories, or activities, whatever helps them express themselves. It's not like adult counselling where we just talk. Your child might build something, play a game, or read a book together while we explore what's on their mind. The focus is always on the child's unique needs, working at their pace, and collaborating with families and schools where appropriate to create a supportive environment that fosters lasting, positive change.
 								</p>
 							</div>
 						</section>
@@ -72,10 +65,10 @@ export default function Services() {
 									Adolescent counselling provides a safe and confidential space
 									for teenagers to explore their thoughts, emotions, and
 									experiences. Adolescence can be a time of rapid change,
-									uncertainty, and pressure, and counselling helps young people
-									navigate challenges such as anxiety, low mood, stress,
-									self-esteem issues, emotionally based school avoidance,
-									relationships, and identity.
+									uncertainty, and pressure.
+								</p>
+								<p>
+									You might be here because school feels overwhelming, relationships are complicated, or you're not sure who you are yet. Maybe you're feeling anxious about exams, struggling with friendships, or just feel different and don't know why. Perhaps you're finding it hard to talk to your parents, feeling low or anxious, or having trouble with self-esteem. There's no problem too small or too big, if it matters to you, it matters here.
 								</p>
 								<p>
 									Through a collaborative, supportive approach, adolescents can
@@ -95,10 +88,10 @@ export default function Services() {
 								<p>
 									Adult counselling offers a safe, non-judgemental space to
 									explore life's challenges and develop strategies for positive
-									change. Adults may seek support for a range of issues,
-									including anxiety, depression, stress, relationship
-									difficulties, grief, life transitions, or challenges related
-									to work and family.
+									change.
+								</p>
+								<p>
+									You might be here because you're feeling stuck, overwhelmed, or just not quite yourself. Perhaps you're struggling with anxiety or low mood, going through a difficult relationship, or dealing with a major life change like a job loss, bereavement, or becoming a parent. Maybe you find yourself repeating the same patterns, struggling with stress at work, or feeling like you need someone to talk to outside your usual circles. Whatever brings you here, counselling can help.
 								</p>
 								<p>
 									The counselling process is collaborative and tailored to each

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 import styles from "./BookingForm.module.css";
 
 const BookingForm = () => {
@@ -14,6 +15,8 @@ const BookingForm = () => {
 		message: "",
 	});
 	const [status, setStatus] = useState("");
+	const [showInfo, setShowInfo] = useState(false);
+	const [showConfidentiality, setShowConfidentiality] = useState(false);
 
 	const handleChange = (e) => {
 		setFormData({
@@ -74,9 +77,9 @@ const BookingForm = () => {
 			</div>
 			<div className={styles.content}>
 				<div className={styles.textContent}>
-					<h2 className={styles.mainHeading}>Book Your Initial Consultation</h2>
+					<h2 className={styles.mainHeading}>Get in Touch</h2>
 					<p className={styles.subheading}>
-						Contact to book/answer any enquires
+						This form is just an initial enquiry—there's no commitment. I'll respond within 24-48 hours to discuss how I might support you and answer any questions you have. Everything you share here is confidential.
 					</p>
 				</div>
 				<form
@@ -165,11 +168,77 @@ const BookingForm = () => {
 						</div>
 					</div>
 
-					<p className={styles.privacyNote}>
-						<i className="fas fa-shield-alt" aria-hidden="true"></i>
-						Your information is confidential and will only be used to contact
-						you about your enquiry.
-					</p>
+					<div className={styles.infoAccordion}>
+						<button
+							type="button"
+							className={styles.infoToggle}
+							onClick={() => setShowInfo(!showInfo)}
+							aria-expanded={showInfo}
+							aria-controls="after-submit-info">
+							<span>What happens after I submit this form?</span>
+							<svg
+								className={`${styles.infoToggleIcon} ${showInfo ? styles.infoToggleIconOpen : ""}`}
+								width="16"
+								height="16"
+								viewBox="0 0 24 24"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg">
+								<path
+									d="M7 10L12 15L17 10"
+									stroke="currentColor"
+									strokeWidth="2"
+									strokeLinecap="round"
+									strokeLinejoin="round"
+								/>
+							</svg>
+						</button>
+						{showInfo && (
+							<div id="after-submit-info" className={styles.infoContent}>
+								<p>
+									After you submit this form, I'll receive your message via email. I aim to respond within 24-48 hours (usually sooner). In my response, I'll suggest some potential appointment times and answer any questions you have.
+								</p>
+								<p>
+									There's no obligation, we can discuss whether working together feels right for you. Everything you share here is confidential and will only be used to respond to your enquiry.
+								</p>
+							</div>
+						)}
+					</div>
+
+					<div className={styles.infoAccordion}>
+						<button
+							type="button"
+							className={styles.infoToggle}
+							onClick={() => setShowConfidentiality(!showConfidentiality)}
+							aria-expanded={showConfidentiality}
+							aria-controls="confidentiality-info">
+							<span>Your privacy is important</span>
+							<svg
+								className={`${styles.infoToggleIcon} ${showConfidentiality ? styles.infoToggleIconOpen : ""}`}
+								width="16"
+								height="16"
+								viewBox="0 0 24 24"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg">
+								<path
+									d="M7 10L12 15L17 10"
+									stroke="currentColor"
+									strokeWidth="2"
+									strokeLinecap="round"
+									strokeLinejoin="round"
+								/>
+							</svg>
+						</button>
+						{showConfidentiality && (
+							<div id="confidentiality-info" className={styles.infoContent}>
+								<p>
+									Everything we discuss is confidential. I won't share what you tell me with anyone else, except in rare situations where there's a serious risk of harm (I'll explain these clearly if they ever come up). For children and young people, I'll explain confidentiality in an age-appropriate way.
+								</p>
+								<p>
+									You can read more about this on our <Link href="/confidentiality" className={styles.infoLink}>confidentiality page</Link>.
+								</p>
+							</div>
+						)}
+					</div>
 
 					<button
 						type="submit"
