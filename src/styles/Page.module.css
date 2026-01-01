@@ -178,6 +178,10 @@
 		scroll-margin-top: clamp(60px, 8vh, 80px);
 	}
 
+	.serviceCard:hover {
+		transform: none;
+	}
+
 	.formSection {
 		margin-top: 2rem;
 		padding-top: 2rem;
