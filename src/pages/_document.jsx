@@ -4,6 +4,10 @@ export default function Document() {
 	return (
 		<Html>
 			<Head>
+				{/* Preconnect to Google Fonts for faster connection */}
+				<link rel="preconnect" href="https://fonts.googleapis.com" />
+				<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+				
 				<link
 					rel="stylesheet"
 					href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"

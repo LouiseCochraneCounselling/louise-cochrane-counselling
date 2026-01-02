@@ -217,12 +217,22 @@ export default async function handler(req, res) {
 
 		// Validate Resend API key is configured
 		if (!process.env.RESEND_API_KEY) {
+			console.error(
+				"[API Error] RESEND_API_KEY environment variable is not configured"
+			);
+			if (process.env.NODE_ENV === "development") {
+				console.error(
+					"[API Error] Please configure RESEND_API_KEY in Vercel environment variables."
+				);
+			}
 			return res.status(500).json({
 				message:
 					"Email service is not configured. Please contact the site administrator.",
 				error: "configuration_error",
 				details:
-					"RESEND_API_KEY is missing. Please configure it in Vercel environment variables.",
+					process.env.NODE_ENV === "development"
+						? "RESEND_API_KEY is missing. Please configure it in Vercel environment variables."
+						: undefined,
 			});
 		}
 
@@ -233,19 +243,26 @@ export default async function handler(req, res) {
 			console.error(
 				"[API Error] CONTACT_EMAIL environment variable is not configured"
 			);
-			console.error(
-				"[API Error] Please set CONTACT_EMAIL in Vercel Project Settings → Environment Variables"
-			);
-			console.error("[API Error] Current environment:", {
-				hasResendKey: !!process.env.RESEND_API_KEY,
-				hasContactEmail: false,
-				hasFromEmail: !!process.env.RESEND_FROM_EMAIL,
-			});
+			if (process.env.NODE_ENV === "development") {
+				console.error(
+					"[API Error] Please set CONTACT_EMAIL in Vercel Project Settings → Environment Variables"
+				);
+			}
+			if (process.env.NODE_ENV === "development") {
+				console.error("[API Error] Current environment:", {
+					hasResendKey: !!process.env.RESEND_API_KEY,
+					hasContactEmail: false,
+					hasFromEmail: !!process.env.RESEND_FROM_EMAIL,
+				});
+			}
 			return res.status(500).json({
-				message: "Email recipient is not configured.",
+				message:
+					"Email service is not configured. Please contact the site administrator.",
 				error: "configuration_error",
 				details:
-					"CONTACT_EMAIL is missing. Please set it in Vercel environment variables.",
+					process.env.NODE_ENV === "development"
+						? "CONTACT_EMAIL is missing. Please set it in Vercel environment variables."
+						: undefined,
 			});
 		}
 		// Remove any newlines, carriage returns, or other control characters

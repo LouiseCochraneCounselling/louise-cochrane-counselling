@@ -121,7 +121,7 @@
   transition: all 0.3s ease;
   box-sizing: border-box;
   min-height: 52px;
-  background-color: var(--color-white);
+  background-color: #D5D0D5;
   color: var(--color-text-dark);
   -webkit-appearance: none;
   appearance: none;
@@ -268,7 +268,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 0.875rem 1rem;
-  background-color: rgba(91, 107, 140, 0.08);
+  background-color: #D5D0D5;
   border: 1px solid rgba(91, 107, 140, 0.15);
   border-radius: 8px;
   font-size: 0.875rem;
@@ -281,7 +281,7 @@
 }
 
 .infoToggle:hover {
-  background-color: rgba(91, 107, 140, 0.12);
+  background-color: #c8c3c8;
   border-color: rgba(91, 107, 140, 0.25);
 }
 
