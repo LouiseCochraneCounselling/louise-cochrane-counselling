@@ -4,6 +4,8 @@
   display: block;
   position: relative;
   transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: clamp(16px, 3vw, 24px);
+  overflow: hidden;
 }
 
 /* For service images that need specific height */
@@ -15,6 +17,7 @@
   overflow: hidden;
   display: block;
   position: relative;
+  border-radius: clamp(16px, 3vw, 24px);
 }
 
 .imageWrapper {
@@ -22,6 +25,8 @@
   width: 100%;
   height: 100%;
   transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: clamp(16px, 3vw, 24px);
+  overflow: hidden;
 }
 
 /* For service images that need specific height - inherit from parent */
@@ -38,6 +43,7 @@
   height: auto;
   display: block;
   object-fit: cover;
+  border-radius: clamp(16px, 3vw, 24px);
 }
 
 /* For fill images */
@@ -66,7 +72,7 @@
   aspect-ratio: 8 / 9;
   display: block;
   margin: 0 auto;
-  border-radius: clamp(8px, 1.5vw, 12px);
+  border-radius: clamp(16px, 3vw, 24px);
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   position: relative;
@@ -79,7 +85,7 @@
   aspect-ratio: 8 / 9 !important;
   object-fit: cover !important;
   object-position: center center !important;
-  border-radius: clamp(8px, 1.5vw, 12px);
+  border-radius: clamp(16px, 3vw, 24px);
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;

@@ -407,7 +407,7 @@ export default function Home() {
 							</div>
 						</AnimatedSection>
 						<AnimatedSection delay={600} animation="fadeIn">
-							<ExploreMoreButton href="#common-concerns-section" />
+							<ExploreMoreButton href="#counselling-room-section" />
 						</AnimatedSection>
 					</div>
 				</section>
@@ -421,7 +421,7 @@ export default function Home() {
 					className={styles.counsellingRoomSection}>
 					<div className={styles.counsellingRoomContainer}>
 						<AnimatedSection delay={0} animation="fadeIn">
-							<h2 className={styles.sectionTitleSmall}>YOUR SAFE SPACE</h2>
+							<h2 className={styles.sectionTitleSmall}>THE COUNSELLING ROOM</h2>
 						</AnimatedSection>
 						<Typewriter
 							as="h2"
