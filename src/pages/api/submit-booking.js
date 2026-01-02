@@ -217,10 +217,10 @@ export default async function handler(req, res) {
 
 		// Validate Resend API key is configured
 		if (!process.env.RESEND_API_KEY) {
-			console.error(
-				"[API Error] RESEND_API_KEY environment variable is not configured"
-			);
 			if (process.env.NODE_ENV === "development") {
+				console.error(
+					"[API Error] RESEND_API_KEY environment variable is not configured"
+				);
 				console.error(
 					"[API Error] Please configure RESEND_API_KEY in Vercel environment variables."
 				);
@@ -240,15 +240,13 @@ export default async function handler(req, res) {
 		// Sanitize to prevent header injection
 		const rawRecipientEmail = process.env.CONTACT_EMAIL;
 		if (!rawRecipientEmail) {
-			console.error(
-				"[API Error] CONTACT_EMAIL environment variable is not configured"
-			);
 			if (process.env.NODE_ENV === "development") {
+				console.error(
+					"[API Error] CONTACT_EMAIL environment variable is not configured"
+				);
 				console.error(
 					"[API Error] Please set CONTACT_EMAIL in Vercel Project Settings → Environment Variables"
 				);
-			}
-			if (process.env.NODE_ENV === "development") {
 				console.error("[API Error] Current environment:", {
 					hasResendKey: !!process.env.RESEND_API_KEY,
 					hasContactEmail: false,
@@ -280,12 +278,14 @@ export default async function handler(req, res) {
 			.trim();
 
 
-		// Log configuration status (without sensitive data)
-		console.log("[API Info] Email configuration:", {
-			recipientEmail: recipientEmail,
-			senderEmail: senderEmail,
-			hasResendKey: !!process.env.RESEND_API_KEY,
-		});
+		// Log configuration status in development only
+		if (process.env.NODE_ENV === "development") {
+			console.log("[API Info] Email configuration:", {
+				recipientEmail: recipientEmail,
+				senderEmail: senderEmail,
+				hasResendKey: !!process.env.RESEND_API_KEY,
+			});
+		}
 
 		// Sanitize inputs for email
 		const sanitizedName = escapeHtml(name);

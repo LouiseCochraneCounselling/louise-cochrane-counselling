@@ -3,7 +3,7 @@
   min-height: 600px;
   display: flex;
   align-items: center;
-  padding: clamp(4rem, 8vw, 6rem) 0 clamp(3rem, 6vw, 4rem) 0;
+  padding: clamp(4rem, 8vw, 6rem) 0 clamp(4rem, 8vw, 6rem) 0;
   overflow: visible;
   width: 100%;
   margin-bottom: 0;
@@ -37,7 +37,7 @@
 .content {
   position: relative;
   z-index: 3;
-  max-width: 100%;
+  max-width: 1400px;
   margin: 0 auto;
   width: 100%;
   display: grid;
@@ -403,13 +403,18 @@
   }
 }
 
-/* Very Small Mobile (up to 480px) - Additional refinements */
+/* Small Mobile (up to 480px) - Additional refinements */
 @media (max-width: 480px) {
   .bookingSection {
     min-height: auto;
-    padding: clamp(2rem, 5vw, 3rem) clamp(1rem, 3vw, 1.5rem) clamp(3rem, 6vw, 4rem) clamp(1rem, 3vw, 1.5rem);
+    padding: clamp(2rem, 5vw, 3rem) clamp(1rem, 3vw, 1.5rem);
     overflow: visible;
     margin-bottom: 0;
+  }
+
+  .content {
+    padding: 0 clamp(0.75rem, 3vw, 1rem);
+    gap: clamp(1.5rem, 4vw, 2rem);
   }
 
   .bookingForm {
@@ -420,7 +425,7 @@
   .formInput,
   .formTextarea {
     font-size: 16px; /* Prevents zoom on iOS */
-    padding: clamp(0.75rem, 2vw, 0.875rem);
+    padding: clamp(0.75rem, 2vw, 0.875rem) 1rem;
   }
 
   .formButton {

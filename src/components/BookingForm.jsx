@@ -76,24 +76,31 @@ const BookingForm = () => {
 				body: JSON.stringify(formDataObj),
 			});
 
-			const result = await response.json();
-			
-			// Debug logging
-			console.log("API Response:", { status: response.status, ok: response.ok, result });
+			// Check if response is ok before parsing JSON
+			if (!response.ok) {
+				// Try to parse error response
+				let errorData;
+				try {
+					errorData = await response.json();
+				} catch (parseError) {
+					errorData = { message: `Server error: ${response.status} ${response.statusText}` };
+				}
+				setStatus("error");
+				setFieldErrors({ submit: errorData.message || "Sorry, there was an error sending your message. Please try again." });
+				return;
+			}
 
-			if (response.ok && result.success) {
+			const result = await response.json();
+
+			// Check if result has success flag
+			if (result.success === true) {
 				form.reset();
 				setFormData({ name: "", phone: "", email: "", message: "" });
 				setFieldErrors({});
 				setStatus("");
 				// Redirect to success page
-				try {
-					router.push("/booking-success");
-				} catch (routerError) {
-					// Fallback to window.location if router.push fails
-					console.error("Router push failed, using window.location:", routerError);
-					window.location.href = "/booking-success";
-				}
+				// Use window.location for more reliable redirect
+				window.location.href = "/booking-success";
 			} else {
 				setStatus("error");
 				// Show specific error message from API if available
@@ -101,7 +108,10 @@ const BookingForm = () => {
 				setFieldErrors({ submit: errorMessage });
 			}
 		} catch (error) {
-			console.error("Form submission error:", error);
+			// Log error in development only
+			if (process.env.NODE_ENV === "development") {
+				console.error("Form submission error:", error);
+			}
 			setStatus("error");
 			setFieldErrors({ submit: "Sorry, there was an error sending your message. Please try again." });
 		}

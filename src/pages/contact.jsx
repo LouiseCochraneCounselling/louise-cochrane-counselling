@@ -2,7 +2,7 @@ import Head from "next/head";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import BookingForm from "../components/BookingForm";
-import styles from "../styles/Page.module.css";
+import homeStyles from "../styles/Home.module.css";
 
 export default function Contact() {
 	return (
@@ -17,8 +17,8 @@ export default function Contact() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<Header />
-			<main className={styles.main} id="main-content">
-				<div className={styles.container}>
+			<main id="main-content" style={{ padding: 0, margin: 0, width: "100%", paddingBottom: "4rem" }}>
+				<div className={homeStyles.bookingSectionWrapper} style={{ marginBottom: "2rem", minHeight: "auto" }}>
 					<BookingForm />
 				</div>
 			</main>

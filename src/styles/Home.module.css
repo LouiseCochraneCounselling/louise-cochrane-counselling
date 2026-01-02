@@ -741,20 +741,24 @@
 	list-style: none;
 	padding: 0;
 	margin: 0;
-	text-align: left;
-	max-width: 600px;
+	text-align: center;
+	max-width: 700px;
 	margin-left: auto;
 	margin-right: auto;
 }
 
 .reflectionList li {
-	font-size: clamp(1rem, 2vw, 1.125rem);
-	line-height: 1.8;
-	color: var(--color-text-medium);
-	margin-bottom: 1.25rem;
-	padding-left: 2rem;
+	font-size: clamp(1.0625rem, 2.2vw, 1.1875rem);
+	line-height: 1.75;
+	color: var(--color-text-dark);
+	margin-bottom: 1.5rem;
+	padding: 0 1rem;
 	position: relative;
 	font-weight: 400;
+	text-align: left;
+	display: inline-block;
+	width: 100%;
+	max-width: 600px;
 }
 
 .reflectionList li:last-child {
@@ -762,22 +766,26 @@
 }
 
 .reflectionList li::before {
-	content: "•";
+	content: "—";
 	position: absolute;
-	left: 0.5rem;
+	left: 1rem;
 	color: var(--color-primary);
-	font-weight: 700;
-	font-size: 1.5rem;
-	line-height: 1.2;
+	font-weight: 600;
+	font-size: 1.25rem;
+	line-height: 1.75;
+	opacity: 0.8;
 }
 
 .counsellingReflectionConclusion {
-	font-size: clamp(1.0625rem, 2.2vw, 1.25rem);
-	line-height: 1.8;
-	color: var(--color-text-medium);
-	margin-top: 2rem;
+	font-size: clamp(1.125rem, 2.4vw, 1.375rem);
+	line-height: 1.75;
+	color: var(--color-text-dark);
+	margin-top: clamp(2.5rem, 5vw, 3.5rem);
 	font-weight: 400;
 	font-style: italic;
+	max-width: 700px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 /* What to Expect Section */
@@ -1877,7 +1885,7 @@
 	}
 
 	.reflectionList li {
-		padding-left: 1.75rem;
+		padding-left: 2rem;
 	}
 
 	.whatToExpectSection {

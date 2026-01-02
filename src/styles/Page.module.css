@@ -72,7 +72,7 @@
 
 .serviceCard h2 {
 	font-size: clamp(2rem, 4vw, 2.75rem);
-	color: var(--color-white);
+	color: var(--color-text-medium);
 	font-weight: 300;
 	font-family: "Roboto", sans-serif;
 	margin-bottom: 1.5rem;

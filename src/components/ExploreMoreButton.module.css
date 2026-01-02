@@ -11,6 +11,11 @@
 	flex-shrink: 0;
 }
 
+/* Additional spacing for "Back to Top" button */
+.containerUp {
+	margin-top: clamp(3rem, 6vw, 5rem);
+}
+
 .button {
 	display: flex;
 	flex-direction: column;

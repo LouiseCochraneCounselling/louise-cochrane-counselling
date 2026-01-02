@@ -6,8 +6,12 @@ const ExploreMoreButton = ({ href, text = "Explore More", iconDirection = "down"
 		? "M7 14L12 9L17 14" 
 		: "M7 10L12 15L17 10";
 
+	const containerClass = iconDirection === "up" 
+		? `${styles.container} ${styles.containerUp}`
+		: styles.container;
+
 	return (
-		<div className={styles.container}>
+		<div className={containerClass}>
 			<Link href={href} className={styles.button}>
 				<span className={styles.text}>{text}</span>
 				<svg
