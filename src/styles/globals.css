@@ -51,6 +51,7 @@ body {
 	--color-teal: #6b8c9d;
 	--color-pink: #7c8ba3;
 	--color-card-bg: #D5D0D5;
+	--color-header-dark: #b8afb3;
 
 	/* Spacing Scale */
 	--spacing-xs: 0.5rem;      /* 8px */
@@ -367,8 +368,8 @@ html {
 /* Mobile (up to 639px) */
 @media (max-width: 639px) {
 	.scrollCue {
-		margin-top: 0;
-		margin-bottom: clamp(3rem, 6vw, 5rem);
+		margin-top: clamp(2rem, 4vw, 3rem);
+		margin-bottom: clamp(4rem, 8vw, 6rem);
 	}
 }
 

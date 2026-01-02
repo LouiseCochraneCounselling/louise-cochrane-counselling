@@ -67,9 +67,10 @@ export default function Home() {
 								<Image
 									src="/images/logo.svg"
 									alt="The Holding Space Jersey"
-									width={400}
-									height={200}
+									width={750}
+									height={375}
 									className={styles.heroLogo}
+									sizes="(max-width: 639px) 90vw, (max-width: 1024px) 50vw, 500px"
 									aria-hidden="true"
 									priority
 								/>
