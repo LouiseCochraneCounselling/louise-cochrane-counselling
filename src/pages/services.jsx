@@ -51,7 +51,7 @@ export default function Services() {
 									Your child might benefit from counselling if they're struggling with worries or anxiety, having trouble at school, experiencing friendship difficulties, or dealing with big changes like a family separation or moving house. Maybe they seem withdrawn, have angry outbursts, or are having trouble sleeping. Perhaps they're finding it hard to express how they're feeling, or you've noticed they're not quite themselves lately.
 								</p>
 								<p>
-									Sessions with children often involve play, drawing, stories, or activities, whatever helps them express themselves. It's not like adult counselling where we just talk. Your child might build something, play a game, or read a book together while we explore what's on their mind. The focus is always on the child's unique needs, working at their pace, and collaborating with families and schools where appropriate to create a supportive environment that fosters lasting, positive change.
+									Sessions with children often involve play, drawing, stories, or activities, whatever helps them express themselves. It's not like adult counselling where we just talk. Your child might build something, play a game, or read a book together while we explore what's on their mind. Each child's session always ends with a game or activity of their choice, helping them leave on a positive, regulated note and reinforcing that counselling is a supportive and enjoyable space. The focus is always on the child's unique needs, working at their pace, and collaborating with families and schools where appropriate to create a supportive environment that fosters lasting, positive change.
 								</p>
 							</div>
 						</section>

@@ -18,7 +18,7 @@
 .headerContainer {
 	max-width: 1200px;
 	margin: 0 auto;
-	padding: clamp(0.75rem, 2vw, 1.25rem) clamp(1.5rem, 3vw, 3rem);
+	padding: clamp(0.5rem, 1.5vw, 0.875rem) clamp(1.5rem, 3vw, 3rem);
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -413,15 +413,16 @@
 @media (min-width: 1025px) {
 	.headerContainer {
 		padding-left: clamp(0.5rem, 1.5vw, 1rem);
+		padding-right: clamp(1rem, 2vw, 2rem);
 	}
 
 	.logoSection {
-		width: 22%;
+		width: 15%;
 		margin-left: 0;
 	}
 
 	.menuSection {
-		width: 78%;
+		width: 85%;
 	}
 
 	.menuButton {
@@ -437,6 +438,7 @@
 		align-items: center;
 		justify-content: flex-end;
 		padding: 0;
+		margin-left: auto;
 		overflow: visible;
 	}
 

@@ -11,7 +11,7 @@ export default function Approach() {
 	return (
 		<>
 			<Head>
-				<title>My Journey & Approach - The Holding Space</title>
+				<title>My Journey and Approach - The Holding Space Jersey</title>
 				<meta
 					name="description"
 					content="Learn about my journey as a counsellor and my therapeutic approach to supporting your mental health and wellbeing."
@@ -36,7 +36,7 @@ export default function Approach() {
 					/>
 
 					<AnimatedSection delay={200} animation="slideInLeft">
-						<section className={styles.contentSection}>
+						<section id="my-journey-section" className={styles.contentSection}>
 							<h2>My Journey</h2>
 							<p>
 								With over eight years of experience, I have worked across a range of settings including schools, agencies, private practice, and international environments. My three years in Singapore, working in both private practice and an international school setting, have given me valuable insights into supporting clients from diverse cultural backgrounds and understanding the unique challenges faced by children, young people, and families in international or multicultural contexts.
@@ -45,7 +45,7 @@ export default function Approach() {
 					</AnimatedSection>
 
 					<AnimatedSection delay={300} animation="slideInRight">
-						<section className={styles.contentSection}>
+						<section id="my-approach-section" className={styles.contentSection}>
 							<h2>My Approach</h2>
 							<p>
 								My approach is collaborative, thoughtful, and tailored to the individual needs of each client. Working with me feels like having a conversation with someone who is genuinely interested in understanding your world. I won't give you advice or tell you what to do, instead, we'll explore together what's happening for you and what might help.

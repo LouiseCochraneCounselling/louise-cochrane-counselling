@@ -47,7 +47,6 @@ const Navigation = () => {
 				<div className={styles.logoSection}>
 					<Link href="/" className={styles.logoLink}>
 						<div className={styles.logoContainer}>
-							<span className={styles.logoText}>The Holding Space Jersey</span>
 						</div>
 					</Link>
 				</div>

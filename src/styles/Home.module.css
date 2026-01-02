@@ -790,6 +790,39 @@
 	font-weight: 400;
 }
 
+.whatToExpectContent {
+	display: flex;
+	flex-direction: column;
+	gap: clamp(2.5rem, 5vw, 3.5rem);
+	text-align: left;
+	margin-top: 2rem;
+}
+
+.expectSection {
+	display: flex;
+	flex-direction: column;
+}
+
+.expectSectionTitle {
+	font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+	font-weight: 600;
+	color: var(--color-text-dark);
+	margin-bottom: 1rem;
+	font-family: "Roboto", sans-serif;
+}
+
+.expectSectionText {
+	font-size: clamp(1rem, 2vw, 1.125rem);
+	line-height: 1.8;
+	color: var(--color-text-medium);
+	margin: 0 0 1rem 0;
+	font-weight: 400;
+}
+
+.expectSectionText:last-child {
+	margin-bottom: 0;
+}
+
 /* Common Concerns Section */
 .commonConcernsSection {
 	height: auto;

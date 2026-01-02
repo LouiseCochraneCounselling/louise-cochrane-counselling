@@ -7,6 +7,7 @@ import AnimatedHeading from "../components/AnimatedHeading";
 import AnimatedImage from "../components/AnimatedImage";
 import Typewriter from "../components/Typewriter";
 import ScrollCue from "../components/ScrollCue";
+import ExploreMoreButton from "../components/ExploreMoreButton";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
 
@@ -99,13 +100,17 @@ export default function Home() {
 							{/* All Links - Horizontal */}
 							<AnimatedSection delay={300} animation="fadeIn">
 								<div className={styles.aboutContentLinks}>
-									<Link href="/approach" className={styles.scrollToContactLink}>
+									<Link
+										href="/journey-approach"
+										className={styles.scrollToContactLink}>
 										<span className={styles.scrollToContactText}>
 											Click to read about my journey
 										</span>
 									</Link>
 									<span className={styles.linkSeparator}></span>
-									<Link href="/approach" className={styles.scrollToContactLink}>
+									<Link
+										href="/journey-approach#my-approach-section"
+										className={styles.scrollToContactLink}>
 										<span className={styles.scrollToContactText}>
 											Click to read about my approach
 										</span>
@@ -115,26 +120,7 @@ export default function Home() {
 						</div>
 					</div>
 					<AnimatedSection delay={500} animation="fadeIn">
-						<div className={styles.exploreMoreContainer}>
-							<a href="#services-section" className={styles.exploreMoreButton}>
-								<span className={styles.exploreMoreText}>Explore More</span>
-								<svg
-									className={styles.exploreMoreIcon}
-									width="24"
-									height="24"
-									viewBox="0 0 24 24"
-									fill="none"
-									xmlns="http://www.w3.org/2000/svg">
-									<path
-										d="M7 10L12 15L17 10"
-										stroke="currentColor"
-										strokeWidth="2"
-										strokeLinecap="round"
-										strokeLinejoin="round"
-									/>
-								</svg>
-							</a>
-						</div>
+						<ExploreMoreButton href="#is-counselling-right-for-me" />
 					</AnimatedSection>
 				</section>
 
@@ -142,52 +128,53 @@ export default function Home() {
 				<div className={styles.sectionDivider}></div>
 
 				{/* Is Counselling Right For Me Section */}
-				<section className={styles.counsellingReflectionSection}>
+
+				<section
+					className={styles.counsellingReflectionSection}
+					id="is-counselling-right-for-me">
 					<div className={styles.counsellingReflectionContainer}>
 						<AnimatedSection delay={0} animation="fadeIn">
-							<h3 className={styles.sectionTitleSmall}>IS COUNSELLING RIGHT FOR ME?</h3>
+							<h3 className={styles.sectionTitleSmall}>
+								IS COUNSELLING RIGHT FOR ME?
+							</h3>
 						</AnimatedSection>
 						<AnimatedSection delay={200} animation="fadeInUp">
 							<p className={styles.counsellingReflectionIntro}>
-								You might be wondering if counselling is right for you. There's no threshold you need to meet, if you're experiencing something difficult, counselling can help.
+								You might be wondering if counselling is right for you. There's
+								no threshold you need to meet, if you're experiencing something
+								difficult, counselling can help.
 							</p>
 						</AnimatedSection>
 						<AnimatedSection delay={300} animation="fadeInUp">
 							<div className={styles.reflectionPrompts}>
 								<ul className={styles.reflectionList}>
-									<li>Are you going through something that feels overwhelming?</li>
-									<li>Do you find yourself feeling stuck, repeating the same patterns?</li>
-									<li>Would it help to talk through something with someone outside your usual circles?</li>
-									<li>Are you curious about understanding yourself or your relationships better?</li>
+									<li>
+										Are you going through something that feels overwhelming?
+									</li>
+									<li>
+										Do you find yourself feeling stuck, repeating the same
+										patterns?
+									</li>
+									<li>
+										Would it help to talk through something with someone outside
+										your usual circles?
+									</li>
+									<li>
+										Are you curious about understanding yourself or your
+										relationships better?
+									</li>
 								</ul>
 							</div>
 						</AnimatedSection>
 						<AnimatedSection delay={400} animation="fadeInUp">
 							<p className={styles.counsellingReflectionConclusion}>
-								If any of these resonate, counselling might be worth exploring. The first session is a chance to see if it feels right, there's no commitment beyond that.
+								If any of these resonate, counselling might be worth exploring.
+								The first session is a chance to see if it feels right, there's
+								no commitment beyond that.
 							</p>
 						</AnimatedSection>
 						<AnimatedSection delay={500} animation="fadeIn">
-							<div className={styles.exploreMoreContainer}>
-								<a href="#services-section" className={styles.exploreMoreButton}>
-									<span className={styles.exploreMoreText}>Explore More</span>
-									<svg
-										className={styles.exploreMoreIcon}
-										width="24"
-										height="24"
-										viewBox="0 0 24 24"
-										fill="none"
-										xmlns="http://www.w3.org/2000/svg">
-										<path
-											d="M7 10L12 15L17 10"
-											stroke="currentColor"
-											strokeWidth="2"
-											strokeLinecap="round"
-											strokeLinejoin="round"
-										/>
-									</svg>
-								</a>
-							</div>
+							<ExploreMoreButton href="#services-section" />
 						</AnimatedSection>
 					</div>
 				</section>
@@ -245,9 +232,13 @@ export default function Home() {
 													animationStyle="style-1"
 													delay={index * 50}
 												/>
-												<h3 className={styles.serviceCardTitle}>{service.title}</h3>
+												<h3 className={styles.serviceCardTitle}>
+													{service.title}
+												</h3>
 												<div className={styles.serviceCardIndicator}>
-													<span className={styles.serviceCardIndicatorText}>View Details</span>
+													<span className={styles.serviceCardIndicatorText}>
+														View Details
+													</span>
 													<svg
 														className={styles.serviceCardIndicatorIcon}
 														width="20"
@@ -271,28 +262,7 @@ export default function Home() {
 							))}
 						</div>
 						<AnimatedSection delay={600} animation="fadeIn">
-							<div className={styles.exploreMoreContainer}>
-								<a
-									href="#booking-section"
-									className={styles.exploreMoreButton}>
-									<span className={styles.exploreMoreText}>Explore More</span>
-									<svg
-										className={styles.exploreMoreIcon}
-										width="24"
-										height="24"
-										viewBox="0 0 24 24"
-										fill="none"
-										xmlns="http://www.w3.org/2000/svg">
-										<path
-											d="M7 10L12 15L17 10"
-											stroke="currentColor"
-											strokeWidth="2"
-											strokeLinecap="round"
-											strokeLinejoin="round"
-										/>
-									</svg>
-								</a>
-							</div>
+							<ExploreMoreButton href="#what-to-expect-section" />
 						</AnimatedSection>
 					</div>
 				</section>
@@ -301,7 +271,9 @@ export default function Home() {
 				<div className={styles.sectionDivider}></div>
 
 				{/* What to Expect Section */}
-				<section id="what-to-expect-section" className={styles.whatToExpectSection}>
+				<section
+					id="what-to-expect-section"
+					className={styles.whatToExpectSection}>
 					<div className={styles.whatToExpectContainer}>
 						<AnimatedSection delay={0} animation="fadeIn">
 							<h3 className={styles.sectionTitleSmall}>WHAT TO EXPECT</h3>
@@ -309,61 +281,87 @@ export default function Home() {
 						<Typewriter
 							as="h2"
 							className={styles.whatToExpectTitle}
-							text="Your First Session"
+							text="What to Expect From Sessions"
 							speed={60}
 							delay={500}
 							showCursor={true}
 							loop={false}
 						/>
 						<AnimatedSection delay={200} animation="fadeInUp">
-							<div className={styles.expectSteps}>
-								<div className={styles.expectStep}>
-									<h4 className={styles.expectStepTitle}>Before the session</h4>
-									<p className={styles.expectStepText}>
-										You'll receive an email confirming the time and location. There's no need to prepare anything specific.
+							<div className={styles.whatToExpectContent}>
+								<div className={styles.expectSection}>
+									<h4 className={styles.expectSectionTitle}>Session Length</h4>
+									<p className={styles.expectSectionText}>
+										A counselling session is 50 minutes. For children, session
+										length is flexible and can be adjusted if needed, including
+										shorter sessions (such as around 30 minutes), depending on
+										the child's needs and capacity.
 									</p>
 								</div>
-								<div className={styles.expectStep}>
-									<h4 className={styles.expectStepTitle}>When you arrive</h4>
-									<p className={styles.expectStepText}>
-										You'll find a quiet, comfortable space. There's no receptionist, it's just the two of us, which helps create privacy.
+								<div className={styles.expectSection}>
+									<h4 className={styles.expectSectionTitle}>Session Frequency</h4>
+									<p className={styles.expectSectionText}>
+										Sessions are commonly held weekly, especially at the
+										beginning of therapy, as this helps build consistency and
+										momentum. That said, frequency is always flexible and can
+										change over time depending on individual needs, goals, and
+										circumstances.
 									</p>
 								</div>
-								<div className={styles.expectStep}>
-									<h4 className={styles.expectStepTitle}>The session itself</h4>
-									<p className={styles.expectStepText}>
-										The first session is different from ongoing sessions. I'll ask you what brings you here, what you're hoping for, and how you'd like to work together. You don't need to share everything immediately, we'll go at your pace.
+								<div className={styles.expectSection}>
+									<h4 className={styles.expectSectionTitle}>How Sessions Progress</h4>
+									<p className={styles.expectSectionText}>
+										Counselling is not a rigid or one-size-fits-all process.
+										Sessions are tailored to each individual, and we move at a
+										pace that feels safe and supportive for you (or your child).
+									</p>
+									<p className={styles.expectSectionText}>
+										In general, early sessions focus on getting to know each
+										other, building trust and a sense of safety, and
+										understanding what has brought you to counselling and what
+										you'd like support with.
+									</p>
+									<p className={styles.expectSectionText}>
+										As sessions continue, we work collaboratively to explore
+										thoughts, feelings, and experiences, develop understanding,
+										coping strategies, and emotional awareness, and support
+										positive change and growth in a way that feels manageable.
+										There is no fixed agenda — sessions are guided by what feels
+										most important to you at the time.
 									</p>
 								</div>
-								<div className={styles.expectStep}>
-									<h4 className={styles.expectStepTitle}>After the session</h4>
-									<p className={styles.expectStepText}>
-										There's no pressure to commit to more sessions. We'll discuss what felt helpful and whether continuing feels right for you.
+								<div className={styles.expectSection}>
+									<h4 className={styles.expectSectionTitle}>Working With Children</h4>
+									<p className={styles.expectSectionText}>
+										Sessions with children are designed to be engaging, creative,
+										and age-appropriate. Rather than relying solely on
+										conversation, sessions may include play-based activities,
+										games, books and stories, drawing, videos, or other creative
+										tools. These approaches help children explore and express
+										feelings in ways that feel natural and safe for them.
+									</p>
+									<p className={styles.expectSectionText}>
+										Each child's session always ends with a game or activity of
+										their choice, helping them leave on a positive, regulated
+										note and reinforcing that counselling is a supportive and
+										enjoyable space.
+									</p>
+								</div>
+								<div className={styles.expectSection}>
+									<h4 className={styles.expectSectionTitle}>Your First Session</h4>
+									<p className={styles.expectSectionText}>
+										The first session is a chance to get to know each other. I'll
+										ask you what brings you here, what you're hoping for, and
+										how you'd like to work together. You don't need to share
+										everything immediately, we'll go at your pace. There's no
+										pressure to commit to more sessions — we'll discuss what
+										felt helpful and whether continuing feels right for you.
 									</p>
 								</div>
 							</div>
 						</AnimatedSection>
 						<AnimatedSection delay={600} animation="fadeIn">
-							<div className={styles.exploreMoreContainer}>
-								<a href="#booking-section" className={styles.exploreMoreButton}>
-									<span className={styles.exploreMoreText}>Explore More</span>
-									<svg
-										className={styles.exploreMoreIcon}
-										width="24"
-										height="24"
-										viewBox="0 0 24 24"
-										fill="none"
-										xmlns="http://www.w3.org/2000/svg">
-										<path
-											d="M7 10L12 15L17 10"
-											stroke="currentColor"
-											strokeWidth="2"
-											strokeLinecap="round"
-											strokeLinejoin="round"
-										/>
-									</svg>
-								</a>
-							</div>
+							<ExploreMoreButton href="#common-concerns-section" />
 						</AnimatedSection>
 					</div>
 				</section>
@@ -372,7 +370,9 @@ export default function Home() {
 				<div className={styles.sectionDivider}></div>
 
 				{/* Common Concerns Section */}
-				<section id="common-concerns-section" className={styles.commonConcernsSection}>
+				<section
+					id="common-concerns-section"
+					className={styles.commonConcernsSection}>
 					<div className={styles.commonConcernsContainer}>
 						<AnimatedSection delay={0} animation="fadeIn">
 							<h3 className={styles.sectionTitleSmall}>COMMON CONCERNS</h3>
@@ -389,52 +389,63 @@ export default function Home() {
 						<AnimatedSection delay={200} animation="fadeInUp">
 							<div className={styles.concernsList}>
 								<div className={styles.concernItem}>
-									<h4 className={styles.concernQuestion}>What if I don't know what to say?</h4>
+									<h4 className={styles.concernQuestion}>
+										What if I don't know what to say?
+									</h4>
 									<p className={styles.concernAnswer}>
-										That's completely normal. Many people worry about this, but you don't need to have everything figured out. We'll start where you are, and I'll help guide the conversation. Sometimes silence is valuable too, we can sit with what's unsaid.
+										That's completely normal. Many people worry about this, but
+										you don't need to have everything figured out. We'll start
+										where you are, and I'll help guide the conversation.
+										Sometimes silence is valuable too, we can sit with what's
+										unsaid.
 									</p>
 								</div>
 								<div className={styles.concernItem}>
-									<h4 className={styles.concernQuestion}>What if I get emotional?</h4>
+									<h4 className={styles.concernQuestion}>
+										What if I get emotional?
+									</h4>
 									<p className={styles.concernAnswer}>
-										Being emotional in counselling is normal and welcome. This is a safe space for whatever you're feeling. I won't be uncomfortable or judgemental, emotions are part of what we're here to explore.
+										Being emotional in counselling is normal and welcome. This
+										is a safe space for whatever you're feeling. I won't be
+										uncomfortable or judgemental, emotions are part of what
+										we're here to explore.
 									</p>
 								</div>
 								<div className={styles.concernItem}>
-									<h4 className={styles.concernQuestion}>What if it doesn't help?</h4>
+									<h4 className={styles.concernQuestion}>
+										What if it doesn't help?
+									</h4>
 									<p className={styles.concernAnswer}>
-										That's a valid concern. Therapy is a collaborative process, and if something isn't working, we'll talk about it. Sometimes the approach needs to change, or it might be that another counsellor or type of support would be a better fit. The first session is a chance to see if we're a good match.
+										That's a valid concern. Therapy is a collaborative process,
+										and if something isn't working, we'll talk about it.
+										Sometimes the approach needs to change, or it might be that
+										another counsellor or type of support would be a better fit.
+										The first session is a chance to see if we're a good match.
 									</p>
 								</div>
 								<div className={styles.concernItem}>
-									<h4 className={styles.concernQuestion}>Will everything I say be confidential?</h4>
+									<h4 className={styles.concernQuestion}>
+										Will everything I say be confidential?
+									</h4>
 									<p className={styles.concernAnswer}>
-										Yes, everything we discuss is confidential. There are rare exceptions where I might need to share information, such as if there's a serious risk of harm, but I'll always aim to discuss this with you first. For children and young people, I'll explain confidentiality in an age-appropriate way. You can read more about this on our <Link href="/confidentiality" className={styles.concernLink}>confidentiality page</Link>.
+										Yes, everything we discuss is confidential. There are rare
+										exceptions where I might need to share information, such as
+										if there's a serious risk of harm, but I'll always aim to
+										discuss this with you first. For children and young people,
+										I'll explain confidentiality in an age-appropriate way. You
+										can read more about this on our{" "}
+										<Link
+											href="/confidentiality"
+											className={styles.concernLink}>
+											confidentiality page
+										</Link>
+										.
 									</p>
 								</div>
 							</div>
 						</AnimatedSection>
 						<AnimatedSection delay={600} animation="fadeIn">
-							<div className={styles.exploreMoreContainer}>
-								<a href="#booking-section" className={styles.exploreMoreButton}>
-									<span className={styles.exploreMoreText}>Explore More</span>
-									<svg
-										className={styles.exploreMoreIcon}
-										width="24"
-										height="24"
-										viewBox="0 0 24 24"
-										fill="none"
-										xmlns="http://www.w3.org/2000/svg">
-										<path
-											d="M7 10L12 15L17 10"
-											stroke="currentColor"
-											strokeWidth="2"
-											strokeLinecap="round"
-											strokeLinejoin="round"
-										/>
-									</svg>
-								</a>
-							</div>
+							<ExploreMoreButton href="#booking-section" />
 						</AnimatedSection>
 					</div>
 				</section>
@@ -446,26 +457,7 @@ export default function Home() {
 				<div id="booking-section" className={styles.bookingSectionWrapper}>
 					<BookingForm />
 					<AnimatedSection delay={400} animation="fadeIn">
-						<div className={styles.exploreMoreContainer}>
-							<a href="#" className={styles.exploreMoreButton}>
-								<span className={styles.exploreMoreText}>Back to Top</span>
-								<svg
-									className={styles.exploreMoreIcon}
-									width="24"
-									height="24"
-									viewBox="0 0 24 24"
-									fill="none"
-									xmlns="http://www.w3.org/2000/svg">
-									<path
-										d="M7 14L12 9L17 14"
-										stroke="currentColor"
-										strokeWidth="2"
-										strokeLinecap="round"
-										strokeLinejoin="round"
-									/>
-								</svg>
-							</a>
-						</div>
+						<ExploreMoreButton href="#" text="Back to Top" iconDirection="up" />
 					</AnimatedSection>
 				</div>
 			</main>
