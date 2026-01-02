@@ -415,6 +415,69 @@ export default function Home() {
 				{/* Section Divider */}
 				<div className={styles.sectionDivider}></div>
 
+				{/* Counselling Room Section */}
+				<section
+					id="counselling-room-section"
+					className={styles.counsellingRoomSection}>
+					<div className={styles.counsellingRoomContainer}>
+						<AnimatedSection delay={0} animation="fadeIn">
+							<h2 className={styles.sectionTitleSmall}>YOUR SAFE SPACE</h2>
+						</AnimatedSection>
+						<Typewriter
+							as="h2"
+							className={styles.counsellingRoomTitle}
+							text="A Welcoming and Comfortable Environment"
+							speed={60}
+							delay={500}
+							showCursor={true}
+							loop={false}
+						/>
+						<AnimatedSection delay={200} animation="fadeInUp">
+							<div className={styles.counsellingRoomContent}>
+								<div className={styles.counsellingRoomText}>
+									<p className={styles.counsellingRoomDescription}>
+										I understand that coming to counselling can feel daunting, especially if you're not sure what to expect. That's why I want you to see the space where our sessions will take place — a warm, comfortable, and private room designed to help you feel safe and at ease.
+									</p>
+									<p className={styles.counsellingRoomDescription}>
+										The counselling room is a calm and welcoming environment where you can feel free to be yourself. It's a space where you can share what's on your mind without judgment, explore your thoughts and feelings, and work towards positive change at your own pace.
+									</p>
+									<p className={styles.counsellingRoomDescription}>
+										Whether you're coming alone, with your child, or as a family, the room is set up to be flexible and accommodating to your needs. There's comfortable seating, natural light, and a peaceful atmosphere that helps create a sense of safety and trust.
+									</p>
+								</div>
+								<div className={styles.counsellingRoomImages}>
+									<AnimatedImage
+										src="/images/room.jpeg"
+										alt="Warm and cozy counselling room with comfortable sofa where two people can sit and have a conversation in a safe, welcoming environment"
+										className={styles.counsellingRoomImage}
+										animationStyle="style-1"
+										delay={300}
+										width={600}
+										height={400}
+										sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px"
+									/>
+									<AnimatedImage
+										src="/images/playArea.jpeg"
+										alt="Cozy therapy room with toys and games for children, creating a warm and welcoming play space"
+										className={styles.counsellingRoomImage}
+										animationStyle="style-1"
+										delay={400}
+										width={600}
+										height={400}
+										sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px"
+									/>
+								</div>
+							</div>
+						</AnimatedSection>
+						<AnimatedSection delay={600} animation="fadeIn">
+							<ExploreMoreButton href="#common-concerns-section" />
+						</AnimatedSection>
+					</div>
+				</section>
+
+				{/* Section Divider */}
+				<div className={styles.sectionDivider}></div>
+
 				{/* Common Concerns Section */}
 				<section
 					id="common-concerns-section"

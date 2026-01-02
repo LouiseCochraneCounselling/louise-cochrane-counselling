@@ -20,7 +20,7 @@ export default function Approach() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<Header />
-			<main className={styles.main}>
+			<main className={styles.main} id="main-content">
 				<div className={styles.container}>
 					<AnimatedSection delay={0} animation="fadeIn">
 						<h3 className={styles.sectionTitleSmall}>MY JOURNEY & APPROACH</h3>

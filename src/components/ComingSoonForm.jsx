@@ -82,6 +82,9 @@ const ComingSoonForm = () => {
 				className={styles.bookingForm}>
 				<div className={styles.formRow}>
 					<div className={styles.formGroup}>
+						<label htmlFor="name" className={styles.formLabel}>
+							Your Name <span aria-label="required">*</span>
+						</label>
 						<input
 							type="text"
 							id="name"
@@ -96,6 +99,9 @@ const ComingSoonForm = () => {
 						/>
 					</div>
 					<div className={styles.formGroup}>
+						<label htmlFor="phone" className={styles.formLabel}>
+							Phone <span className={styles.optionalLabel}>(optional)</span>
+						</label>
 						<input
 							type="tel"
 							id="phone"
@@ -111,6 +117,9 @@ const ComingSoonForm = () => {
 				</div>
 
 				<div className={styles.formGroup}>
+					<label htmlFor="email" className={styles.formLabel}>
+						E-mail Address <span aria-label="required">*</span>
+					</label>
 					<input
 						type="email"
 						id="email"
@@ -127,6 +136,9 @@ const ComingSoonForm = () => {
 				</div>
 
 				<div className={styles.formGroup}>
+					<label htmlFor="message" className={styles.formLabel}>
+						Message
+					</label>
 					<textarea
 						id="message"
 						name="message"

@@ -874,6 +874,79 @@
 }
 
 /* Common Concerns Section */
+.counsellingRoomSection {
+	height: auto;
+	min-height: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 5vw, 3rem);
+	background-color: var(--color-bg-mauve);
+	overflow: visible;
+}
+
+.counsellingRoomContainer {
+	max-width: 1200px;
+	margin: 0 auto;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.counsellingRoomSection .sectionTitleSmall {
+	margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.counsellingRoomTitle {
+	font-size: clamp(2rem, 4vw, 3rem);
+	text-align: center;
+	margin-bottom: clamp(3rem, 5vw, 4rem);
+	color: var(--color-text-dark);
+	font-weight: 300;
+	font-family: "Roboto", sans-serif;
+	line-height: 1.2;
+	letter-spacing: -0.02em;
+}
+
+.counsellingRoomContent {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: clamp(3rem, 5vw, 4rem);
+	align-items: center;
+	width: 100%;
+	margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.counsellingRoomText {
+	display: flex;
+	flex-direction: column;
+	gap: clamp(1.5rem, 3vw, 2rem);
+}
+
+.counsellingRoomDescription {
+	font-size: clamp(1rem, 2vw, 1.125rem);
+	line-height: 1.7;
+	color: var(--color-text-dark);
+	font-family: "Roboto", sans-serif;
+	margin: 0;
+}
+
+.counsellingRoomImages {
+	display: flex;
+	flex-direction: column;
+	gap: clamp(1.5rem, 3vw, 2rem);
+}
+
+.counsellingRoomImage {
+	width: 100%;
+	height: auto;
+	border-radius: clamp(8px, 1.5vw, 12px);
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+	object-fit: cover;
+}
+
 .commonConcernsSection {
 	height: auto;
 	min-height: auto;
@@ -1958,6 +2031,19 @@
 	.expectSteps {
 		grid-template-columns: 1fr;
 		gap: clamp(1.5rem, 4vw, 2rem);
+	}
+
+	.counsellingRoomSection {
+		padding: clamp(2.5rem, 5vw, 3rem) clamp(1rem, 4vw, 1.5rem);
+	}
+
+	.counsellingRoomContent {
+		grid-template-columns: 1fr;
+		gap: clamp(1.5rem, 3vw, 2rem);
+	}
+
+	.counsellingRoomImages {
+		order: -1;
 	}
 
 	.commonConcernsSection {

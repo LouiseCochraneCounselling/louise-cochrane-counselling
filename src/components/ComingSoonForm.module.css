@@ -49,6 +49,25 @@
   flex-direction: column;
 }
 
+.formLabel {
+  display: block;
+  font-size: clamp(0.875rem, 1.8vw, 1rem);
+  font-weight: 600;
+  color: var(--color-white);
+  margin-bottom: 0.5rem;
+  font-family: "Roboto", sans-serif;
+}
+
+.formLabel span[aria-label="required"] {
+  color: var(--color-accent);
+}
+
+.optionalLabel {
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.875em;
+}
+
 .formInput,
 .formTextarea {
   width: 100%;

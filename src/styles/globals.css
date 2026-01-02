@@ -200,11 +200,21 @@ button[class*="formButton"]:focus-visible {
 	text-decoration: none;
 	font-weight: 600;
 	font-size: 1rem;
-	transition: left 0.3s ease;
+	transition: left 0.3s ease, opacity 0.3s ease;
+	opacity: 0;
+	clip: rect(0, 0, 0, 0);
 }
 
 .skip-link:focus {
 	left: 1rem;
+	opacity: 1;
+	clip: auto;
+	outline: 2px solid var(--color-white);
+	outline-offset: 2px;
+}
+
+.skip-link:focus:not(:focus-visible) {
+	outline: none;
 }
 
 /* Smooth scrolling */

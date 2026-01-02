@@ -19,7 +19,7 @@ export default function BookingSuccess() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<Header />
-			<main className={styles.main}>
+			<main className={styles.main} id="main-content">
 				<div className={styles.container}>
 					<AnimatedSection delay={0} animation="fadeIn">
 						<div className={styles.successIcon}>

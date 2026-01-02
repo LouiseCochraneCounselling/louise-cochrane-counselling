@@ -17,7 +17,7 @@ export default function Contact() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<Header />
-			<main className={styles.main}>
+			<main className={styles.main} id="main-content">
 				<div className={styles.container}>
 					<BookingForm />
 				</div>
