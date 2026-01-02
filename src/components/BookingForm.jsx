@@ -17,12 +17,20 @@ const BookingForm = () => {
 	const [status, setStatus] = useState("");
 	const [showInfo, setShowInfo] = useState(false);
 	const [showConfidentiality, setShowConfidentiality] = useState(false);
+	const [fieldErrors, setFieldErrors] = useState({});
 
 	const handleChange = (e) => {
 		setFormData({
 			...formData,
 			[e.target.name]: e.target.value,
 		});
+		// Clear field error when user starts typing
+		if (fieldErrors[e.target.name]) {
+			setFieldErrors({
+				...fieldErrors,
+				[e.target.name]: undefined,
+			});
+		}
 	};
 
 	const handleSubmit = async (e) => {
@@ -40,10 +48,23 @@ const BookingForm = () => {
 		};
 
 		// Validate required fields
-		if (!formDataObj.name || !formDataObj.email) {
+		const errors = {};
+		if (!formDataObj.name || !formDataObj.name.trim()) {
+			errors.name = "First name is required";
+		}
+		if (!formDataObj.email || !formDataObj.email.trim()) {
+			errors.email = "Email address is required";
+		} else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formDataObj.email)) {
+			errors.email = "Please enter a valid email address";
+		}
+		
+		if (Object.keys(errors).length > 0) {
+			setFieldErrors(errors);
 			setStatus("error");
 			return;
 		}
+		
+		setFieldErrors({});
 
 		try {
 			// Submit to Next.js API route
@@ -56,17 +77,33 @@ const BookingForm = () => {
 			});
 
 			const result = await response.json();
+			
+			// Debug logging
+			console.log("API Response:", { status: response.status, ok: response.ok, result });
 
 			if (response.ok && result.success) {
 				form.reset();
 				setFormData({ name: "", phone: "", email: "", message: "" });
+				setFieldErrors({});
+				setStatus("");
 				// Redirect to success page
-				router.push("/booking-success");
+				try {
+					router.push("/booking-success");
+				} catch (routerError) {
+					// Fallback to window.location if router.push fails
+					console.error("Router push failed, using window.location:", routerError);
+					window.location.href = "/booking-success";
+				}
 			} else {
 				setStatus("error");
+				// Show specific error message from API if available
+				const errorMessage = result.message || "Sorry, there was an error sending your message. Please try again.";
+				setFieldErrors({ submit: errorMessage });
 			}
 		} catch (error) {
+			console.error("Form submission error:", error);
 			setStatus("error");
+			setFieldErrors({ submit: "Sorry, there was an error sending your message. Please try again." });
 		}
 	};
 
@@ -86,7 +123,21 @@ const BookingForm = () => {
 					name="booking"
 					method="POST"
 					onSubmit={handleSubmit}
-					className={styles.bookingForm}>
+					className={styles.bookingForm}
+					noValidate>
+					{/* Aria-live region for form errors */}
+					<div
+						role="alert"
+						aria-live="polite"
+						aria-atomic="true"
+						className="sr-only">
+						{Object.keys(fieldErrors).length > 0 && (
+							<span>
+								Form has errors: {Object.values(fieldErrors).join(". ")}
+							</span>
+						)}
+					</div>
+					
 					<div className={styles.formRow}>
 						<div className={styles.formGroup}>
 							<label htmlFor="name" className={styles.formLabel}>
@@ -103,7 +154,14 @@ const BookingForm = () => {
 								placeholder="First Name *"
 								autoComplete="name"
 								aria-required="true"
+								aria-invalid={fieldErrors.name ? "true" : "false"}
+								aria-errormessage={fieldErrors.name ? "name-error" : undefined}
 							/>
+							{fieldErrors.name && (
+								<span id="name-error" className={styles.fieldError} role="alert">
+									{fieldErrors.name}
+								</span>
+							)}
 						</div>
 						<div className={styles.formGroup}>
 							<label htmlFor="phone" className={styles.formLabel}>
@@ -139,7 +197,14 @@ const BookingForm = () => {
 							autoComplete="email"
 							inputMode="email"
 							aria-required="true"
+							aria-invalid={fieldErrors.email ? "true" : "false"}
+							aria-errormessage={fieldErrors.email ? "email-error" : undefined}
 						/>
+						{fieldErrors.email && (
+							<span id="email-error" className={styles.fieldError} role="alert">
+								{fieldErrors.email}
+							</span>
+						)}
 					</div>
 
 					<div className={styles.formGroup}>
@@ -251,9 +316,13 @@ const BookingForm = () => {
 						)}
 					</button>
 
-					{status === "error" && (
-						<p className={`${styles.formMessage} ${styles.error}`}>
-							Sorry, there was an error sending your message. Please try again.
+					{fieldErrors.submit && (
+						<p 
+							id="submit-error"
+							className={`${styles.formMessage} ${styles.error}`}
+							role="alert"
+							aria-live="polite">
+							{fieldErrors.submit}
 						</p>
 					)}
 				</form>

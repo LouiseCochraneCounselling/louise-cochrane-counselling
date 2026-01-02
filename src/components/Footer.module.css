@@ -67,8 +67,17 @@
 	line-height: 1.6;
 }
 
-.quickLink:hover,
-.quickLink:focus {
+.quickLink:hover {
+	color: var(--color-text-dark);
+	text-decoration: underline;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 3px;
+}
+
+.quickLink:focus,
+.quickLink:focus-visible {
+	outline: 2px solid var(--color-primary);
+	outline-offset: 2px;
 	color: var(--color-text-dark);
 	text-decoration: underline;
 	text-decoration-thickness: 1px;

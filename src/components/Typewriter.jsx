@@ -20,10 +20,33 @@ const Typewriter = ({
 	const [hasStarted, setHasStarted] = useState(false);
 	const [isTyping, setIsTyping] = useState(true);
 	const [isInView, setIsInView] = useState(false);
+	const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 	const elementRef = useRef(null);
+	const liveRegionRef = useRef(null);
 
 	useEffect(() => {
 		setIsMounted(true);
+		
+		// Check for prefers-reduced-motion
+		if (typeof window !== "undefined") {
+			const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+			setPrefersReducedMotion(mediaQuery.matches);
+			
+			const handleChange = (e) => {
+				setPrefersReducedMotion(e.matches);
+			};
+			
+			// Modern browsers
+			if (mediaQuery.addEventListener) {
+				mediaQuery.addEventListener("change", handleChange);
+				return () => mediaQuery.removeEventListener("change", handleChange);
+			}
+			// Legacy browsers
+			else if (mediaQuery.addListener) {
+				mediaQuery.addListener(handleChange);
+				return () => mediaQuery.removeListener(handleChange);
+			}
+		}
 	}, []);
 
 	// Intersection Observer to detect when element is in view
@@ -87,6 +110,11 @@ const Typewriter = ({
 			if (onComplete) {
 				onComplete();
 			}
+			
+			// Announce completion to screen readers
+			if (liveRegionRef.current) {
+				liveRegionRef.current.textContent = text;
+			}
 
 			// If looping and still in view, reset after delay
 			if (loop && isInView) {
@@ -106,11 +134,20 @@ const Typewriter = ({
 		return <Component className={className}>{text}</Component>;
 	}
 
+	// If user prefers reduced motion, show full text immediately
+	const shouldAnimate = !prefersReducedMotion && isInView && hasStarted;
+	const visibleText = shouldAnimate ? displayedText : text;
+
 	return (
 		<Component className={className}>
-			<span ref={elementRef} style={{ display: 'inline-block' }}>
-				{displayedText}
-				{showCursor && (
+			{/* Full text available immediately for screen readers */}
+			<span className="sr-only" aria-live="polite" ref={liveRegionRef}>
+				{text}
+			</span>
+			{/* Visual animation */}
+			<span ref={elementRef} style={{ display: 'inline-block' }} aria-hidden="true">
+				{visibleText}
+				{showCursor && shouldAnimate && (
 					<span className={styles.cursor} aria-hidden="true">
 						|
 					</span>

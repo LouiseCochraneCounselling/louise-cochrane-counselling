@@ -73,7 +73,8 @@
 
 .formInput:focus,
 .formTextarea:focus {
-  outline: none;
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
   border-color: var(--color-primary);
   box-shadow: 0 0 0 3px rgba(91, 107, 140, 0.2);
   background-color: var(--color-white);

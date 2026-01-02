@@ -179,8 +179,14 @@
 }
 
 .navLink:hover,
-.navLink:focus,
 .navLink:active {
+	color: var(--color-accent);
+}
+
+.navLink:focus,
+.navLink:focus-visible {
+	outline: 2px solid var(--color-primary);
+	outline-offset: 2px;
 	color: var(--color-accent);
 }
 

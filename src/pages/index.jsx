@@ -6,6 +6,7 @@ import BookingForm from "../components/BookingForm";
 import AnimatedSection from "../components/AnimatedSection";
 import AnimatedHeading from "../components/AnimatedHeading";
 import AnimatedImage from "../components/AnimatedImage";
+import Image from "next/image";
 import Typewriter from "../components/Typewriter";
 import ScrollCue from "../components/ScrollCue";
 import ExploreMoreButton from "../components/ExploreMoreButton";
@@ -63,10 +64,14 @@ export default function Home() {
 					<div className={styles.heroContainer}>
 						<div className={styles.heroContent}>
 							<div className={styles.heroLogoWrapper}>
-								<img
+								<Image
 									src="/images/logo.svg"
 									alt="The Holding Space Jersey"
+									width={400}
+									height={200}
 									className={styles.heroLogo}
+									aria-hidden="true"
+									priority
 								/>
 							</div>
 							<ScrollCue />
@@ -90,11 +95,14 @@ export default function Home() {
 								className={styles.aboutMainImage}
 								animationStyle="style-1"
 								delay={0}
+								width={480}
+								height={540}
+								sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 480px"
 							/>
 						</div>
 						<div className={styles.aboutContent}>
 							<AnimatedSection delay={0} animation="fadeIn">
-								<h3 className={styles.sectionTitleSmall}>ABOUT ME</h3>
+								<h2 className={styles.sectionTitleSmall}>ABOUT ME</h2>
 							</AnimatedSection>
 							<Typewriter
 								as="h2"
@@ -161,9 +169,9 @@ export default function Home() {
 					id="is-counselling-right-for-me">
 					<div className={styles.counsellingReflectionContainer}>
 						<AnimatedSection delay={0} animation="fadeIn">
-							<h3 className={styles.sectionTitleSmall}>
+							<h2 className={styles.sectionTitleSmall}>
 								IS COUNSELLING RIGHT FOR ME?
-							</h3>
+							</h2>
 						</AnimatedSection>
 						<AnimatedSection delay={200} animation="fadeInUp">
 							<p className={styles.counsellingReflectionIntro}>
@@ -214,7 +222,7 @@ export default function Home() {
 					<div className={styles.servicesContainer}>
 						<div className={styles.servicesHeader}>
 							<AnimatedSection delay={0} animation="fadeIn">
-								<h3 className={styles.sectionTitleSmall}>SERVICES I OFFER</h3>
+								<h2 className={styles.sectionTitleSmall}>SERVICES I OFFER</h2>
 							</AnimatedSection>
 							<Typewriter
 								as="h2"
@@ -246,7 +254,7 @@ export default function Home() {
 							].map((service, index) => (
 								<AnimatedSection key={index} delay={index * 100}>
 									<div className={styles.serviceItemWrapper}>
-										<h2 className={styles.serviceItemTitle}>{service.title}</h2>
+										<h3 className={styles.serviceItemTitle}>{service.title}</h3>
 										<Link
 											href={service.link}
 											className={styles.serviceItemLink}
@@ -258,10 +266,13 @@ export default function Home() {
 													className={styles.serviceImage}
 													animationStyle="style-1"
 													delay={index * 50}
+													width={600}
+													height={400}
+													sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
 												/>
-												<h3 className={styles.serviceCardTitle}>
+												<h4 className={styles.serviceCardTitle}>
 													{service.title}
-												</h3>
+												</h4>
 												<div className={styles.serviceCardIndicator}>
 													<span className={styles.serviceCardIndicatorText}>
 														View Details
@@ -303,7 +314,7 @@ export default function Home() {
 					className={styles.whatToExpectSection}>
 					<div className={styles.whatToExpectContainer}>
 						<AnimatedSection delay={0} animation="fadeIn">
-							<h3 className={styles.sectionTitleSmall}>WHAT TO EXPECT</h3>
+							<h2 className={styles.sectionTitleSmall}>WHAT TO EXPECT</h2>
 						</AnimatedSection>
 						<Typewriter
 							as="h2"
@@ -410,7 +421,7 @@ export default function Home() {
 					className={styles.commonConcernsSection}>
 					<div className={styles.commonConcernsContainer}>
 						<AnimatedSection delay={0} animation="fadeIn">
-							<h3 className={styles.sectionTitleSmall}>COMMON CONCERNS</h3>
+							<h2 className={styles.sectionTitleSmall}>COMMON CONCERNS</h2>
 						</AnimatedSection>
 						<Typewriter
 							as="h2"

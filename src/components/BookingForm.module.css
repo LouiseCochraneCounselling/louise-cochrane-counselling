@@ -134,7 +134,8 @@
 
 .formInput:focus,
 .formTextarea:focus {
-  outline: none;
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
   border-color: var(--color-primary);
   box-shadow: 0 0 0 3px rgba(91, 107, 140, 0.1);
 }
@@ -158,6 +159,14 @@
 .characterCounterWarning {
   color: #dc2626;
   font-weight: 600;
+}
+
+.fieldError {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: #dc2626;
+  font-weight: 500;
 }
 
 .submitButton {
@@ -192,6 +201,12 @@
 .submitButton:disabled {
   opacity: 0.7;
   cursor: not-allowed;
+}
+
+.submitButton:focus,
+.submitButton:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 2px;
 }
 
 .spinner {
@@ -270,8 +285,10 @@
   border-color: rgba(91, 107, 140, 0.25);
 }
 
-.infoToggle:focus {
-  outline: none;
+.infoToggle:focus,
+.infoToggle:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
   box-shadow: 0 0 0 3px rgba(91, 107, 140, 0.1);
 }
 
@@ -325,8 +342,15 @@
   transition: color 0.2s ease;
 }
 
-.infoLink:hover,
-.infoLink:focus {
+.infoLink:hover {
+  color: var(--color-text-dark);
+  text-decoration-thickness: 2px;
+}
+
+.infoLink:focus,
+.infoLink:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
   color: var(--color-text-dark);
   text-decoration-thickness: 2px;
 }
@@ -389,15 +413,63 @@
   }
 
   .bookingForm {
-    padding: clamp(1.5rem, 3vw, 2rem);
+    padding: clamp(1.5rem, 4vw, 2rem);
+    gap: 1.25rem;
+  }
+
+  .formInput,
+  .formTextarea {
+    font-size: 16px; /* Prevents zoom on iOS */
+    padding: clamp(0.75rem, 2vw, 0.875rem);
+  }
+
+  .formButton {
+    padding: clamp(0.875rem, 2.5vw, 1rem) clamp(1.5rem, 4vw, 2rem);
+    font-size: clamp(0.875rem, 2vw, 1rem);
+  }
+}
+
+/* Extra Small Mobile (up to 320px) - Ensure readability */
+@media (max-width: 320px) {
+  .bookingSection {
+    padding: clamp(1.5rem, 4vw, 2rem) clamp(0.75rem, 2vw, 1rem);
+  }
+
+  .content {
+    gap: clamp(1.5rem, 4vw, 2rem);
+    padding: 0 clamp(0.75rem, 2vw, 1rem);
+  }
+
+  .bookingForm {
+    padding: clamp(1.25rem, 3vw, 1.5rem);
+    gap: 1rem;
+  }
+
+  .formLabel {
+    font-size: 0.875rem;
+    margin-bottom: 0.375rem;
+  }
+
+  .formInput,
+  .formTextarea {
+    font-size: 16px; /* Prevents zoom on iOS */
+    padding: 0.75rem;
+    min-height: 44px; /* Touch target size */
+  }
+
+  .formButton {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.875rem;
+    min-height: 44px; /* Touch target size */
+    width: 100%;
   }
 
   .mainHeading {
-    font-size: clamp(2rem, 7vw, 2.5rem);
+    font-size: clamp(1.75rem, 8vw, 2.25rem);
   }
 
   .subheading {
-    font-size: clamp(0.75rem, 3vw, 0.875rem);
+    font-size: 0.75rem;
   }
 }
 

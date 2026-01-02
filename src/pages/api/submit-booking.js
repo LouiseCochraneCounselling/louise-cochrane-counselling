@@ -3,20 +3,214 @@ import { Resend } from "resend";
 // Initialize Resend API
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+/**
+ * Simple in-memory rate limiter for serverless environments
+ * Tracks requests per IP address within a time window
+ */
+const rateLimitStore = new Map();
+
+/**
+ * Rate limit configuration
+ * Max 5 submissions per IP per 15 minutes
+ */
+const RATE_LIMIT_MAX_REQUESTS = 5;
+const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000; // 15 minutes
+
+/**
+ * Get client IP address from request
+ * @param {object} req - Next.js request object
+ * @returns {string} - Client IP address
+ */
+function getClientIP(req) {
+	// Check various headers for IP (Vercel, Cloudflare, etc.)
+	const forwarded = req.headers["x-forwarded-for"];
+	if (forwarded) {
+		return forwarded.split(",")[0].trim();
+	}
+	const realIP = req.headers["x-real-ip"];
+	if (realIP) {
+		return realIP;
+	}
+	const cfConnectingIP = req.headers["cf-connecting-ip"];
+	if (cfConnectingIP) {
+		return cfConnectingIP;
+	}
+	// Fallback to connection remote address
+	return req.socket?.remoteAddress || "unknown";
+}
+
+/**
+ * Check if IP address has exceeded rate limit
+ * @param {string} ip - Client IP address
+ * @returns {object} - { allowed: boolean, remaining: number, resetTime: number }
+ */
+function checkRateLimit(ip) {
+	const now = Date.now();
+	const ipData = rateLimitStore.get(ip);
+
+	// Clean up old entries periodically (every 100 requests)
+	if (Math.random() < 0.01) {
+		for (const [key, value] of rateLimitStore.entries()) {
+			if (now - value.firstRequest > RATE_LIMIT_WINDOW_MS) {
+				rateLimitStore.delete(key);
+			}
+		}
+	}
+
+	if (!ipData) {
+		// First request from this IP
+		rateLimitStore.set(ip, {
+			count: 1,
+			firstRequest: now,
+		});
+		return {
+			allowed: true,
+			remaining: RATE_LIMIT_MAX_REQUESTS - 1,
+			resetTime: now + RATE_LIMIT_WINDOW_MS,
+		};
+	}
+
+	// Check if window has expired
+	if (now - ipData.firstRequest > RATE_LIMIT_WINDOW_MS) {
+		// Reset window
+		rateLimitStore.set(ip, {
+			count: 1,
+			firstRequest: now,
+		});
+		return {
+			allowed: true,
+			remaining: RATE_LIMIT_MAX_REQUESTS - 1,
+			resetTime: now + RATE_LIMIT_WINDOW_MS,
+		};
+	}
+
+	// Check if limit exceeded
+	if (ipData.count >= RATE_LIMIT_MAX_REQUESTS) {
+		const resetTime = ipData.firstRequest + RATE_LIMIT_WINDOW_MS;
+		return {
+			allowed: false,
+			remaining: 0,
+			resetTime: resetTime,
+		};
+	}
+
+	// Increment count
+	ipData.count++;
+	rateLimitStore.set(ip, ipData);
+
+	return {
+		allowed: true,
+		remaining: RATE_LIMIT_MAX_REQUESTS - ipData.count,
+		resetTime: ipData.firstRequest + RATE_LIMIT_WINDOW_MS,
+	};
+}
+
+/**
+ * Escape HTML special characters to prevent XSS attacks
+ * @param {string} str - String to escape
+ * @returns {string} - Escaped string
+ */
+function escapeHtml(str) {
+	if (typeof str !== "string") return "";
+	const map = {
+		"&": "&amp;",
+		"<": "&lt;",
+		">": "&gt;",
+		'"': "&quot;",
+		"'": "&#x27;",
+		"/": "&#x2F;",
+	};
+	return str.replace(/[&<>"'/]/g, (s) => map[s]);
+}
+
+/**
+ * Sanitize string for use in email subject line
+ * Removes newlines and limits length
+ * @param {string} str - String to sanitize
+ * @param {number} maxLength - Maximum length (default: 100)
+ * @returns {string} - Sanitized string
+ */
+function sanitizeSubject(str, maxLength = 100) {
+	if (typeof str !== "string") return "";
+	return str
+		.replace(/[\r\n]/g, " ")
+		.replace(/\s+/g, " ")
+		.trim()
+		.substring(0, maxLength);
+}
+
+/**
+ * Sanitize and escape message text for HTML email
+ * Converts newlines to <br> tags after escaping HTML
+ * @param {string} str - Message text
+ * @returns {string} - Sanitized HTML string
+ */
+function sanitizeMessage(str) {
+	if (typeof str !== "string") return "";
+	const escaped = escapeHtml(str);
+	return escaped.replace(/\n/g, "<br>");
+}
+
 export default async function handler(req, res) {
 	// Only allow POST requests
 	if (req.method !== "POST") {
 		return res.status(405).json({ message: "Method not allowed" });
 	}
 
+	// Rate limiting check
+	const clientIP = getClientIP(req);
+	const rateLimit = checkRateLimit(clientIP);
+
+	if (!rateLimit.allowed) {
+		const resetTimeSeconds = Math.ceil(
+			(rateLimit.resetTime - Date.now()) / 1000
+		);
+		return res.status(429).json({
+			message: `Too many requests. Please try again in ${resetTimeSeconds} seconds.`,
+			error: "rate_limit_exceeded",
+			retryAfter: resetTimeSeconds,
+		});
+	}
+
+	// Set rate limit headers
+	res.setHeader("X-RateLimit-Limit", RATE_LIMIT_MAX_REQUESTS);
+	res.setHeader("X-RateLimit-Remaining", rateLimit.remaining);
+	res.setHeader(
+		"X-RateLimit-Reset",
+		Math.ceil(rateLimit.resetTime / 1000)
+	);
+
 	try {
 		// Get form data from request body
-		const { name, email, phone, message } = req.body;
+		let { name, email, phone, message } = req.body;
 
 		// Validate required fields
 		if (!name || !email) {
 			return res.status(400).json({
 				message: "Name and email are required",
+				error: "validation_error",
+			});
+		}
+
+		// Sanitize all input
+		name = String(name || "").trim();
+		email = String(email || "").trim();
+		phone = phone ? String(phone).trim() : "";
+		message = message ? String(message).trim() : "";
+
+		// Additional validation after sanitization
+		if (!name || !email) {
+			return res.status(400).json({
+				message: "Name and email are required",
+				error: "validation_error",
+			});
+		}
+
+		// Basic email format validation
+		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		if (!emailRegex.test(email)) {
+			return res.status(400).json({
+				message: "Invalid email format",
 				error: "validation_error",
 			});
 		}
@@ -33,13 +227,9 @@ export default async function handler(req, res) {
 		}
 
 		// Get recipient email from environment variable
-		const recipientEmail = process.env.CONTACT_EMAIL;
-
-		// Get sender email (should be verified in Resend)
-		const senderEmail =
-			process.env.RESEND_FROM_EMAIL || "hello@theholdingspacejersey.co.uk";
-
-		if (!recipientEmail) {
+		// Sanitize to prevent header injection
+		const rawRecipientEmail = process.env.CONTACT_EMAIL;
+		if (!rawRecipientEmail) {
 			console.error(
 				"[API Error] CONTACT_EMAIL environment variable is not configured"
 			);
@@ -58,6 +248,20 @@ export default async function handler(req, res) {
 					"CONTACT_EMAIL is missing. Please set it in Vercel environment variables.",
 			});
 		}
+		// Remove any newlines, carriage returns, or other control characters
+		const recipientEmail = String(rawRecipientEmail)
+			.replace(/[\r\n]/g, "")
+			.trim();
+
+		// Get sender email (should be verified in Resend)
+		// Sanitize to prevent header injection
+		const rawSenderEmail =
+			process.env.RESEND_FROM_EMAIL || "hello@theholdingspacejersey.co.uk";
+		// Remove any newlines, carriage returns, or other control characters
+		const senderEmail = String(rawSenderEmail)
+			.replace(/[\r\n]/g, "")
+			.trim();
+
 
 		// Log configuration status (without sensitive data)
 		console.log("[API Info] Email configuration:", {
@@ -66,8 +270,15 @@ export default async function handler(req, res) {
 			hasResendKey: !!process.env.RESEND_API_KEY,
 		});
 
+		// Sanitize inputs for email
+		const sanitizedName = escapeHtml(name);
+		const sanitizedEmail = escapeHtml(email);
+		const sanitizedPhone = phone ? escapeHtml(phone) : "";
+		const sanitizedMessage = message ? sanitizeMessage(message) : "";
+		const sanitizedSubject = sanitizeSubject(name);
+
 		// Format the email content
-		const emailSubject = `New Booking Enquiry from ${name}`;
+		const emailSubject = `New Booking Enquiry from ${sanitizedSubject}`;
 		const emailHtml = `
 			<!DOCTYPE html>
 			<html>
@@ -92,28 +303,28 @@ export default async function handler(req, res) {
 					<div class="content">
 						<div class="field">
 							<div class="label">Name:</div>
-							<div class="value">${name}</div>
+							<div class="value">${sanitizedName}</div>
 						</div>
 						<div class="field">
 							<div class="label">Email:</div>
-							<div class="value">${email}</div>
+							<div class="value">${sanitizedEmail}</div>
 						</div>
 						${
-							phone
+							sanitizedPhone
 								? `
 						<div class="field">
 							<div class="label">Phone:</div>
-							<div class="value">${phone}</div>
+							<div class="value">${sanitizedPhone}</div>
 						</div>
 						`
 								: ""
 						}
 						${
-							message
+							sanitizedMessage
 								? `
 						<div class="field">
 							<div class="label">Message:</div>
-							<div class="value">${message.replace(/\n/g, "<br>")}</div>
+							<div class="value">${sanitizedMessage}</div>
 						</div>
 						`
 								: ""
@@ -146,10 +357,16 @@ Submitted at: ${new Date().toLocaleString("en-GB", {
 
 		// Send email using Resend
 		try {
+			// Validate email format for replyTo to prevent injection
+			const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+			const replyToEmail = emailRegex.test(sanitizedEmail)
+				? sanitizedEmail
+				: senderEmail; // Fallback to sender if invalid
+
 			const data = await resend.emails.send({
 				from: `The Holding Space Jersey <${senderEmail}>`,
 				to: [recipientEmail],
-				replyTo: email,
+				replyTo: replyToEmail,
 				subject: emailSubject,
 				html: emailHtml,
 				text: emailText,
