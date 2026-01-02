@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useEffect } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import BookingForm from "../components/BookingForm";
@@ -12,6 +13,32 @@ import styles from "../styles/Home.module.css";
 import Link from "next/link";
 
 export default function Home() {
+	// Ensure page always starts at top on page refresh, regardless of hash in URL
+	useEffect(() => {
+		if (typeof window === 'undefined') return;
+		
+		// On component mount (page load/refresh), ensure we're at #home
+		// The _document.jsx script handles the initial scroll, this is a backup
+		if (window.location.hash && window.location.hash !== '#home') {
+			window.history.replaceState(null, '', '#home');
+		}
+		
+		// Scroll to #home section (top of page) as backup
+		const homeSection = document.getElementById('home');
+		if (homeSection) {
+			setTimeout(() => {
+				homeSection.scrollIntoView({ behavior: 'instant', block: 'start' });
+			}, 10);
+		} else {
+			window.scrollTo(0, 0);
+		}
+		
+		// Disable scroll restoration for this page load
+		if ('scrollRestoration' in window.history) {
+			window.history.scrollRestoration = 'manual';
+		}
+	}, []);
+
 	return (
 		<>
 			<Head>
@@ -28,7 +55,7 @@ export default function Home() {
 			<Header />
 			<main className={styles.main} id="main-content">
 				{/* Hero Section */}
-				<section className={styles.heroSection}>
+				<section id="home" className={styles.heroSection}>
 					<h1 className={styles.visuallyHidden}>
 						The Holding Space Jersey - Professional Counselling Services
 					</h1>
@@ -58,7 +85,7 @@ export default function Home() {
 					<div className={styles.aboutContainer}>
 						<div className={styles.aboutImages}>
 							<AnimatedImage
-								src="/images/me.jpg"
+								src="/images/me.jpeg"
 								alt="About me"
 								className={styles.aboutMainImage}
 								animationStyle="style-1"
@@ -299,7 +326,9 @@ export default function Home() {
 									</p>
 								</div>
 								<div className={styles.expectSection}>
-									<h4 className={styles.expectSectionTitle}>Session Frequency</h4>
+									<h4 className={styles.expectSectionTitle}>
+										Session Frequency
+									</h4>
 									<p className={styles.expectSectionText}>
 										Sessions are commonly held weekly, especially at the
 										beginning of therapy, as this helps build consistency and
@@ -309,7 +338,9 @@ export default function Home() {
 									</p>
 								</div>
 								<div className={styles.expectSection}>
-									<h4 className={styles.expectSectionTitle}>How Sessions Progress</h4>
+									<h4 className={styles.expectSectionTitle}>
+										How Sessions Progress
+									</h4>
 									<p className={styles.expectSectionText}>
 										Counselling is not a rigid or one-size-fits-all process.
 										Sessions are tailored to each individual, and we move at a
@@ -331,10 +362,12 @@ export default function Home() {
 									</p>
 								</div>
 								<div className={styles.expectSection}>
-									<h4 className={styles.expectSectionTitle}>Working With Children</h4>
+									<h4 className={styles.expectSectionTitle}>
+										Working With Children
+									</h4>
 									<p className={styles.expectSectionText}>
-										Sessions with children are designed to be engaging, creative,
-										and age-appropriate. Rather than relying solely on
+										Sessions with children are designed to be engaging,
+										creative, and age-appropriate. Rather than relying solely on
 										conversation, sessions may include play-based activities,
 										games, books and stories, drawing, videos, or other creative
 										tools. These approaches help children explore and express
@@ -348,11 +381,13 @@ export default function Home() {
 									</p>
 								</div>
 								<div className={styles.expectSection}>
-									<h4 className={styles.expectSectionTitle}>Your First Session</h4>
+									<h4 className={styles.expectSectionTitle}>
+										Your First Session
+									</h4>
 									<p className={styles.expectSectionText}>
-										The first session is a chance to get to know each other. I'll
-										ask you what brings you here, what you're hoping for, and
-										how you'd like to work together. You don't need to share
+										The first session is a chance to get to know each other.
+										I'll ask you what brings you here, what you're hoping for,
+										and how you'd like to work together. You don't need to share
 										everything immediately, we'll go at your pace. There's no
 										pressure to commit to more sessions — we'll discuss what
 										felt helpful and whether continuing feels right for you.
@@ -457,7 +492,7 @@ export default function Home() {
 				<div id="booking-section" className={styles.bookingSectionWrapper}>
 					<BookingForm />
 					<AnimatedSection delay={400} animation="fadeIn">
-						<ExploreMoreButton href="#" text="Back to Top" iconDirection="up" />
+						<ExploreMoreButton href="#home" text="Back to Top" iconDirection="up" />
 					</AnimatedSection>
 				</div>
 			</main>
