@@ -39,7 +39,7 @@
 }
 
 .serviceCard {
-	background-color: #D5D0D5;
+	background-color: var(--color-header-dark);
 	border-radius: 12px;
 	padding: clamp(2rem, 4vw, 3rem);
 	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);

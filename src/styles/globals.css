@@ -44,14 +44,15 @@ body {
 	--color-text-light: #718096;
 	--color-bg-light: #f7f8fa;
 	--color-bg-warm: #fafbfc;
-	--color-bg-mauve: #d7ced2;
+	--color-bg-mauve: #e8dde3;
 	--color-white: #ffffff;
 	--color-border: #e2e8f0;
 	--color-purple: #5b6b8c;
 	--color-teal: #6b8c9d;
 	--color-pink: #7c8ba3;
 	--color-card-bg: #D5D0D5;
-	--color-header-dark: #d7ced2;
+	--color-header-dark: #d2c5cc;
+	--color-form-bg: #d1c6cb;
 
 	/* Spacing Scale */
 	--spacing-xs: 0.5rem;      /* 8px */

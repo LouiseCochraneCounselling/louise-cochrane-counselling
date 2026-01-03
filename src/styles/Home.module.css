@@ -31,8 +31,8 @@
 	padding-bottom: clamp(8rem, 12vw, 10rem);
 	padding-top: clamp(80px, 12vh, 120px);
 	margin-top: 0;
-	background-color: #d7ced2 !important;
-	background: #d7ced2 !important;
+	background-color: var(--color-bg-mauve) !important;
+	background: var(--color-bg-mauve) !important;
 	scroll-snap-align: start;
 	scroll-snap-stop: always;
 }
@@ -43,8 +43,8 @@
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: #d7ced2 !important;
-	background: #d7ced2 !important;
+	background-color: var(--color-bg-mauve) !important;
+	background: var(--color-bg-mauve) !important;
 	z-index: 1;
 	pointer-events: none;
 }
@@ -73,13 +73,13 @@
 	align-items: center;
 	justify-content: center;
 	width: 100%;
-	background-color: #d7ced2 !important;
+	background-color: var(--color-bg-mauve) !important;
 	padding-top: 0;
 }
 
 .heroLogoWrapper {
-	background-color: #d7ced2 !important;
-	background: #d7ced2 !important;
+	background-color: var(--color-bg-mauve) !important;
+	background: var(--color-bg-mauve) !important;
 	display: inline-block;
 	padding: 0;
 	padding-top: 0;
@@ -158,7 +158,7 @@
 		margin-top: clamp(3rem, 6vw, 5rem);
 		margin-bottom: clamp(2rem, 4vw, 3rem);
 	}
-	
+
 	.heroLogoWrapper > span {
 		width: 100% !important;
 		height: auto !important;
@@ -166,7 +166,7 @@
 		max-height: none !important;
 		display: block !important;
 	}
-	
+
 	.heroLogo,
 	.heroLogoWrapper img,
 	.heroLogoWrapper .heroLogo,
@@ -755,9 +755,9 @@
 	background: linear-gradient(
 		to right,
 		transparent,
-		rgba(0, 0, 0, 0.15) 20%,
-		rgba(0, 0, 0, 0.25) 50%,
-		rgba(0, 0, 0, 0.15) 80%,
+		var(--color-header-dark) 20%,
+		var(--color-header-dark) 50%,
+		var(--color-header-dark) 80%,
 		transparent
 	);
 	padding-top: clamp(2rem, 4vw, 3rem);
@@ -1061,7 +1061,7 @@
 }
 
 .concernItem {
-	background-color: #D5D0D5;
+	background-color: var(--color-header-dark);
 	border-radius: 12px;
 	padding: clamp(2rem, 4vw, 2.5rem);
 	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
@@ -1831,7 +1831,7 @@
 		transform-origin: center center;
 		margin-bottom: clamp(1.5rem, 3vw, 2rem);
 	}
-	
+
 	.aboutSection,
 	.servicesSection,
 	.whyChooseSection,

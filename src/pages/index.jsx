@@ -16,27 +16,27 @@ import Link from "next/link";
 export default function Home() {
 	// Ensure page always starts at top on page refresh, regardless of hash in URL
 	useEffect(() => {
-		if (typeof window === 'undefined') return;
-		
+		if (typeof window === "undefined") return;
+
 		// On component mount (page load/refresh), ensure we're at #home
 		// The _document.jsx script handles the initial scroll, this is a backup
-		if (window.location.hash && window.location.hash !== '#home') {
-			window.history.replaceState(null, '', '#home');
+		if (window.location.hash && window.location.hash !== "#home") {
+			window.history.replaceState(null, "", "#home");
 		}
-		
+
 		// Scroll to #home section (top of page) as backup
-		const homeSection = document.getElementById('home');
+		const homeSection = document.getElementById("home");
 		if (homeSection) {
 			setTimeout(() => {
-				homeSection.scrollIntoView({ behavior: 'instant', block: 'start' });
+				homeSection.scrollIntoView({ behavior: "instant", block: "start" });
 			}, 10);
 		} else {
 			window.scrollTo(0, 0);
 		}
-		
+
 		// Disable scroll restoration for this page load
-		if ('scrollRestoration' in window.history) {
-			window.history.scrollRestoration = 'manual';
+		if ("scrollRestoration" in window.history) {
+			window.history.scrollRestoration = "manual";
 		}
 	}, []);
 
@@ -102,9 +102,9 @@ export default function Home() {
 							/>
 						</div>
 						<div className={styles.aboutContent}>
-						<AnimatedSection delay={0} animation="fadeIn">
-							<h2 className={styles.sectionTitleSmall}>ABOUT ME</h2>
-						</AnimatedSection>
+							<AnimatedSection delay={0} animation="fadeIn">
+								<h2 className={styles.sectionTitleSmall}>ABOUT ME</h2>
+							</AnimatedSection>
 							<AnimatedSection delay={200} animation="slideInRight">
 								<p className={styles.aboutDescription}>
 									I am an empathetic and passionate, person-centred Counsellor
@@ -230,17 +230,17 @@ export default function Home() {
 							{[
 								{
 									title: "Children – 8 years +",
-									image: "/ch8.jpg",
+									image: "/images/ch8.jpg",
 									link: "/services#children",
 								},
 								{
 									title: "Adolescents",
-									image: "/adolescent.jpg",
+									image: "/images/adolescent.jpg",
 									link: "/services#adolescents",
 								},
 								{
 									title: "Adults",
-									image: "/adult.jpg",
+									image: "/images/adult.jpg",
 									link: "/services#adults",
 								},
 							].map((service, index) => (
@@ -428,13 +428,25 @@ export default function Home() {
 							<div className={styles.counsellingRoomContent}>
 								<div className={styles.counsellingRoomText}>
 									<p className={styles.counsellingRoomDescription}>
-										I understand that coming to counselling can feel daunting, especially if you're not sure what to expect. That's why I want you to see the space where our sessions will take place — a warm, comfortable, and private room designed to help you feel safe and at ease.
+										I understand that coming to counselling can feel daunting,
+										especially if you're not sure what to expect. That's why I
+										want you to see the space where our sessions will take place
+										— a warm, comfortable, and private room designed to help you
+										feel safe and at ease.
 									</p>
 									<p className={styles.counsellingRoomDescription}>
-										The counselling room is a calm and welcoming environment where you can feel free to be yourself. It's a space where you can share what's on your mind without judgment, explore your thoughts and feelings, and work towards positive change at your own pace.
+										The counselling room is a calm and welcoming environment
+										where you can feel free to be yourself. It's a space where
+										you can share what's on your mind without judgment, explore
+										your thoughts and feelings, and work towards positive change
+										at your own pace.
 									</p>
 									<p className={styles.counsellingRoomDescription}>
-										Whether you're coming alone, with your child, or as a family, the room is set up to be flexible and accommodating to your needs. There's comfortable seating, natural light, and a peaceful atmosphere that helps create a sense of safety and trust.
+										Whether you're coming alone, with your child, or as a
+										family, the room is set up to be flexible and accommodating
+										to your needs. There's comfortable seating, natural light,
+										and a peaceful atmosphere that helps create a sense of
+										safety and trust.
 									</p>
 								</div>
 								<div className={styles.counsellingRoomImages}>
@@ -558,7 +570,11 @@ export default function Home() {
 				<div id="booking-section" className={styles.bookingSectionWrapper}>
 					<BookingForm />
 					<AnimatedSection delay={400} animation="fadeIn">
-						<ExploreMoreButton href="#home" text="Back to Top" iconDirection="up" />
+						<ExploreMoreButton
+							href="#home"
+							text="Back to Top"
+							iconDirection="up"
+						/>
 					</AnimatedSection>
 				</div>
 			</main>
