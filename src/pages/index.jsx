@@ -102,18 +102,9 @@ export default function Home() {
 							/>
 						</div>
 						<div className={styles.aboutContent}>
-							<AnimatedSection delay={0} animation="fadeIn">
-								<h2 className={styles.sectionTitleSmall}>ABOUT ME</h2>
-							</AnimatedSection>
-							<Typewriter
-								as="h2"
-								className={styles.aboutTitle}
-								text="Guiding minds, healing hearts, finding peace"
-								speed={60}
-								delay={500}
-								showCursor={true}
-								loop={false}
-							/>
+						<AnimatedSection delay={0} animation="fadeIn">
+							<h2 className={styles.sectionTitleSmall}>ABOUT ME</h2>
+						</AnimatedSection>
 							<AnimatedSection delay={200} animation="slideInRight">
 								<p className={styles.aboutDescription}>
 									I am an empathetic and passionate, person-centred Counsellor
