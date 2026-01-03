@@ -1,5 +1,5 @@
 .footer {
-	background-color: var(--color-header-dark);
+	background-color: #c9c0c4;
 	color: var(--color-text-medium);
 	border-top: 2px solid rgba(0, 0, 0, 0.15);
 	padding: clamp(0.5rem, 1vw, 0.75rem) 0 clamp(1.5rem, 3vw, 2rem);
@@ -240,9 +240,3 @@
 	}
 }
 
-/* Desktop (1024px+) - Match header color */
-@media (min-width: 1024px) {
-	.footer {
-		background-color: #c9c0c4;
-	}
-}
