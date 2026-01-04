@@ -11,10 +11,10 @@ export default function Approach() {
 	return (
 		<>
 			<Head>
-				<title>My Journey and Approach - The Holding Space Jersey</title>
+				<title>My Approach - The Holding Space Jersey</title>
 				<meta
 					name="description"
-					content="Learn about my journey as a counsellor and my therapeutic approach to supporting your mental health and wellbeing."
+					content="Learn about my therapeutic approach to supporting your mental health and wellbeing."
 				/>
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/favicon.ico" />
@@ -23,28 +23,19 @@ export default function Approach() {
 			<main className={styles.main} id="main-content">
 				<div className={styles.container}>
 					<AnimatedSection delay={0} animation="fadeIn">
-						<h3 className={styles.sectionTitleSmall}>MY JOURNEY & APPROACH</h3>
+						<h3 className={styles.sectionTitleSmall}>MY APPROACH</h3>
 					</AnimatedSection>
 					<Typewriter
 						as="h1"
 						className={styles.pageTitle}
-						text="My Journey and Approach"
+						text="My Approach"
 						speed={60}
 						delay={300}
 						showCursor={true}
 						loop={false}
 					/>
 
-					<AnimatedSection delay={200} animation="slideInLeft">
-						<section id="my-journey-section" className={styles.contentSection}>
-							<h2>My Journey</h2>
-							<p>
-								With over eight years of experience, I have worked across a range of settings including schools, agencies, private practice, and international environments. My three years in Singapore, working in both private practice and an international school setting, have given me valuable insights into supporting clients from diverse cultural backgrounds and understanding the unique challenges faced by children, young people, and families in international or multicultural contexts.
-							</p>
-						</section>
-					</AnimatedSection>
-
-					<AnimatedSection delay={300} animation="slideInRight">
+					<AnimatedSection delay={200} animation="slideInRight">
 						<section id="my-approach-section" className={styles.contentSection}>
 							<h2>My Approach</h2>
 							<p>
@@ -59,7 +50,7 @@ export default function Approach() {
 						</section>
 					</AnimatedSection>
 
-					<AnimatedSection delay={400} animation="fadeIn">
+					<AnimatedSection delay={300} animation="fadeIn">
 						<div className={styles.backButtonContainer}>
 							<Link href="/#about-section" className={homeStyles.scrollToContactLink}>
 								<span className={homeStyles.scrollToContactText}>

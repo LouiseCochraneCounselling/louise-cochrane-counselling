@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import BookingForm from "../components/BookingForm";
-import AnimatedSection from "../components/AnimatedSection";
+import AnimatedSection from "../components/AnimatedSection";``
 import AnimatedHeading from "../components/AnimatedHeading";
 import AnimatedImage from "../components/AnimatedImage";
 import Image from "next/image";
@@ -127,14 +127,6 @@ export default function Home() {
 							{/* All Links - Horizontal */}
 							<AnimatedSection delay={300} animation="fadeIn">
 								<div className={styles.aboutContentLinks}>
-									<Link
-										href="/journey-approach"
-										className={styles.scrollToContactLink}>
-										<span className={styles.scrollToContactText}>
-											Click to read about my journey
-										</span>
-									</Link>
-									<span className={styles.linkSeparator}></span>
 									<Link
 										href="/journey-approach#my-approach-section"
 										className={styles.scrollToContactLink}>
