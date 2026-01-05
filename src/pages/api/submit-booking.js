@@ -1,4 +1,4 @@
-import { Resend } from "resend";
+import { Resend } from 'resend';
 
 // Initialize Resend API
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -23,20 +23,20 @@ const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000; // 15 minutes
  */
 function getClientIP(req) {
 	// Check various headers for IP (Vercel, Cloudflare, etc.)
-	const forwarded = req.headers["x-forwarded-for"];
+	const forwarded = req.headers['x-forwarded-for'];
 	if (forwarded) {
-		return forwarded.split(",")[0].trim();
+		return forwarded.split(',')[0].trim();
 	}
-	const realIP = req.headers["x-real-ip"];
+	const realIP = req.headers['x-real-ip'];
 	if (realIP) {
 		return realIP;
 	}
-	const cfConnectingIP = req.headers["cf-connecting-ip"];
+	const cfConnectingIP = req.headers['cf-connecting-ip'];
 	if (cfConnectingIP) {
 		return cfConnectingIP;
 	}
 	// Fallback to connection remote address
-	return req.socket?.remoteAddress || "unknown";
+	return req.socket?.remoteAddress || 'unknown';
 }
 
 /**
@@ -111,14 +111,14 @@ function checkRateLimit(ip) {
  * @returns {string} - Escaped string
  */
 function escapeHtml(str) {
-	if (typeof str !== "string") return "";
+	if (typeof str !== 'string') return '';
 	const map = {
-		"&": "&amp;",
-		"<": "&lt;",
-		">": "&gt;",
-		'"': "&quot;",
-		"'": "&#x27;",
-		"/": "&#x2F;",
+		'&': '&amp;',
+		'<': '&lt;',
+		'>': '&gt;',
+		'"': '&quot;',
+		"'": '&#x27;',
+		'/': '&#x2F;',
 	};
 	return str.replace(/[&<>"'/]/g, (s) => map[s]);
 }
@@ -131,10 +131,10 @@ function escapeHtml(str) {
  * @returns {string} - Sanitized string
  */
 function sanitizeSubject(str, maxLength = 100) {
-	if (typeof str !== "string") return "";
+	if (typeof str !== 'string') return '';
 	return str
-		.replace(/[\r\n]/g, " ")
-		.replace(/\s+/g, " ")
+		.replace(/[\r\n]/g, ' ')
+		.replace(/\s+/g, ' ')
 		.trim()
 		.substring(0, maxLength);
 }
@@ -146,15 +146,15 @@ function sanitizeSubject(str, maxLength = 100) {
  * @returns {string} - Sanitized HTML string
  */
 function sanitizeMessage(str) {
-	if (typeof str !== "string") return "";
+	if (typeof str !== 'string') return '';
 	const escaped = escapeHtml(str);
-	return escaped.replace(/\n/g, "<br>");
+	return escaped.replace(/\n/g, '<br>');
 }
 
 export default async function handler(req, res) {
 	// Only allow POST requests
-	if (req.method !== "POST") {
-		return res.status(405).json({ message: "Method not allowed" });
+	if (req.method !== 'POST') {
+		return res.status(405).json({ message: 'Method not allowed' });
 	}
 
 	// Rate limiting check
@@ -167,18 +167,15 @@ export default async function handler(req, res) {
 		);
 		return res.status(429).json({
 			message: `Too many requests. Please try again in ${resetTimeSeconds} seconds.`,
-			error: "rate_limit_exceeded",
+			error: 'rate_limit_exceeded',
 			retryAfter: resetTimeSeconds,
 		});
 	}
 
 	// Set rate limit headers
-	res.setHeader("X-RateLimit-Limit", RATE_LIMIT_MAX_REQUESTS);
-	res.setHeader("X-RateLimit-Remaining", rateLimit.remaining);
-	res.setHeader(
-		"X-RateLimit-Reset",
-		Math.ceil(rateLimit.resetTime / 1000)
-	);
+	res.setHeader('X-RateLimit-Limit', RATE_LIMIT_MAX_REQUESTS);
+	res.setHeader('X-RateLimit-Remaining', rateLimit.remaining);
+	res.setHeader('X-RateLimit-Reset', Math.ceil(rateLimit.resetTime / 1000));
 
 	try {
 		// Get form data from request body
@@ -187,22 +184,22 @@ export default async function handler(req, res) {
 		// Validate required fields
 		if (!name || !email) {
 			return res.status(400).json({
-				message: "Name and email are required",
-				error: "validation_error",
+				message: 'Name and email are required',
+				error: 'validation_error',
 			});
 		}
 
 		// Sanitize all input
-		name = String(name || "").trim();
-		email = String(email || "").trim();
-		phone = phone ? String(phone).trim() : "";
-		message = message ? String(message).trim() : "";
+		name = String(name || '').trim();
+		email = String(email || '').trim();
+		phone = phone ? String(phone).trim() : '';
+		message = message ? String(message).trim() : '';
 
 		// Additional validation after sanitization
 		if (!name || !email) {
 			return res.status(400).json({
-				message: "Name and email are required",
-				error: "validation_error",
+				message: 'Name and email are required',
+				error: 'validation_error',
 			});
 		}
 
@@ -210,28 +207,28 @@ export default async function handler(req, res) {
 		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 		if (!emailRegex.test(email)) {
 			return res.status(400).json({
-				message: "Invalid email format",
-				error: "validation_error",
+				message: 'Invalid email format',
+				error: 'validation_error',
 			});
 		}
 
 		// Validate Resend API key is configured
 		if (!process.env.RESEND_API_KEY) {
-			if (process.env.NODE_ENV === "development") {
+			if (process.env.NODE_ENV === 'development') {
 				console.error(
-					"[API Error] RESEND_API_KEY environment variable is not configured"
+					'[API Error] RESEND_API_KEY environment variable is not configured'
 				);
 				console.error(
-					"[API Error] Please configure RESEND_API_KEY in Vercel environment variables."
+					'[API Error] Please configure RESEND_API_KEY in Vercel environment variables.'
 				);
 			}
 			return res.status(500).json({
 				message:
-					"Email service is not configured. Please contact the site administrator.",
-				error: "configuration_error",
+					'Email service is not configured. Please contact the site administrator.',
+				error: 'configuration_error',
 				details:
-					process.env.NODE_ENV === "development"
-						? "RESEND_API_KEY is missing. Please configure it in Vercel environment variables."
+					process.env.NODE_ENV === 'development'
+						? 'RESEND_API_KEY is missing. Please configure it in Vercel environment variables.'
 						: undefined,
 			});
 		}
@@ -240,14 +237,14 @@ export default async function handler(req, res) {
 		// Sanitize to prevent header injection
 		const rawRecipientEmail = process.env.CONTACT_EMAIL;
 		if (!rawRecipientEmail) {
-			if (process.env.NODE_ENV === "development") {
+			if (process.env.NODE_ENV === 'development') {
 				console.error(
-					"[API Error] CONTACT_EMAIL environment variable is not configured"
+					'[API Error] CONTACT_EMAIL environment variable is not configured'
 				);
 				console.error(
-					"[API Error] Please set CONTACT_EMAIL in Vercel Project Settings → Environment Variables"
+					'[API Error] Please set CONTACT_EMAIL in Vercel Project Settings → Environment Variables'
 				);
-				console.error("[API Error] Current environment:", {
+				console.error('[API Error] Current environment:', {
 					hasResendKey: !!process.env.RESEND_API_KEY,
 					hasContactEmail: false,
 					hasFromEmail: !!process.env.RESEND_FROM_EMAIL,
@@ -255,32 +252,31 @@ export default async function handler(req, res) {
 			}
 			return res.status(500).json({
 				message:
-					"Email service is not configured. Please contact the site administrator.",
-				error: "configuration_error",
+					'Email service is not configured. Please contact the site administrator.',
+				error: 'configuration_error',
 				details:
-					process.env.NODE_ENV === "development"
-						? "CONTACT_EMAIL is missing. Please set it in Vercel environment variables."
+					process.env.NODE_ENV === 'development'
+						? 'CONTACT_EMAIL is missing. Please set it in Vercel environment variables.'
 						: undefined,
 			});
 		}
 		// Remove any newlines, carriage returns, or other control characters
 		const recipientEmail = String(rawRecipientEmail)
-			.replace(/[\r\n]/g, "")
+			.replace(/[\r\n]/g, '')
 			.trim();
 
 		// Get sender email (should be verified in Resend)
 		// Sanitize to prevent header injection
 		const rawSenderEmail =
-			process.env.RESEND_FROM_EMAIL || "hello@theholdingspacejersey.co.uk";
+			process.env.RESEND_FROM_EMAIL || 'hello@theholdingspacejersey.co.uk';
 		// Remove any newlines, carriage returns, or other control characters
 		const senderEmail = String(rawSenderEmail)
-			.replace(/[\r\n]/g, "")
+			.replace(/[\r\n]/g, '')
 			.trim();
 
-
 		// Log configuration status in development only
-		if (process.env.NODE_ENV === "development") {
-			console.log("[API Info] Email configuration:", {
+		if (process.env.NODE_ENV === 'development') {
+			console.log('[API Info] Email configuration:', {
 				recipientEmail: recipientEmail,
 				senderEmail: senderEmail,
 				hasResendKey: !!process.env.RESEND_API_KEY,
@@ -290,8 +286,8 @@ export default async function handler(req, res) {
 		// Sanitize inputs for email
 		const sanitizedName = escapeHtml(name);
 		const sanitizedEmail = escapeHtml(email);
-		const sanitizedPhone = phone ? escapeHtml(phone) : "";
-		const sanitizedMessage = message ? sanitizeMessage(message) : "";
+		const sanitizedPhone = phone ? escapeHtml(phone) : '';
+		const sanitizedMessage = message ? sanitizeMessage(message) : '';
 		const sanitizedSubject = sanitizeSubject(name);
 
 		// Format the email content
@@ -315,7 +311,7 @@ export default async function handler(req, res) {
 			<body>
 				<div class="container">
 					<div class="header">
-						<h2>New Booking Enquiry - The Holding Space Jersey</h2>
+						<h2>New Booking Enquiry - (${sanitizedName})</h2>
 					</div>
 					<div class="content">
 						<div class="field">
@@ -334,7 +330,7 @@ export default async function handler(req, res) {
 							<div class="value">${sanitizedPhone}</div>
 						</div>
 						`
-								: ""
+								: ''
 						}
 						${
 							sanitizedMessage
@@ -344,14 +340,14 @@ export default async function handler(req, res) {
 							<div class="value">${sanitizedMessage}</div>
 						</div>
 						`
-								: ""
+								: ''
 						}
 					</div>
 					<div class="footer">
 						<p>This email was sent from the booking form on your website.</p>
-						<p>Submitted at: ${new Date().toLocaleString("en-GB", {
-							timeZone: "Europe/London",
-						})}</p>
+						<p>Submitted at: ${new Date().toLocaleString('en-GB', {
+							timeZone: 'Europe/London',
+						})}. If you would like it updated, please contact Steve Lewis.</p>
 					</div>
 				</div>
 			</body>
@@ -363,12 +359,12 @@ New Booking Enquiry
 
 Name: ${name}
 Email: ${email}
-${phone ? `Phone: ${phone}` : ""}
-${message ? `\nMessage:\n${message}` : ""}
+${phone ? `Phone: ${phone}` : ''}
+${message ? `\nMessage:\n${message}` : ''}
 
 ---
-Submitted at: ${new Date().toLocaleString("en-GB", {
-			timeZone: "Europe/London",
+Submitted at: ${new Date().toLocaleString('en-GB', {
+			timeZone: 'Europe/London',
 		})}
 		`.trim();
 
@@ -381,7 +377,7 @@ Submitted at: ${new Date().toLocaleString("en-GB", {
 				: senderEmail; // Fallback to sender if invalid
 
 			const data = await resend.emails.send({
-				from: `The Holding Space Jersey <${senderEmail}>`,
+				from: `Booking Form - [The Holding Space Jersey] <${senderEmail}>`,
 				to: [recipientEmail],
 				replyTo: replyToEmail,
 				subject: emailSubject,
@@ -391,42 +387,42 @@ Submitted at: ${new Date().toLocaleString("en-GB", {
 
 			// Success
 			return res.status(200).json({
-				message: "Form submitted successfully",
+				message: 'Form submitted successfully',
 				success: true,
 				emailId: data.id,
 			});
 		} catch (resendError) {
 			// Provide more specific error messages based on common Resend errors
-			let errorMessage = "Failed to send email. Please try again later.";
-			if (resendError?.message?.includes("domain")) {
+			let errorMessage = 'Failed to send email. Please try again later.';
+			if (resendError?.message?.includes('domain')) {
 				errorMessage =
-					"Email sending failed: Domain verification issue. Please verify your sender domain in Resend.";
+					'Email sending failed: Domain verification issue. Please verify your sender domain in Resend.';
 			} else if (
-				resendError?.message?.includes("API key") ||
+				resendError?.message?.includes('API key') ||
 				resendError?.statusCode === 401
 			) {
 				errorMessage =
-					"Email sending failed: Invalid API key. Please check your RESEND_API_KEY configuration.";
-			} else if (resendError?.message?.includes("rate limit")) {
+					'Email sending failed: Invalid API key. Please check your RESEND_API_KEY configuration.';
+			} else if (resendError?.message?.includes('rate limit')) {
 				errorMessage =
-					"Email sending failed: Rate limit exceeded. Please try again later.";
+					'Email sending failed: Rate limit exceeded. Please try again later.';
 			}
 
 			return res.status(500).json({
 				message: errorMessage,
-				error: "email_send_error",
+				error: 'email_send_error',
 				details:
-					process.env.NODE_ENV === "development"
+					process.env.NODE_ENV === 'development'
 						? resendError?.message
 						: undefined,
 			});
 		}
 	} catch (error) {
 		return res.status(500).json({
-			message: "An unexpected error occurred. Please try again later.",
-			error: "server_error",
+			message: 'An unexpected error occurred. Please try again later.',
+			error: 'server_error',
 			details:
-				process.env.NODE_ENV === "development" ? error?.message : undefined,
+				process.env.NODE_ENV === 'development' ? error?.message : undefined,
 		});
 	}
 }
