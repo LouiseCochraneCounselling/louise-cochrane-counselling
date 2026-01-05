@@ -1,42 +1,42 @@
-import Head from "next/head";
-import { useEffect } from "react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import BookingForm from "../components/BookingForm";
-import AnimatedSection from "../components/AnimatedSection";``
-import AnimatedHeading from "../components/AnimatedHeading";
-import AnimatedImage from "../components/AnimatedImage";
-import Image from "next/image";
-import Typewriter from "../components/Typewriter";
-import ScrollCue from "../components/ScrollCue";
-import ExploreMoreButton from "../components/ExploreMoreButton";
-import styles from "../styles/Home.module.css";
-import Link from "next/link";
+import Head from 'next/head';
+import { useEffect } from 'react';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import BookingForm from '../components/BookingForm';
+import AnimatedSection from '../components/AnimatedSection';
+``;
+import AnimatedHeading from '../components/AnimatedHeading';
+import AnimatedImage from '../components/AnimatedImage';
+import Image from 'next/image';
+import ScrollCue from '../components/ScrollCue';
+import ExploreMoreButton from '../components/ExploreMoreButton';
+import styles from '../styles/Home.module.css';
+import Link from 'next/link';
 
 export default function Home() {
 	// Ensure page always starts at top on page refresh, regardless of hash in URL
 	useEffect(() => {
-		if (typeof window === "undefined") return;
+		if (typeof window === 'undefined') return;
 
 		// On component mount (page load/refresh), ensure we're at #home
 		// The _document.jsx script handles the initial scroll, this is a backup
-		if (window.location.hash && window.location.hash !== "#home") {
-			window.history.replaceState(null, "", "#home");
+		if (window.location.hash && window.location.hash !== '#home') {
+			window.history.replaceState(null, '', '#home');
 		}
 
 		// Scroll to #home section (top of page) as backup
-		const homeSection = document.getElementById("home");
+		const homeSection = document.getElementById('home');
 		if (homeSection) {
 			setTimeout(() => {
-				homeSection.scrollIntoView({ behavior: "instant", block: "start" });
+				homeSection.scrollIntoView({ behavior: 'instant', block: 'start' });
 			}, 10);
 		} else {
 			window.scrollTo(0, 0);
 		}
 
 		// Disable scroll restoration for this page load
-		if ("scrollRestoration" in window.history) {
-			window.history.scrollRestoration = "manual";
+		if ('scrollRestoration' in window.history) {
+			window.history.scrollRestoration = 'manual';
 		}
 	}, []);
 
@@ -47,16 +47,16 @@ export default function Home() {
 					The Holding Space Jersey - Professional Support for Your Wellbeing
 				</title>
 				<meta
-					name="description"
-					content="The Holding Space Jersey offers professional counselling services and support for your mental health and wellbeing."
+					name='description'
+					content='The Holding Space Jersey offers professional counselling services and support for your mental health and wellbeing.'
 				/>
-				<meta name="viewport" content="width=device-width, initial-scale=1" />
-				<link rel="icon" href="/favicon.ico" />
+				<meta name='viewport' content='width=device-width, initial-scale=1' />
+				<link rel='icon' href='/favicon.ico' />
 			</Head>
 			<Header />
-			<main className={styles.main} id="main-content">
+			<main className={styles.main} id='main-content'>
 				{/* Hero Section */}
-				<section id="home" className={styles.heroSection}>
+				<section id='home' className={styles.heroSection}>
 					<h1 className={styles.visuallyHidden}>
 						The Holding Space Jersey - Professional Counselling Services
 					</h1>
@@ -65,13 +65,13 @@ export default function Home() {
 						<div className={styles.heroContent}>
 							<div className={styles.heroLogoWrapper}>
 								<Image
-									src="/images/logo.svg"
-									alt="The Holding Space Jersey"
+									src='/images/logo.svg'
+									alt='The Holding Space Jersey'
 									width={750}
 									height={375}
 									className={styles.heroLogo}
-									sizes="(max-width: 639px) 90vw, (max-width: 1024px) 50vw, 500px"
-									aria-hidden="true"
+									sizes='(max-width: 639px) 90vw, (max-width: 1024px) 50vw, 500px'
+									aria-hidden='true'
 									priority
 								/>
 							</div>
@@ -85,27 +85,27 @@ export default function Home() {
 
 				{/* About Section */}
 				<section
-					id="about-section"
+					id='about-section'
 					data-next-section
 					className={styles.aboutSection}>
 					<div className={styles.aboutContainer}>
 						<div className={styles.aboutImages}>
 							<AnimatedImage
-								src="/images/me.jpeg"
-								alt="About me"
+								src='/images/me.jpeg'
+								alt='About me'
 								className={styles.aboutMainImage}
-								animationStyle="style-1"
+								animationStyle='style-1'
 								delay={0}
 								width={480}
 								height={540}
-								sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 480px"
+								sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 480px'
 							/>
 						</div>
 						<div className={styles.aboutContent}>
-							<AnimatedSection delay={0} animation="fadeIn">
+							<AnimatedSection delay={0} animation='fadeIn'>
 								<h2 className={styles.sectionTitleSmall}>ABOUT ME</h2>
 							</AnimatedSection>
-							<AnimatedSection delay={200} animation="slideInRight">
+							<AnimatedSection delay={200} animation='slideInRight'>
 								<p className={styles.aboutDescription}>
 									I am an empathetic and passionate, person-centred Counsellor
 									with over eight years of experience supporting the mental
@@ -125,10 +125,10 @@ export default function Home() {
 								</p>
 							</AnimatedSection>
 							{/* All Links - Horizontal */}
-							<AnimatedSection delay={300} animation="fadeIn">
+							<AnimatedSection delay={300} animation='fadeIn'>
 								<div className={styles.aboutContentLinks}>
 									<Link
-										href="/journey-approach#my-approach-section"
+										href='/journey-approach#my-approach-section'
 										className={styles.scrollToContactLink}>
 										<span className={styles.scrollToContactText}>
 											Click to read about my approach
@@ -138,8 +138,8 @@ export default function Home() {
 							</AnimatedSection>
 						</div>
 					</div>
-					<AnimatedSection delay={500} animation="fadeIn">
-						<ExploreMoreButton href="#is-counselling-right-for-me" />
+					<AnimatedSection delay={500} animation='fadeIn'>
+						<ExploreMoreButton href='#is-counselling-right-for-me' />
 					</AnimatedSection>
 				</section>
 
@@ -150,21 +150,21 @@ export default function Home() {
 
 				<section
 					className={styles.counsellingReflectionSection}
-					id="is-counselling-right-for-me">
+					id='is-counselling-right-for-me'>
 					<div className={styles.counsellingReflectionContainer}>
-						<AnimatedSection delay={0} animation="fadeIn">
+						<AnimatedSection delay={0} animation='fadeIn'>
 							<h2 className={styles.sectionTitleSmall}>
 								IS COUNSELLING RIGHT FOR ME?
 							</h2>
 						</AnimatedSection>
-						<AnimatedSection delay={200} animation="fadeInUp">
+						<AnimatedSection delay={200} animation='fadeInUp'>
 							<p className={styles.counsellingReflectionIntro}>
 								You might be wondering if counselling is right for you. There's
 								no threshold you need to meet, if you're experiencing something
 								difficult, counselling can help.
 							</p>
 						</AnimatedSection>
-						<AnimatedSection delay={300} animation="fadeInUp">
+						<AnimatedSection delay={300} animation='fadeInUp'>
 							<div className={styles.reflectionPrompts}>
 								<ul className={styles.reflectionList}>
 									<li>
@@ -185,15 +185,15 @@ export default function Home() {
 								</ul>
 							</div>
 						</AnimatedSection>
-						<AnimatedSection delay={400} animation="fadeInUp">
+						<AnimatedSection delay={400} animation='fadeInUp'>
 							<p className={styles.counsellingReflectionConclusion}>
 								If any of these resonate, counselling might be worth exploring.
 								The first session is a chance to see if it feels right, there's
 								no commitment beyond that.
 							</p>
 						</AnimatedSection>
-						<AnimatedSection delay={500} animation="fadeIn">
-							<ExploreMoreButton href="#services-section" />
+						<AnimatedSection delay={500} animation='fadeIn'>
+							<ExploreMoreButton href='#services-section' />
 						</AnimatedSection>
 					</div>
 				</section>
@@ -202,38 +202,34 @@ export default function Home() {
 				<div className={styles.sectionDivider}></div>
 
 				{/* Services Section */}
-				<section id="services-section" className={styles.servicesSection}>
+				<section id='services-section' className={styles.servicesSection}>
 					<div className={styles.servicesContainer}>
 						<div className={styles.servicesHeader}>
-							<AnimatedSection delay={0} animation="fadeIn">
-								<h2 className={styles.sectionTitleSmall}>SERVICES I OFFER</h2>
+							<AnimatedSection delay={0} animation='fadeIn'>
+								<p className={styles.sectionTitleSmall}>SERVICES I OFFER</p>
 							</AnimatedSection>
-							<Typewriter
-								as="h2"
-								className={styles.servicesTitle}
-								text="Comprehensive Counselling Services"
-								speed={60}
-								delay={500}
-								showCursor={true}
-								loop={false}
-							/>
+							{/* <AnimatedSection delay={200} animation="fadeIn">
+								<h2 className={styles.servicesTitle}>
+									Comprehensive Counselling Services
+								</h2>
+							</AnimatedSection> */}
 						</div>
 						<div className={styles.servicesGrid}>
 							{[
 								{
-									title: "Children – 8 years +",
-									image: "/images/ch8.jpg",
-									link: "/services#children",
+									title: 'Children – 8 years +',
+									image: '/images/ch8.jpg',
+									link: '/services#children',
 								},
 								{
-									title: "Adolescents",
-									image: "/images/adolescent.jpg",
-									link: "/services#adolescents",
+									title: 'Adolescents',
+									image: '/images/adolescent.jpg',
+									link: '/services#adolescents',
 								},
 								{
-									title: "Adults",
-									image: "/images/adult.jpg",
-									link: "/services#adults",
+									title: 'Adults',
+									image: '/images/adult.jpg',
+									link: '/services#adults',
 								},
 							].map((service, index) => (
 								<AnimatedSection key={index} delay={index * 100}>
@@ -248,11 +244,11 @@ export default function Home() {
 													src={service.image}
 													alt={service.title}
 													className={styles.serviceImage}
-													animationStyle="style-1"
+													animationStyle='style-1'
 													delay={index * 50}
 													width={600}
 													height={400}
-													sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+													sizes='(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw'
 												/>
 												<h4 className={styles.serviceCardTitle}>
 													{service.title}
@@ -263,17 +259,17 @@ export default function Home() {
 													</span>
 													<svg
 														className={styles.serviceCardIndicatorIcon}
-														width="20"
-														height="20"
-														viewBox="0 0 24 24"
-														fill="none"
-														xmlns="http://www.w3.org/2000/svg">
+														width='20'
+														height='20'
+														viewBox='0 0 24 24'
+														fill='none'
+														xmlns='http://www.w3.org/2000/svg'>
 														<path
-															d="M9 18L15 12L9 6"
-															stroke="currentColor"
-															strokeWidth="2"
-															strokeLinecap="round"
-															strokeLinejoin="round"
+															d='M9 18L15 12L9 6'
+															stroke='currentColor'
+															strokeWidth='2'
+															strokeLinecap='round'
+															strokeLinejoin='round'
 														/>
 													</svg>
 												</div>
@@ -283,8 +279,8 @@ export default function Home() {
 								</AnimatedSection>
 							))}
 						</div>
-						<AnimatedSection delay={600} animation="fadeIn">
-							<ExploreMoreButton href="#what-to-expect-section" />
+						<AnimatedSection delay={600} animation='fadeIn'>
+							<ExploreMoreButton href='#what-to-expect-section' />
 						</AnimatedSection>
 					</div>
 				</section>
@@ -294,22 +290,18 @@ export default function Home() {
 
 				{/* What to Expect Section */}
 				<section
-					id="what-to-expect-section"
+					id='what-to-expect-section'
 					className={styles.whatToExpectSection}>
 					<div className={styles.whatToExpectContainer}>
-						<AnimatedSection delay={0} animation="fadeIn">
-							<h2 className={styles.sectionTitleSmall}>WHAT TO EXPECT</h2>
+						<AnimatedSection delay={0} animation='fadeIn'>
+							<p className={styles.sectionTitleSmall}>WHAT TO EXPECT</p>
 						</AnimatedSection>
-						<Typewriter
-							as="h2"
-							className={styles.whatToExpectTitle}
-							text="What to Expect From Sessions"
-							speed={60}
-							delay={500}
-							showCursor={true}
-							loop={false}
-						/>
-						<AnimatedSection delay={200} animation="fadeInUp">
+						{/* <AnimatedSection delay={200} animation="fadeIn">
+							<h2 className={styles.whatToExpectTitle}>
+								What to Expect From Sessions
+							</h2>
+						</AnimatedSection> */}
+						<AnimatedSection delay={300} animation='fadeInUp'>
 							<div className={styles.whatToExpectContent}>
 								<div className={styles.expectSection}>
 									<h4 className={styles.expectSectionTitle}>Session Length</h4>
@@ -390,8 +382,8 @@ export default function Home() {
 								</div>
 							</div>
 						</AnimatedSection>
-						<AnimatedSection delay={600} animation="fadeIn">
-							<ExploreMoreButton href="#counselling-room-section" />
+						<AnimatedSection delay={600} animation='fadeIn'>
+							<ExploreMoreButton href='#counselling-room-section' />
 						</AnimatedSection>
 					</div>
 				</section>
@@ -401,22 +393,18 @@ export default function Home() {
 
 				{/* Counselling Room Section */}
 				<section
-					id="counselling-room-section"
+					id='counselling-room-section'
 					className={styles.counsellingRoomSection}>
 					<div className={styles.counsellingRoomContainer}>
-						<AnimatedSection delay={0} animation="fadeIn">
-							<h2 className={styles.sectionTitleSmall}>THE COUNSELLING ROOM</h2>
+						<AnimatedSection delay={0} animation='fadeIn'>
+							<p className={styles.sectionTitleSmall}>THE COUNSELLING ROOM</p>
 						</AnimatedSection>
-						<Typewriter
-							as="h2"
-							className={styles.counsellingRoomTitle}
-							text="A Welcoming and Comfortable Environment"
-							speed={60}
-							delay={500}
-							showCursor={true}
-							loop={false}
-						/>
-						<AnimatedSection delay={200} animation="fadeInUp">
+						{/* <AnimatedSection delay={200} animation='fadeIn'>
+							<h2 className={styles.counsellingRoomTitle}>
+								A Welcoming and Comfortable Environment
+							</h2>
+						</AnimatedSection> */}
+						<AnimatedSection delay={300} animation='fadeInUp'>
 							<div className={styles.counsellingRoomContent}>
 								<div className={styles.counsellingRoomText}>
 									<p className={styles.counsellingRoomDescription}>
@@ -443,30 +431,30 @@ export default function Home() {
 								</div>
 								<div className={styles.counsellingRoomImages}>
 									<AnimatedImage
-										src="/images/room.jpeg"
-										alt="Warm and cozy counselling room with comfortable sofa where two people can sit and have a conversation in a safe, welcoming environment"
+										src='/images/room.jpeg'
+										alt='Warm and cozy counselling room with comfortable sofa where two people can sit and have a conversation in a safe, welcoming environment'
 										className={styles.counsellingRoomImage}
-										animationStyle="style-1"
+										animationStyle='style-1'
 										delay={300}
 										width={600}
 										height={400}
-										sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px"
+										sizes='(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px'
 									/>
 									<AnimatedImage
-										src="/images/playArea.jpeg"
-										alt="Cozy therapy room with toys and games for children, creating a warm and welcoming play space"
+										src='/images/playArea.jpeg'
+										alt='Cozy therapy room with toys and games for children, creating a warm and welcoming play space'
 										className={styles.counsellingRoomImage}
-										animationStyle="style-1"
+										animationStyle='style-1'
 										delay={400}
 										width={600}
 										height={400}
-										sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px"
+										sizes='(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px'
 									/>
 								</div>
 							</div>
 						</AnimatedSection>
-						<AnimatedSection delay={600} animation="fadeIn">
-							<ExploreMoreButton href="#common-concerns-section" />
+						<AnimatedSection delay={600} animation='fadeIn'>
+							<ExploreMoreButton href='#common-concerns-section' />
 						</AnimatedSection>
 					</div>
 				</section>
@@ -476,22 +464,18 @@ export default function Home() {
 
 				{/* Common Concerns Section */}
 				<section
-					id="common-concerns-section"
+					id='common-concerns-section'
 					className={styles.commonConcernsSection}>
 					<div className={styles.commonConcernsContainer}>
-						<AnimatedSection delay={0} animation="fadeIn">
-							<h2 className={styles.sectionTitleSmall}>COMMON CONCERNS</h2>
+						{/* <AnimatedSection delay={0} animation='fadeIn'>
+							<p className={styles.sectionTitleSmall}>COMMON CONCERNS</p>
+						</AnimatedSection> */}
+						<AnimatedSection delay={200} animation='fadeIn'>
+							<h2 className={styles.commonConcernsTitle}>
+								Questions You Might Have
+							</h2>
 						</AnimatedSection>
-						<Typewriter
-							as="h2"
-							className={styles.commonConcernsTitle}
-							text="Questions You Might Have"
-							speed={60}
-							delay={500}
-							showCursor={true}
-							loop={false}
-						/>
-						<AnimatedSection delay={200} animation="fadeInUp">
+						<AnimatedSection delay={300} animation='fadeInUp'>
 							<div className={styles.concernsList}>
 								<div className={styles.concernItem}>
 									<h4 className={styles.concernQuestion}>
@@ -538,9 +522,9 @@ export default function Home() {
 										if there's a serious risk of harm, but I'll always aim to
 										discuss this with you first. For children and young people,
 										I'll explain confidentiality in an age-appropriate way. You
-										can read more about this on our{" "}
+										can read more about this on our{' '}
 										<Link
-											href="/confidentiality"
+											href='/confidentiality'
 											className={styles.concernLink}>
 											confidentiality page
 										</Link>
@@ -549,8 +533,8 @@ export default function Home() {
 								</div>
 							</div>
 						</AnimatedSection>
-						<AnimatedSection delay={600} animation="fadeIn">
-							<ExploreMoreButton href="#booking-section" />
+						<AnimatedSection delay={600} animation='fadeIn'>
+							<ExploreMoreButton href='#booking-section' />
 						</AnimatedSection>
 					</div>
 				</section>
@@ -559,13 +543,13 @@ export default function Home() {
 				<div className={styles.sectionDivider}></div>
 
 				{/* Booking Form */}
-				<div id="booking-section" className={styles.bookingSectionWrapper}>
+				<div id='booking-section' className={styles.bookingSectionWrapper}>
 					<BookingForm />
-					<AnimatedSection delay={400} animation="fadeIn">
+					<AnimatedSection delay={400} animation='fadeIn'>
 						<ExploreMoreButton
-							href="#home"
-							text="Back to Top"
-							iconDirection="up"
+							href='#home'
+							text='Back to Top'
+							iconDirection='up'
 						/>
 					</AnimatedSection>
 				</div>

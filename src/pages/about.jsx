@@ -2,7 +2,6 @@ import Head from "next/head";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import AnimatedSection from "../components/AnimatedSection";
-import Typewriter from "../components/Typewriter";
 import styles from "../styles/Page.module.css";
 
 export default function About() {
@@ -21,19 +20,13 @@ export default function About() {
 			<main className={styles.main} id="main-content">
 				<div className={styles.container}>
 					<AnimatedSection delay={0} animation="fadeIn">
-						<h3 className={styles.sectionTitleSmall}>ABOUT ME</h3>
+						<p className={styles.sectionTitleSmall}>ABOUT ME</p>
 					</AnimatedSection>
-					<Typewriter
-						as="h1"
-						className={styles.pageTitle}
-						text="My Journey and Approach"
-						speed={60}
-						delay={300}
-						showCursor={true}
-						loop={false}
-					/>
+					<AnimatedSection delay={200} animation="fadeIn">
+						<h2 className={styles.pageTitle}>My Journey and Approach</h2>
+					</AnimatedSection>
 
-					<AnimatedSection delay={200} animation="fadeInUp">
+					<AnimatedSection delay={300} animation="fadeInUp">
 						<section className={styles.contentSection}>
 							<p>
 								I am an empathetic and passionate, person-centred Counsellor
@@ -56,7 +49,7 @@ export default function About() {
 						</section>
 					</AnimatedSection>
 
-					<AnimatedSection delay={300} animation="slideInLeft">
+					<AnimatedSection delay={400} animation="slideInLeft">
 						<section className={styles.contentSection}>
 							<h2>My Approach</h2>
 							<p>
@@ -77,7 +70,7 @@ export default function About() {
 						</section>
 					</AnimatedSection>
 
-					<AnimatedSection delay={400} animation="slideInRight">
+					<AnimatedSection delay={500} animation="slideInRight">
 						<section className={styles.contentSection}>
 							<h2>My Commitment</h2>
 							<p>
@@ -88,7 +81,7 @@ export default function About() {
 						</section>
 					</AnimatedSection>
 
-					<AnimatedSection delay={500} animation="fadeIn">
+					<AnimatedSection delay={600} animation="fadeIn">
 						<div className={styles.socialLinks}>
 							<a
 								href="https://www.linkedin.com/in/your-profile"

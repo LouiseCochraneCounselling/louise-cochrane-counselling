@@ -286,7 +286,7 @@
 	color: var(--color-text-dark);
 	text-decoration: none;
 	font-size: clamp(0.875rem, 1.5vw, 0.9375rem);
-	font-family: "Roboto", sans-serif;
+	font-family: 'Roboto', sans-serif;
 	font-weight: 500;
 	padding: 0.5rem 1rem;
 	border: 1px solid rgba(0, 0, 0, 0.1);
@@ -328,7 +328,7 @@
 	margin-bottom: 1.5rem;
 	color: var(--color-text-dark);
 	opacity: 0.7;
-	font-family: "Roboto", sans-serif;
+	font-family: 'Roboto', sans-serif;
 }
 
 .heroSubtitle {
@@ -360,7 +360,7 @@
 	font-weight: 600;
 	line-height: 1.6em;
 	transition: all 0.3s ease;
-	font-family: "Roboto", sans-serif;
+	font-family: 'Roboto', sans-serif;
 }
 
 .heroButton:hover {
@@ -655,7 +655,7 @@
 	font-weight: 300;
 	line-height: 1.2;
 	color: var(--color-text-dark);
-	font-family: "Roboto", sans-serif;
+	font-family: 'Roboto', sans-serif;
 	margin-bottom: clamp(1.5rem, 3vw, 2rem);
 }
 
@@ -682,7 +682,7 @@
 	font-size: clamp(1.25rem, 2.5vw, 1.5rem);
 	font-weight: 600;
 	color: var(--color-text-dark);
-	font-family: "Roboto", sans-serif;
+	font-family: 'Roboto', sans-serif;
 }
 
 .missionList {
@@ -731,7 +731,7 @@
 	font-weight: 600;
 	line-height: 1.6em;
 	transition: all 0.3s ease;
-	font-family: "Roboto", sans-serif;
+	font-family: 'Roboto', sans-serif;
 }
 
 .aboutButton:hover {
@@ -818,7 +818,7 @@
 	line-height: 1.75;
 	color: var(--color-text-dark);
 	margin-bottom: 1.5rem;
-	padding: 0 1rem;
+	padding: 0 2rem;
 	position: relative;
 	font-weight: 400;
 	text-align: left;
@@ -832,9 +832,9 @@
 }
 
 .reflectionList li::before {
-	content: "—";
+	content: '•';
 	position: absolute;
-	left: 1rem;
+	left: 0.5rem;
 	color: var(--color-primary);
 	font-weight: 600;
 	font-size: 1.25rem;
@@ -880,7 +880,7 @@
 	margin-bottom: clamp(3rem, 5vw, 4rem);
 	color: var(--color-text-dark);
 	font-weight: 300;
-	font-family: "Roboto", sans-serif;
+	font-family: 'Roboto', sans-serif;
 	line-height: 1.2;
 	letter-spacing: -0.02em;
 }
@@ -903,7 +903,7 @@
 	font-weight: 600;
 	color: var(--color-text-dark);
 	margin-bottom: 1rem;
-	font-family: "Roboto", sans-serif;
+	font-family: 'Roboto', sans-serif;
 }
 
 .expectStepText {
@@ -932,7 +932,7 @@
 	font-weight: 600;
 	color: var(--color-text-dark);
 	margin-bottom: 1rem;
-	font-family: "Roboto", sans-serif;
+	font-family: 'Roboto', sans-serif;
 }
 
 .expectSectionText {
@@ -979,7 +979,7 @@
 	margin-bottom: clamp(3rem, 5vw, 4rem);
 	color: var(--color-text-dark);
 	font-weight: 300;
-	font-family: "Roboto", sans-serif;
+	font-family: 'Roboto', sans-serif;
 	line-height: 1.2;
 	letter-spacing: -0.02em;
 }
@@ -1003,7 +1003,7 @@
 	font-size: clamp(1rem, 2vw, 1.125rem);
 	line-height: 1.7;
 	color: var(--color-text-dark);
-	font-family: "Roboto", sans-serif;
+	font-family: 'Roboto', sans-serif;
 	margin: 0;
 }
 
@@ -1049,7 +1049,7 @@
 	margin-bottom: clamp(3rem, 5vw, 4rem);
 	color: var(--color-text-dark);
 	font-weight: 300;
-	font-family: "Roboto", sans-serif;
+	font-family: 'Roboto', sans-serif;
 	line-height: 1.2;
 	letter-spacing: -0.02em;
 }
@@ -1072,7 +1072,7 @@
 	font-weight: 600;
 	color: var(--color-text-dark);
 	margin-bottom: 1rem;
-	font-family: "Roboto", sans-serif;
+	font-family: 'Roboto', sans-serif;
 	line-height: 1.3;
 }
 
@@ -1127,7 +1127,7 @@
 
 .servicesHeader {
 	text-align: center;
-	margin-bottom: clamp(2rem, 4vw, 3rem);
+	margin-bottom: clamp(1rem, 2vw, 1.5rem);
 }
 
 .servicesTitle {
@@ -1135,7 +1135,7 @@
 	font-weight: 300;
 	line-height: 1.2;
 	color: var(--color-text-dark);
-	font-family: "Roboto", sans-serif;
+	font-family: 'Roboto', sans-serif;
 	margin-bottom: 0;
 }
 
@@ -1150,7 +1150,7 @@
 	font-weight: 600;
 	line-height: 1.6em;
 	transition: all 0.3s ease;
-	font-family: "Roboto", sans-serif;
+	font-family: 'Roboto', sans-serif;
 }
 
 .viewAllButton:hover {
@@ -1167,7 +1167,7 @@
 	width: 100%;
 	max-width: 100%;
 	align-content: start;
-	margin-top: clamp(2rem, 4vw, 3rem);
+	margin-top: clamp(1rem, 2vw, 1.5rem);
 	align-items: start;
 }
 
@@ -1248,7 +1248,7 @@
 }
 
 .serviceItemLink::after {
-	content: "";
+	content: '';
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -1332,7 +1332,7 @@
 	font-size: clamp(1.5rem, 3vw, 2rem);
 	font-weight: 700;
 	color: #fff;
-	font-family: "Roboto", sans-serif;
+	font-family: 'Roboto', sans-serif;
 	text-transform: capitalize;
 	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 	z-index: 2;
@@ -1395,7 +1395,7 @@
 	font-weight: 600;
 	line-height: 1.1em;
 	transition: all 0.3s ease;
-	font-family: "Roboto", sans-serif;
+	font-family: 'Roboto', sans-serif;
 	min-height: 44px;
 	min-width: 44px;
 	height: auto;
@@ -1444,7 +1444,7 @@
 	font-weight: 300;
 	line-height: 1.2;
 	color: var(--color-text-dark);
-	font-family: "Roboto", sans-serif;
+	font-family: 'Roboto', sans-serif;
 	margin-bottom: 0;
 }
 
@@ -1526,7 +1526,7 @@
 	font-size: clamp(1.5rem, 3vw, 2rem);
 	font-weight: 300;
 	color: var(--color-text-dark);
-	font-family: "Roboto", sans-serif;
+	font-family: 'Roboto', sans-serif;
 	margin-bottom: 1rem;
 }
 
@@ -1541,7 +1541,7 @@
 	font-weight: 600;
 	line-height: 1.6em;
 	transition: all 0.3s ease;
-	font-family: "Roboto", sans-serif;
+	font-family: 'Roboto', sans-serif;
 	margin-top: 1rem;
 }
 
@@ -1700,7 +1700,7 @@
 	font-weight: 700;
 	line-height: 1.2;
 	color: var(--color-text-dark);
-	font-family: "Roboto", sans-serif;
+	font-family: 'Roboto', sans-serif;
 	margin-bottom: 1.5rem;
 }
 
@@ -2115,8 +2115,9 @@
 	}
 
 	.reflectionList li {
-		padding-left: 1.5rem;
+		padding-left: 2rem;
 		margin-bottom: 1rem;
+		margin-left: 1.5rem;
 	}
 
 	.whatToExpectSection {
@@ -2315,11 +2316,11 @@
 	}
 
 	.servicesHeader {
-		margin-bottom: clamp(2rem, 4vw, 3rem);
+		margin-bottom: clamp(1rem, 3vw, 2rem);
 	}
 
 	.servicesGrid {
-		margin-top: clamp(2rem, 4vw, 3rem);
+		margin-top: clamp(1rem, 3vw, 2rem);
 		margin-bottom: clamp(2rem, 4vw, 3rem);
 	}
 
@@ -2454,11 +2455,11 @@
 	}
 
 	.servicesHeader {
-		margin-bottom: clamp(2rem, 4vw, 3rem);
+		margin-bottom: clamp(0.75rem, 3vw, 1.5rem);
 	}
 
 	.servicesGrid {
-		margin-top: clamp(2rem, 4vw, 3rem);
+		margin-top: clamp(1rem, 3vw, 1.5rem);
 		margin-bottom: clamp(2rem, 4vw, 3rem);
 	}
 
@@ -2636,7 +2637,7 @@
 	line-height: 1.1;
 	margin-bottom: 0;
 	color: var(--color-text-dark);
-	font-family: "Roboto", sans-serif;
+	font-family: 'Roboto', sans-serif;
 	letter-spacing: -0.02em;
 }
 
