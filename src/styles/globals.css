@@ -1,24 +1,24 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
 * {
 	box-sizing: border-box;
 	padding: 0;
 	margin: 0;
-	font-family: "Roboto", sans-serif;
+	font-family: 'Roboto', sans-serif;
 }
 
 html {
 	font-size: 16px;
 	-webkit-text-size-adjust: 100%;
 	-ms-text-size-adjust: 100%;
-	font-family: "Roboto", sans-serif;
+	font-family: 'Roboto', sans-serif;
 	scroll-snap-type: y mandatory;
 	overflow-y: scroll;
 	scroll-padding-top: clamp(80px, 10vh, 100px);
 }
 
 body {
-	font-family: "Roboto", sans-serif;
+	font-family: 'Roboto', sans-serif;
 }
 
 @media (max-width: 639px) {
@@ -44,41 +44,41 @@ body {
 	--color-text-light: #718096;
 	--color-bg-light: #f7f8fa;
 	--color-bg-warm: #fafbfc;
-	--color-bg-mauve: #e8dde3;
+	--color-bg-mauve: #f7edf2ff;
 	--color-white: #ffffff;
 	--color-border: #e2e8f0;
 	--color-purple: #5b6b8c;
 	--color-teal: #6b8c9d;
 	--color-pink: #7c8ba3;
-	--color-card-bg: #D5D0D5;
-	--color-header-dark: #d2c5cc;
-	--color-form-bg: #d1c6cb;
+	--color-card-bg: #eedee5ff;
+	--color-header-dark: #eedee5ff;
+	--color-form-bg: #eedee5ff;
 
 	/* Spacing Scale */
-	--spacing-xs: 0.5rem;      /* 8px */
-	--spacing-sm: 0.75rem;     /* 12px */
-	--spacing-md: 1rem;        /* 16px */
-	--spacing-lg: 1.5rem;      /* 24px */
-	--spacing-xl: 2rem;        /* 32px */
-	--spacing-2xl: 2.5rem;     /* 40px */
-	--spacing-3xl: 3rem;       /* 48px */
-	--spacing-4xl: 4rem;       /* 64px */
-	--spacing-5xl: 5rem;       /* 80px */
-	--spacing-6xl: 6rem;       /* 96px */
+	--spacing-xs: 0.5rem; /* 8px */
+	--spacing-sm: 0.75rem; /* 12px */
+	--spacing-md: 1rem; /* 16px */
+	--spacing-lg: 1.5rem; /* 24px */
+	--spacing-xl: 2rem; /* 32px */
+	--spacing-2xl: 2.5rem; /* 40px */
+	--spacing-3xl: 3rem; /* 48px */
+	--spacing-4xl: 4rem; /* 64px */
+	--spacing-5xl: 5rem; /* 80px */
+	--spacing-6xl: 6rem; /* 96px */
 
 	/* Typography Scale */
-	--font-size-xs: 0.875rem;      /* 14px */
-	--font-size-sm: 1rem;          /* 16px */
-	--font-size-base: 1.0625rem;   /* 17px */
-	--font-size-md: 1.125rem;      /* 18px */
-	--font-size-lg: 1.25rem;       /* 20px */
-	--font-size-xl: 1.5rem;        /* 24px */
-	--font-size-2xl: 1.75rem;      /* 28px */
-	--font-size-3xl: 2rem;          /* 32px */
-	--font-size-4xl: 2.5rem;       /* 40px */
-	--font-size-5xl: 3rem;         /* 48px */
-	--font-size-6xl: 3.5rem;       /* 56px */
-	--font-size-7xl: 3.75rem;      /* 60px */
+	--font-size-xs: 0.875rem; /* 14px */
+	--font-size-sm: 1rem; /* 16px */
+	--font-size-base: 1.0625rem; /* 17px */
+	--font-size-md: 1.125rem; /* 18px */
+	--font-size-lg: 1.25rem; /* 20px */
+	--font-size-xl: 1.5rem; /* 24px */
+	--font-size-2xl: 1.75rem; /* 28px */
+	--font-size-3xl: 2rem; /* 32px */
+	--font-size-4xl: 2.5rem; /* 40px */
+	--font-size-5xl: 3rem; /* 48px */
+	--font-size-6xl: 3.5rem; /* 56px */
+	--font-size-7xl: 3.75rem; /* 60px */
 
 	/* Line Heights */
 	--line-height-tight: 1.2;
@@ -97,7 +97,7 @@ body {
 body {
 	max-width: 100vw;
 	overflow-x: hidden;
-	font-family: "Roboto", sans-serif;
+	font-family: 'Roboto', sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	line-height: 1.75;
@@ -106,7 +106,7 @@ body {
 	/* Safe area insets for iOS */
 	padding-left: env(safe-area-inset-left);
 	padding-right: env(safe-area-inset-right);
-	font-feature-settings: "kern" 1;
+	font-feature-settings: 'kern' 1;
 	text-rendering: optimizeLegibility;
 	font-size: 1rem;
 }
@@ -122,7 +122,7 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: "Roboto", sans-serif;
+	font-family: 'Roboto', sans-serif;
 	font-weight: 600;
 	line-height: 1.3;
 	margin-bottom: 1.5rem;
@@ -153,7 +153,7 @@ p {
 	line-height: 1.8;
 	font-size: 1.0625rem;
 	color: var(--color-text-medium);
-	font-family: "Roboto", sans-serif;
+	font-family: 'Roboto', sans-serif;
 }
 
 ul,
@@ -170,8 +170,8 @@ img {
 /* Touch target improvements */
 button,
 a,
-input[type="submit"],
-input[type="button"] {
+input[type='submit'],
+input[type='button'] {
 	min-height: 44px;
 	min-width: 44px;
 	touch-action: manipulation;
@@ -211,8 +211,8 @@ select:focus-visible {
 }
 
 /* High contrast focus for buttons on colored backgrounds */
-button[class*="submitButton"]:focus-visible,
-button[class*="formButton"]:focus-visible {
+button[class*='submitButton']:focus-visible,
+button[class*='formButton']:focus-visible {
 	outline: 2px solid var(--color-white);
 	outline-offset: 2px;
 }
