@@ -206,6 +206,19 @@
 	margin-top: clamp(2rem, 4vw, 3rem);
 }
 
+.accreditationBlock {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: clamp(1.5rem, 3vw, 2rem);
+}
+
+.accreditationLogo {
+	width: clamp(120px, 20vw, 170px);
+	height: auto;
+	opacity: 0.9;
+}
+
 .linkedinLink {
 	display: inline-flex;
 	align-items: center;

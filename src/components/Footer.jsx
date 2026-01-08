@@ -1,4 +1,5 @@
 import styles from "./Footer.module.css";
+import Image from "next/image";
 import Link from "next/link";
 
 const Footer = () => {
@@ -12,12 +13,16 @@ const Footer = () => {
 						<h3 className={styles.quickLinksTitle}>Quick Links</h3>
 						<ul className={styles.quickLinksList}>
 							<li>
-								<Link href="/#common-concerns-section" className={styles.quickLink}>
+								<Link
+									href="/#common-concerns-section"
+									className={styles.quickLink}>
 									Common Questions
 								</Link>
 							</li>
 							<li>
-								<Link href="/#what-to-expect-section" className={styles.quickLink}>
+								<Link
+									href="/#what-to-expect-section"
+									className={styles.quickLink}>
 									About Sessions
 								</Link>
 							</li>
@@ -35,6 +40,13 @@ const Footer = () => {
 							<br />
 							St Helier, Jersey JE2 4QB
 						</p>
+						<Image
+							src="/images/mbacp.svg"
+							alt="MBACP accredited professional body logo"
+							className={styles.accreditationLogo}
+							width={140}
+							height={60}
+						/>
 					</div>
 				</div>
 				<div className={styles.copyright}>

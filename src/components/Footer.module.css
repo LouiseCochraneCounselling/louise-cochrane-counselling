@@ -25,6 +25,14 @@
 	align-items: start;
 }
 
+.accreditationLogo {
+	width: clamp(110px, 18vw, 150px);
+	height: auto;
+	opacity: 0.9;
+	margin-top: clamp(0.75rem, 2vw, 1rem);
+	align-self: flex-start;
+}
+
 .linksSection {
 	display: none;
 }
@@ -164,6 +172,11 @@
 		text-align: center;
 	}
 
+	.accreditationLogo {
+		align-self: center;
+		margin-top: 0.75rem;
+	}
+
 	.linksSection,
 	.nav {
 		display: none;
@@ -202,6 +215,10 @@
 
 	.locationText {
 		text-align: right;
+	}
+
+	.accreditationLogo {
+		align-self: flex-end;
 	}
 }
 

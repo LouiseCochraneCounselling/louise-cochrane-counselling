@@ -181,6 +181,12 @@
 	}
 }
 
+@media (max-width: 520px) {
+	.aboutImageMeta {
+		grid-template-columns: 1fr;
+	}
+}
+
 .scrollToContact {
 	display: flex;
 	justify-content: center;
@@ -502,6 +508,35 @@
 	height: auto;
 	gap: clamp(1.25rem, 2.5vw, 1.75rem);
 	line-height: 0;
+}
+
+.aboutImageMeta {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: clamp(1rem, 2.5vw, 1.5rem);
+	align-items: center;
+	width: clamp(320px, 40vw, 480px);
+	max-width: 100%;
+	margin: 0 auto;
+}
+
+.aboutImageBadge {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	min-height: 56px;
+}
+
+.aboutAccreditationLogo {
+	width: clamp(110px, 18vw, 150px);
+	height: auto;
+	opacity: 0.9;
+}
+
+.aboutImageBadge .linkedinLink {
+	width: 100%;
+	justify-content: center;
 }
 
 .aboutImages .scrollToContact {
@@ -986,9 +1021,9 @@
 
 .counsellingRoomContent {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: clamp(3rem, 5vw, 4rem);
-	align-items: center;
+	grid-template-columns: 1fr;
+	gap: clamp(2rem, 4vw, 3rem);
+	align-items: start;
 	width: 100%;
 	margin-bottom: clamp(2rem, 4vw, 3rem);
 }
@@ -1008,21 +1043,21 @@
 }
 
 .counsellingRoomImages {
-	display: flex;
-	flex-direction: column;
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
 	gap: clamp(1.5rem, 3vw, 2rem);
-	align-items: center;
+	align-items: start;
 }
 
 .counsellingRoomImage {
 	width: 100%;
-	max-width: 480px;
+	max-width: 100%;
 	aspect-ratio: 3 / 2;
 	overflow: hidden;
 	border-radius: clamp(16px, 3vw, 24px);
 	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 	object-fit: cover;
-	margin: 0 auto;
+	margin: 0;
 }
 
 .counsellingRoomImage :global(img) {
@@ -2149,7 +2184,7 @@
 	}
 
 	.counsellingRoomImages {
-		order: -1;
+		grid-template-columns: 1fr;
 	}
 
 	.commonConcernsSection {
