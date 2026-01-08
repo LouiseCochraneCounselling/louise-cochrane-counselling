@@ -199,6 +199,44 @@
 }
 
 @media (min-width: 1024px) {
+	.counsellingRoomContent {
+		grid-template-columns: 1fr 1.1fr;
+	}
+
+	.counsellingRoomImage {
+		max-width: 600px;
+		margin: 0 auto;
+	}
+
+	.counsellingRoomImages {
+		justify-items: center;
+		margin-top: 0;
+	}
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+	.counsellingRoomContent {
+		grid-template-columns: 1fr;
+		gap: clamp(1.75rem, 4vw, 2.5rem);
+		align-items: start;
+	}
+
+	.counsellingRoomImages {
+		order: 1;
+		margin-top: 0;
+		margin-bottom: clamp(1.5rem, 4vw, 2.25rem);
+	}
+
+	.counsellingRoomText {
+		order: 2;
+	}
+
+	.counsellingRoomImage {
+		max-width: 720px;
+	}
+}
+
+@media (min-width: 1024px) {
 	.aboutImageMeta {
 		gap: clamp(1.75rem, 3vw, 2.25rem);
 		width: clamp(420px, 34vw, 500px);
@@ -1046,9 +1084,9 @@
 
 .counsellingRoomContent {
 	display: grid;
-	grid-template-columns: 1fr;
-	gap: clamp(2rem, 4vw, 3rem);
-	align-items: start;
+	grid-template-columns: 1fr 1fr;
+	gap: clamp(2.5rem, 4vw, 3.5rem);
+	align-items: center;
 	width: 100%;
 	margin-bottom: clamp(2rem, 4vw, 3rem);
 }
@@ -1057,6 +1095,7 @@
 	display: flex;
 	flex-direction: column;
 	gap: clamp(1.5rem, 3vw, 2rem);
+	order: 1;
 }
 
 .counsellingRoomDescription {
@@ -1069,9 +1108,11 @@
 
 .counsellingRoomImages {
 	display: grid;
-	grid-template-columns: repeat(2, minmax(0, 1fr));
+	grid-template-columns: 1fr;
 	gap: clamp(1.5rem, 3vw, 2rem);
 	align-items: start;
+	order: 2;
+	margin-top: clamp(0.5rem, 1.5vw, 1rem);
 }
 
 .counsellingRoomImage {
@@ -1917,6 +1958,27 @@
 		gap: clamp(2rem, 3vw, 2.5rem);
 	}
 
+	.counsellingRoomContent {
+		grid-template-columns: 1fr;
+		gap: clamp(1.75rem, 4vw, 2.5rem);
+		align-items: start;
+	}
+
+	.counsellingRoomImages {
+		order: 1;
+		justify-items: center;
+		margin-top: 0;
+		margin-bottom: clamp(1.5rem, 4vw, 2.25rem);
+	}
+
+	.counsellingRoomText {
+		order: 2;
+	}
+
+	.counsellingRoomImage {
+		max-width: 720px;
+	}
+
 	.commonConcernsSection {
 		padding: clamp(4rem, 6vw, 5rem) clamp(2.5rem, 5vw, 3rem);
 	}
@@ -2206,10 +2268,18 @@
 	.counsellingRoomContent {
 		grid-template-columns: 1fr;
 		gap: clamp(1.5rem, 3vw, 2rem);
+		align-items: start;
 	}
 
 	.counsellingRoomImages {
 		grid-template-columns: 1fr;
+		order: 1;
+		margin-top: 0;
+		margin-bottom: clamp(1.25rem, 4vw, 2rem);
+	}
+
+	.counsellingRoomText {
+		order: 2;
 	}
 
 	.commonConcernsSection {

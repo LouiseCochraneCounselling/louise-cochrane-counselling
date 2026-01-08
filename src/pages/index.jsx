@@ -470,16 +470,6 @@ export default function Home() {
 										height={320}
 										sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 480px"
 									/>
-									<AnimatedImage
-										src="/images/playArea.jpeg"
-										alt="Cozy therapy room with toys and games for children, creating a warm and welcoming play space"
-										className={styles.counsellingRoomImage}
-										animationStyle="style-1"
-										delay={400}
-										width={480}
-										height={320}
-										sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 480px"
-									/>
 								</div>
 							</div>
 						</AnimatedSection>
