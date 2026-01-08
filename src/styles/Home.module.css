@@ -1011,14 +1011,24 @@
 	display: flex;
 	flex-direction: column;
 	gap: clamp(1.5rem, 3vw, 2rem);
+	align-items: center;
 }
 
 .counsellingRoomImage {
 	width: 100%;
-	height: auto;
+	max-width: 480px;
+	aspect-ratio: 3 / 2;
+	overflow: hidden;
 	border-radius: clamp(16px, 3vw, 24px);
 	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 	object-fit: cover;
+	margin: 0 auto;
+}
+
+.counsellingRoomImage :global(img) {
+	width: 100% !important;
+	height: 100% !important;
+	object-fit: cover !important;
 }
 
 .commonConcernsSection {

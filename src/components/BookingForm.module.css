@@ -1,179 +1,179 @@
 .bookingSection {
-  position: relative;
-  min-height: 600px;
-  display: flex;
-  align-items: center;
-  padding: clamp(4rem, 8vw, 6rem) 0 clamp(4rem, 8vw, 6rem) 0;
-  overflow: visible;
-  width: 100%;
-  margin-bottom: 0;
+	position: relative;
+	min-height: 600px;
+	display: flex;
+	align-items: center;
+	padding: clamp(4rem, 8vw, 6rem) 0 clamp(4rem, 8vw, 6rem) 0;
+	overflow: visible;
+	width: 100%;
+	margin-bottom: 0;
 }
 
 .backgroundImage {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1920&h=1080&fit=crop&q=80');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  filter: blur(8px);
-  transform: scale(1.1);
-  z-index: 1;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-image: url("https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1920&h=1080&fit=crop&q=80");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	filter: blur(8px);
+	transform: scale(1.1);
+	z-index: 1;
 }
 
 .overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 2;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 2;
 }
 
 .content {
-  position: relative;
-  z-index: 3;
-  max-width: 1400px;
-  margin: 0 auto;
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(3rem, 6vw, 5rem);
-  align-items: center;
-  padding: 0 clamp(1.5rem, 5vw, 3rem);
+	position: relative;
+	z-index: 3;
+	max-width: 1400px;
+	margin: 0 auto;
+	width: 100%;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: clamp(3rem, 6vw, 5rem);
+	align-items: center;
+	padding: 0 clamp(1.5rem, 5vw, 3rem);
 }
 
 .textContent {
-  color: var(--color-white);
+	color: var(--color-white);
 }
 
 .mainHeading {
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  font-weight: 700;
-  font-family: "Roboto", sans-serif;
-  color: var(--color-white);
-  margin-bottom: 1rem;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
+	font-size: clamp(2.5rem, 6vw, 4rem);
+	font-weight: 700;
+	font-family: "Roboto", sans-serif;
+	color: var(--color-white);
+	margin-bottom: 1rem;
+	line-height: 1.2;
+	letter-spacing: -0.02em;
 }
 
 .subheading {
-  font-size: clamp(0.875rem, 1.8vw, 1rem);
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.9);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin: 0;
+	font-size: clamp(0.875rem, 1.8vw, 1rem);
+	font-weight: 600;
+	color: rgba(255, 255, 255, 0.9);
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	margin: 0;
 }
 
 .bookingForm {
-  background: var(--color-bg-mauve);
-  border-radius: 16px;
-  padding: clamp(2rem, 4vw, 3rem);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+	background: var(--color-bg-mauve);
+	border-radius: 16px;
+	padding: clamp(2rem, 4vw, 3rem);
+	box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
 }
 
 .formRow {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 1rem;
 }
 
 .formGroup {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 .formLabel {
-  display: block;
-  font-size: clamp(0.875rem, 1.8vw, 1rem);
-  font-weight: 600;
-  color: var(--color-text-dark);
-  margin-bottom: 0.5rem;
-  font-family: "Roboto", sans-serif;
+	display: block;
+	font-size: clamp(0.875rem, 1.8vw, 1rem);
+	font-weight: 600;
+	color: var(--color-text-dark);
+	margin-bottom: 0.5rem;
+	font-family: "Roboto", sans-serif;
 }
 
 .formLabel span[aria-label="required"] {
-  color: var(--color-primary);
+	color: var(--color-primary);
 }
 
 .optionalLabel {
-  font-weight: 400;
-  color: var(--color-text-light);
-  font-size: 0.875em;
+	font-weight: 400;
+	color: var(--color-text-light);
+	font-size: 0.875em;
 }
 
 .formInput,
 .formTextarea,
 .formSelect {
-  width: 100%;
-  padding: clamp(0.875rem, 2vw, 1rem) 1.25rem;
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-  font-size: 16px;
-  font-family: inherit;
-  transition: all 0.3s ease;
-  box-sizing: border-box;
-  min-height: 52px;
-  background-color: var(--color-header-dark);
-  color: var(--color-text-dark);
-  -webkit-appearance: none;
-  appearance: none;
+	width: 100%;
+	padding: clamp(0.875rem, 2vw, 1rem) 1.25rem;
+	border: 1px solid var(--color-border);
+	border-radius: 8px;
+	font-size: 16px;
+	font-family: inherit;
+	transition: all 0.3s ease;
+	box-sizing: border-box;
+	min-height: 52px;
+	background-color: var(--color-header-dark);
+	color: var(--color-text-dark);
+	-webkit-appearance: none;
+	appearance: none;
 }
 
 .formInput::placeholder,
 .formTextarea::placeholder {
-  color: var(--color-text-light);
+	color: var(--color-text-light);
 }
 
 .formInput:focus,
 .formTextarea:focus,
 .formSelect:focus {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(91, 107, 140, 0.1);
+	outline: 2px solid var(--color-primary);
+	outline-offset: 2px;
+	border-color: var(--color-primary);
+	box-shadow: 0 0 0 3px rgba(91, 107, 140, 0.1);
 }
 
 .formSelect option {
-  background-color: var(--color-header-dark);
-  color: var(--color-text-dark);
+	background-color: var(--color-header-dark);
+	color: var(--color-text-dark);
 }
 
 .formTextarea {
-  resize: vertical;
-  min-height: 140px;
-  padding-top: 1rem;
-  line-height: 1.6;
-  font-family: inherit;
+	resize: vertical;
+	min-height: 140px;
+	padding-top: 1rem;
+	line-height: 1.6;
+	font-family: inherit;
 }
 
 .characterCounter {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 0.5rem;
-  font-size: 0.8125rem;
-  color: var(--color-text-light);
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 0.5rem;
+	font-size: 0.8125rem;
+	color: var(--color-text-light);
 }
 
 .characterCounterWarning {
-  color: #dc2626;
-  font-weight: 600;
+	color: #dc2626;
+	font-weight: 600;
 }
 
 .fieldError {
-  display: block;
-  margin-top: 0.5rem;
-  font-size: 0.875rem;
-  color: #dc2626;
-  font-weight: 500;
+	display: block;
+	margin-top: 0.5rem;
+	font-size: 0.875rem;
+	color: #dc2626;
+	font-weight: 500;
 }
 
 .submitButton {
@@ -202,289 +202,292 @@
 }
 
 .submitButton:active:not(:disabled) {
-  transform: translateY(0);
+	transform: translateY(0);
 }
 
 .submitButton:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
+	opacity: 0.7;
+	cursor: not-allowed;
 }
 
 .submitButton:focus,
 .submitButton:focus-visible {
-  outline: 2px solid var(--color-white);
-  outline-offset: 2px;
+	outline: 2px solid var(--color-white);
+	outline-offset: 2px;
 }
 
 .spinner {
-  border: 3px solid rgba(255, 255, 255, 0.3);
-  border-top: 3px solid var(--color-white);
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  animation: spin 1s linear infinite;
-  display: inline-block;
-  vertical-align: middle;
+	border: 3px solid rgba(255, 255, 255, 0.3);
+	border-top: 3px solid var(--color-white);
+	border-radius: 50%;
+	width: 20px;
+	height: 20px;
+	animation: spin 1s linear infinite;
+	display: inline-block;
+	vertical-align: middle;
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
 }
 
 .formMessage {
-  margin-top: 0.5rem;
-  padding: 1.25rem 1rem;
-  border-radius: 8px;
-  text-align: center;
-  font-size: 0.9375rem;
-  line-height: 1.6;
+	margin-top: 0.5rem;
+	padding: 1.25rem 1rem;
+	border-radius: 8px;
+	text-align: center;
+	font-size: 0.9375rem;
+	line-height: 1.6;
 }
 
 .formMessage p {
-  margin: 0.5rem 0;
+	margin: 0.5rem 0;
 }
 
 .formMessage p:first-child {
-  margin-top: 0;
+	margin-top: 0;
 }
 
 .formMessage p:last-child {
-  margin-bottom: 0;
+	margin-bottom: 0;
 }
 
 .formMessage.success {
-  background-color: #d1fae5;
-  color: #065f46;
-  border: 1px solid #a7f3d0;
+	background-color: #d1fae5;
+	color: #065f46;
+	border: 1px solid #a7f3d0;
 }
 
 .formMessage.error {
-  background-color: #fee2e2;
-  color: #991b1b;
-  border: 1px solid #fecaca;
+	background-color: #fee2e2;
+	color: #991b1b;
+	border: 1px solid #fecaca;
 }
 
 .infoAccordion {
-  margin: 0.5rem 0;
+	margin: 0.5rem 0;
 }
 
 .infoToggle {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.875rem 1rem;
-  background-color: var(--color-header-dark);
-  border: 1px solid rgba(91, 107, 140, 0.15);
-  border-radius: 8px;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--color-text-dark);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-family: "Roboto", sans-serif;
-  text-align: left;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0.875rem 1rem;
+	background-color: var(--color-header-dark);
+	border: 1px solid rgba(91, 107, 140, 0.15);
+	border-radius: 8px;
+	font-size: 0.875rem;
+	font-weight: 500;
+	color: var(--color-text-dark);
+	cursor: pointer;
+	transition: all 0.3s ease;
+	font-family: "Roboto", sans-serif;
+	text-align: left;
 }
 
 .infoToggle:hover {
-  background-color: var(--color-header-dark);
-  opacity: 0.9;
-  border-color: rgba(91, 107, 140, 0.25);
+	background-color: var(--color-header-dark);
+	opacity: 0.9;
+	border-color: rgba(91, 107, 140, 0.25);
 }
 
 .infoToggle:focus,
 .infoToggle:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
-  box-shadow: 0 0 0 3px rgba(91, 107, 140, 0.1);
+	outline: 2px solid var(--color-primary);
+	outline-offset: 2px;
+	box-shadow: 0 0 0 3px rgba(91, 107, 140, 0.1);
 }
 
 .infoToggleIcon {
-  flex-shrink: 0;
-  margin-left: 1rem;
-  transition: transform 0.3s ease;
-  color: var(--color-text-medium);
+	flex-shrink: 0;
+	margin-left: 1rem;
+	transition: transform 0.3s ease;
+	color: var(--color-text-medium);
 }
 
 .infoToggleIconOpen {
-  transform: rotate(180deg);
+	transform: rotate(180deg);
 }
 
 .infoContent {
-  margin-top: 0.75rem;
-  padding: 1rem 1.25rem;
-  background-color: var(--color-header-dark);
-  border-radius: 8px;
-  border: 1px solid rgba(91, 107, 140, 0.1);
-  animation: fadeIn 0.3s ease;
+	margin-top: 0.75rem;
+	padding: 1rem 1.25rem;
+	background-color: var(--color-header-dark);
+	border-radius: 8px;
+	border: 1px solid rgba(91, 107, 140, 0.1);
+	animation: fadeIn 0.3s ease;
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-5px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+	from {
+		opacity: 0;
+		transform: translateY(-5px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
 .infoContent p {
-  margin: 0 0 0.75rem 0;
-  font-size: 0.875rem;
-  line-height: 1.6;
-  color: var(--color-text-medium);
+	margin: 0 0 0.75rem 0;
+	font-size: 0.875rem;
+	line-height: 1.6;
+	color: var(--color-text-medium);
 }
 
 .infoContent p:last-child {
-  margin-bottom: 0;
+	margin-bottom: 0;
 }
 
 .infoLink {
-  color: var(--color-primary);
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 3px;
-  transition: color 0.2s ease;
+	color: var(--color-primary);
+	text-decoration: underline;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 3px;
+	transition: color 0.2s ease;
 }
 
 .infoLink:hover {
-  color: var(--color-text-dark);
-  text-decoration-thickness: 2px;
+	color: var(--color-text-dark);
+	text-decoration-thickness: 2px;
 }
 
 .infoLink:focus,
 .infoLink:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
-  color: var(--color-text-dark);
-  text-decoration-thickness: 2px;
+	outline: 2px solid var(--color-primary);
+	outline-offset: 2px;
+	color: var(--color-text-dark);
+	text-decoration-thickness: 2px;
 }
 
 .privacyNote {
-  font-size: 0.875rem;
-  color: var(--color-text-medium);
-  margin: -0.5rem 0 0 0;
-  padding: 0.75rem 1rem;
-  background-color: rgba(91, 107, 140, 0.05);
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  line-height: 1.5;
+	font-size: 0.875rem;
+	color: var(--color-text-medium);
+	margin: -0.5rem 0 0 0;
+	padding: 0.75rem 1rem;
+	background-color: rgba(91, 107, 140, 0.05);
+	border-radius: 6px;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	line-height: 1.5;
 }
 
 .privacyNote i {
-  color: var(--color-primary);
-  font-size: 0.875rem;
+	color: var(--color-primary);
+	font-size: 0.875rem;
 }
 
 .hidden {
-  position: absolute;
-  left: -9999px;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
+	position: absolute;
+	left: -9999px;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
 }
 
 /* Mobile (up to 639px) */
 @media (max-width: 639px) {
-  .bookingSection {
-    min-height: auto;
-    overflow: visible;
-    padding-bottom: clamp(3rem, 6vw, 4rem);
-  }
+	.bookingSection {
+		min-height: auto;
+		overflow: visible;
+		padding-bottom: clamp(3rem, 6vw, 4rem);
+	}
 
-  .content {
-    grid-template-columns: 1fr;
-    gap: clamp(2rem, 4vw, 3rem);
-  }
+	.content {
+		grid-template-columns: 1fr;
+		gap: clamp(2rem, 4vw, 3rem);
+	}
 
-  .textContent {
-    text-align: center;
-  }
+	.textContent {
+		text-align: center;
+	}
 
-  .formRow {
-    grid-template-columns: 1fr;
-  }
+	.formRow {
+		grid-template-columns: 1fr;
+	}
 }
 
 /* Small Mobile (up to 480px) - Additional refinements */
 @media (max-width: 480px) {
-  .bookingSection {
-    min-height: auto;
-    padding: clamp(2rem, 5vw, 3rem) clamp(1rem, 3vw, 1.5rem);
-    overflow: visible;
-    margin-bottom: 0;
-  }
+	.bookingSection {
+		min-height: auto;
+		padding: clamp(2rem, 5vw, 3rem) clamp(1rem, 3vw, 1.5rem);
+		overflow: visible;
+		margin-bottom: 0;
+	}
 
-  .content {
-    padding: 0 clamp(0.75rem, 3vw, 1rem);
-    gap: clamp(1.5rem, 4vw, 2rem);
-  }
+	.content {
+		padding: 0 clamp(0.75rem, 3vw, 1rem);
+		gap: clamp(1.5rem, 4vw, 2rem);
+	}
 
-  .bookingForm {
-    padding: clamp(1.5rem, 4vw, 2rem);
-    gap: 1.25rem;
-  }
+	.bookingForm {
+		padding: clamp(1.5rem, 4vw, 2rem);
+		gap: 1.25rem;
+	}
 
-  .formInput,
-  .formTextarea,
-  .formSelect {
-    font-size: 16px; /* Prevents zoom on iOS */
-    padding: clamp(0.75rem, 2vw, 0.875rem) 1rem;
-  }
+	.formInput,
+	.formTextarea,
+	.formSelect {
+		font-size: 16px; /* Prevents zoom on iOS */
+		padding: clamp(0.75rem, 2vw, 0.875rem) 1rem;
+	}
 
-  .formButton {
-    padding: clamp(0.875rem, 2.5vw, 1rem) clamp(1.5rem, 4vw, 2rem);
-    font-size: clamp(0.875rem, 2vw, 1rem);
-  }
+	.formButton {
+		padding: clamp(0.875rem, 2.5vw, 1rem) clamp(1.5rem, 4vw, 2rem);
+		font-size: clamp(0.875rem, 2vw, 1rem);
+	}
 }
 
 /* Extra Small Mobile (up to 320px) - Ensure readability */
 @media (max-width: 320px) {
-  .bookingSection {
-    padding: clamp(1.5rem, 4vw, 2rem) clamp(0.75rem, 2vw, 1rem);
-  }
+	.bookingSection {
+		padding: clamp(1.5rem, 4vw, 2rem) clamp(0.75rem, 2vw, 1rem);
+	}
 
-  .content {
-    gap: clamp(1.5rem, 4vw, 2rem);
-    padding: 0 clamp(0.75rem, 2vw, 1rem);
-  }
+	.content {
+		gap: clamp(1.5rem, 4vw, 2rem);
+		padding: 0 clamp(0.75rem, 2vw, 1rem);
+	}
 
-  .bookingForm {
-    padding: clamp(1.25rem, 3vw, 1.5rem);
-    gap: 1rem;
-  }
+	.bookingForm {
+		padding: clamp(1.25rem, 3vw, 1.5rem);
+		gap: 1rem;
+	}
 
-  .formLabel {
-    font-size: 0.875rem;
-    margin-bottom: 0.375rem;
-  }
+	.formLabel {
+		font-size: 0.875rem;
+		margin-bottom: 0.375rem;
+	}
 
-  .formInput,
-  .formTextarea,
-  .formSelect {
-    font-size: 16px; /* Prevents zoom on iOS */
-    padding: 0.75rem;
-    min-height: 44px; /* Touch target size */
-  }
+	.formInput,
+	.formTextarea,
+	.formSelect {
+		font-size: 16px; /* Prevents zoom on iOS */
+		padding: 0.75rem;
+		min-height: 44px; /* Touch target size */
+	}
 
-  .formButton {
-    padding: 0.875rem 1.5rem;
-    font-size: 0.875rem;
-    min-height: 44px; /* Touch target size */
-    width: 100%;
-  }
+	.formButton {
+		padding: 0.875rem 1.5rem;
+		font-size: 0.875rem;
+		min-height: 44px; /* Touch target size */
+		width: 100%;
+	}
 
-  .mainHeading {
-    font-size: clamp(1.75rem, 8vw, 2.25rem);
-  }
+	.mainHeading {
+		font-size: clamp(1.75rem, 8vw, 2.25rem);
+	}
 
-  .subheading {
-    font-size: 0.75rem;
-  }
+	.subheading {
+		font-size: 0.75rem;
+	}
 }
-

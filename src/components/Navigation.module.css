@@ -40,33 +40,33 @@
 	margin-left: clamp(-50px, -5vw, -20px);
 }
 
+.logoLink {
+	text-decoration: none;
+	display: inline-block;
+}
+
+@media (max-width: 639px) {
 	.logoLink {
-		text-decoration: none;
-		display: inline-block;
+		display: flex;
+		align-items: center;
+		height: 100%;
 	}
+}
 
-	@media (max-width: 639px) {
-		.logoLink {
-			display: flex;
-			align-items: center;
-			height: 100%;
-		}
-	}
+.logoContainer {
+	text-align: left;
+	overflow: visible;
+	min-width: 0;
+}
 
+@media (max-width: 639px) {
 	.logoContainer {
-		text-align: left;
-		overflow: visible;
-		min-width: 0;
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		height: 100%;
 	}
-
-	@media (max-width: 639px) {
-		.logoContainer {
-			display: flex;
-			align-items: center;
-			justify-content: flex-start;
-			height: 100%;
-		}
-	}
+}
 
 .logoImg {
 	max-width: 100%;
@@ -364,11 +364,11 @@
 	}
 }
 
-
 /* Mobile Styles (up to 639px) */
 @media (max-width: 639px) {
 	.headerContainer {
-		padding: clamp(0.25rem, 1vw, 0.5rem) clamp(0.5rem, 2vw, 1rem) clamp(0.25rem, 1vw, 0.5rem) clamp(0.5rem, 2vw, 1rem);
+		padding: clamp(0.25rem, 1vw, 0.5rem) clamp(0.5rem, 2vw, 1rem)
+			clamp(0.25rem, 1vw, 0.5rem) clamp(0.5rem, 2vw, 1rem);
 		align-items: center;
 		justify-content: flex-start;
 		min-height: auto;
@@ -418,7 +418,6 @@
 
 /* Desktop Styles */
 @media (min-width: 1024px) {
-
 	.headerContainer {
 		padding-left: clamp(0.5rem, 1.5vw, 1rem);
 		padding-right: clamp(1rem, 2vw, 2rem);
@@ -472,4 +471,3 @@
 		display: none;
 	}
 }
-
