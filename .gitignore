@@ -54,3 +54,7 @@ layout-plan-*.md
 # Local audit and documentation
 docs__local/
 
+
+# Ignore all .md files except README.md
+*.md
+!README.md
