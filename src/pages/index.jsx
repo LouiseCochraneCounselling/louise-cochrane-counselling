@@ -65,7 +65,7 @@ export default function Home() {
 						<div className={styles.heroContent}>
 							<div className={styles.heroLogoWrapper}>
 								<Image
-									src="/images/logo.svg"
+									src="/images/logo.jpg"
 									alt="Louise Cochrane Counselling"
 									width={750}
 									height={375}
