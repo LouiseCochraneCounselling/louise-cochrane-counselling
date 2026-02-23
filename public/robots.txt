@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /booking-success
+
+Sitemap: https://louisecochranecounselling.com/sitemap.xml

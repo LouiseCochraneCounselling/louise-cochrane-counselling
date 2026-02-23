@@ -3,7 +3,7 @@
 	justify-content: center;
 	align-items: center;
 	width: 100%;
-	margin-top: clamp(2rem, 4vw, 3rem);
+	margin-top: clamp(3.5rem, 6vw, 5rem);
 	padding-top: 0;
 	padding-bottom: 0;
 	position: relative;
@@ -72,5 +72,9 @@
 
 	.button {
 		gap: 0;
+	}
+
+	.container {
+		margin-top: clamp(2.5rem, 8vw, 4rem);
 	}
 }

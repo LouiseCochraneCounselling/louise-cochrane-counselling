@@ -1,5 +1,5 @@
-import Head from "next/head";
 import Link from "next/link";
+import SEO from "../components/SEO";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import AnimatedSection from "../components/AnimatedSection";
@@ -9,15 +9,12 @@ import homeStyles from "../styles/Home.module.css";
 export default function BookingSuccess() {
 	return (
 		<>
-			<Head>
-				<title>Message Sent - Louise Cochrane Counselling</title>
-				<meta
-					name="description"
-					content="Your booking enquiry has been successfully submitted. We'll be in touch within 24-48 hours."
-				/>
-				<meta name="viewport" content="width=device-width, initial-scale=1" />
-				<link rel="icon" href="/favicon.ico" />
-			</Head>
+			<SEO
+				title="Message Sent - Louise Cochrane Counselling"
+				description="Your booking enquiry has been successfully submitted. We'll be in touch within 24-48 hours."
+				path="/booking-success"
+				noIndex={true}
+			/>
 			<Header />
 			<main className={styles.main} id="main-content">
 				<div className={styles.container}>

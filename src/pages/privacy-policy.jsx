@@ -1,5 +1,5 @@
-import Head from "next/head";
 import Link from "next/link";
+import SEO from "../components/SEO";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import AnimatedSection from "../components/AnimatedSection";
@@ -9,15 +9,11 @@ import homeStyles from "../styles/Home.module.css";
 export default function PrivacyPolicy() {
 	return (
 		<>
-			<Head>
-				<title>Privacy Policy - Louise Cochrane Counselling</title>
-				<meta
-					name="description"
-					content="Privacy policy for Louise Cochrane Counselling. Learn how we collect, use, and protect your personal data."
-				/>
-				<meta name="viewport" content="width=device-width, initial-scale=1" />
-				<link rel="icon" href="/favicon.ico" />
-			</Head>
+			<SEO
+				title="Privacy Policy - Louise Cochrane Counselling"
+				description="Privacy policy for Louise Cochrane Counselling. Learn how we collect, use, and protect your personal data."
+				path="/privacy-policy"
+			/>
 			<Header />
 			<main className={styles.main} id="main-content">
 				<div className={styles.container}>

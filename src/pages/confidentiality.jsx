@@ -1,5 +1,5 @@
-import Head from "next/head";
 import Link from "next/link";
+import SEO from "../components/SEO";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import AnimatedSection from "../components/AnimatedSection";
@@ -9,15 +9,11 @@ import homeStyles from "../styles/Home.module.css";
 export default function Confidentiality() {
 	return (
 		<>
-			<Head>
-				<title>Confidentiality & Safeguarding - Louise Cochrane Counselling</title>
-				<meta
-					name="description"
-					content="Learn about confidentiality, safeguarding, and privacy policies at Louise Cochrane Counselling."
-				/>
-				<meta name="viewport" content="width=device-width, initial-scale=1" />
-				<link rel="icon" href="/favicon.ico" />
-			</Head>
+			<SEO
+				title="Confidentiality & Safeguarding - Louise Cochrane Counselling"
+				description="Learn about confidentiality, safeguarding, and privacy policies at Louise Cochrane Counselling."
+				path="/confidentiality"
+			/>
 			<Header />
 			<main className={styles.main} id="main-content">
 				<div className={styles.container}>

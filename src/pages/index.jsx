@@ -1,5 +1,5 @@
-import Head from "next/head";
 import { useEffect } from "react";
+import SEO from "../components/SEO";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import BookingForm from "../components/BookingForm";
@@ -42,17 +42,11 @@ export default function Home() {
 
 	return (
 		<>
-			<Head>
-				<title>
-					Louise Cochrane Counselling - Professional Support for Your Wellbeing
-				</title>
-				<meta
-					name="description"
-					content="Louise Cochrane Counselling offers professional counselling services and support for your mental health and wellbeing."
-				/>
-				<meta name="viewport" content="width=device-width, initial-scale=1" />
-				<link rel="icon" href="/favicon.ico" />
-			</Head>
+			<SEO
+				title="Louise Cochrane Counselling - Professional Support for Your Wellbeing"
+				description="Louise Cochrane Counselling offers professional counselling services and support for your mental health and wellbeing."
+				path="/"
+			/>
 			<Header />
 			<main className={styles.main} id="main-content">
 				{/* Hero Section */}
@@ -68,7 +62,7 @@ export default function Home() {
 									src="/images/logo.svg"
 									alt="Louise Cochrane Counselling"
 									width={750}
-									height={375}
+									height={750}
 									className={styles.heroLogo}
 									sizes="(max-width: 639px) 90vw, (max-width: 1024px) 50vw, 500px"
 									aria-hidden="true"
