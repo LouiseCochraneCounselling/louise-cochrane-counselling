@@ -10,7 +10,7 @@ export default function Approach() {
 	return (
 		<>
 			<Head>
-				<title>My Approach - The Holding Space Jersey</title>
+				<title>My Approach - Louise Cochrane Counselling</title>
 				<meta
 					name="description"
 					content="Learn about my therapeutic approach to supporting your mental health and wellbeing."

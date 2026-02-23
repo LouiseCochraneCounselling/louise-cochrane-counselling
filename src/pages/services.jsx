@@ -10,10 +10,10 @@ export default function Services() {
 	return (
 		<>
 			<Head>
-				<title>Our Services - The Holding Space Jersey</title>
+				<title>Our Services - Louise Cochrane Counselling</title>
 				<meta
 					name='description'
-					content='Explore The Holding Space Jersey range of counselling services designed to support your mental health and wellbeing.'
+					content='Explore Louise Cochrane Counselling range of counselling services designed to support your mental health and wellbeing.'
 				/>
 				<meta name='viewport' content='width=device-width, initial-scale=1' />
 				<link rel='icon' href='/favicon.ico' />

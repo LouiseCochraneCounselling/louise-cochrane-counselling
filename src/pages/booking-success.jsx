@@ -10,7 +10,7 @@ export default function BookingSuccess() {
 	return (
 		<>
 			<Head>
-				<title>Message Sent - The Holding Space Jersey</title>
+				<title>Message Sent - Louise Cochrane Counselling</title>
 				<meta
 					name="description"
 					content="Your booking enquiry has been successfully submitted. We'll be in touch within 24-48 hours."
@@ -78,9 +78,9 @@ export default function BookingSuccess() {
 									If you haven't received a reply within 48 hours, please check
 									your spam folder or contact me directly at{" "}
 									<a
-										href="mailto:hello@theholdingspacejersey.co.uk"
+										href="mailto:hello@louisecochranecounselling.com"
 										className={styles.emailLink}>
-										hello@theholdingspacejersey.co.uk
+										hello@louisecochranecounselling.com
 									</a>
 								</p>
 							</div>

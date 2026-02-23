@@ -37,24 +37,6 @@ next-env.d.ts
 /Logs/
 Logs/
 
-# Documentation
-tasks.md
-developer_technical_documentation.md
-launch_checklist.md
-client_quick_start.md
-client_handover_documentation.md
-
-# Fix documentation files (Phase 2)
-*-fix-*.md
-phase2-summary.md
-
-# Layout plan documentation files
-layout-plan-*.md
-
-# Local audit and documentation
-docs__local/
-
-
 # Ignore all .md files except README.md
 *.md
 !README.md

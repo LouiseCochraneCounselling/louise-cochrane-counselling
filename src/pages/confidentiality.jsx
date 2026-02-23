@@ -1,38 +1,33 @@
-import Head from 'next/head';
-import Link from 'next/link';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import AnimatedSection from '../components/AnimatedSection';
-import styles from '../styles/Page.module.css';
-import homeStyles from '../styles/Home.module.css';
+import Head from "next/head";
+import Link from "next/link";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import AnimatedSection from "../components/AnimatedSection";
+import styles from "../styles/Page.module.css";
+import homeStyles from "../styles/Home.module.css";
 
 export default function Confidentiality() {
 	return (
 		<>
 			<Head>
-				<title>Confidentiality & Safeguarding - The Holding Space</title>
+				<title>Confidentiality & Safeguarding - Louise Cochrane Counselling</title>
 				<meta
-					name='description'
-					content='Learn about confidentiality, safeguarding, and privacy policies at The Holding Space counselling services.'
+					name="description"
+					content="Learn about confidentiality, safeguarding, and privacy policies at Louise Cochrane Counselling."
 				/>
-				<meta name='viewport' content='width=device-width, initial-scale=1' />
-				<link rel='icon' href='/favicon.ico' />
+				<meta name="viewport" content="width=device-width, initial-scale=1" />
+				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<Header />
-			<main className={styles.main} id='main-content'>
+			<main className={styles.main} id="main-content">
 				<div className={styles.container}>
-					<AnimatedSection delay={0} animation='fadeIn'>
+					<AnimatedSection delay={0} animation="fadeIn">
 						<p className={styles.sectionTitleSmall}>
 							CONFIDENTIALITY & SAFEGUARDING
 						</p>
 					</AnimatedSection>
-					{/* <AnimatedSection delay={200} animation="fadeIn">
-						<h2 className={styles.pageTitle}>
-							Confidentiality and Safeguarding
-						</h2>
-					</AnimatedSection> */}
 
-					<AnimatedSection delay={300} animation='fadeInUp'>
+					<AnimatedSection delay={300} animation="fadeInUp">
 						<section className={styles.contentSection}>
 							{/* <h2>Confidentiality</h2> */}
 							<br></br>
@@ -59,7 +54,7 @@ export default function Confidentiality() {
 						</section>
 					</AnimatedSection>
 
-					<AnimatedSection delay={400} animation='slideInLeft'>
+					<AnimatedSection delay={400} animation="slideInLeft">
 						<section className={styles.contentSection}>
 							<h2>Limits to Confidentiality</h2>
 							<p>
@@ -81,7 +76,7 @@ export default function Confidentiality() {
 						</section>
 					</AnimatedSection>
 
-					<AnimatedSection delay={500} animation='slideInRight'>
+					<AnimatedSection delay={500} animation="slideInRight">
 						<section className={styles.contentSection}>
 							<h2>Safeguarding</h2>
 							<p>
@@ -99,9 +94,19 @@ export default function Confidentiality() {
 						</section>
 					</AnimatedSection>
 
-					<AnimatedSection delay={600} animation='fadeIn'>
+					<AnimatedSection delay={600} animation="fadeInUp">
+						<section className={styles.contentSection}>
+							<p style={{ textAlign: "center" }}>
+								For details on how we collect, use, and protect your personal
+								data, please see our{" "}
+								<Link href="/privacy-policy">Privacy Policy</Link>.
+							</p>
+						</section>
+					</AnimatedSection>
+
+					<AnimatedSection delay={700} animation="fadeIn">
 						<div className={styles.backButtonContainer}>
-							<Link href='/' className={homeStyles.scrollToContactLink}>
+							<Link href="/" className={homeStyles.scrollToContactLink}>
 								<span className={homeStyles.scrollToContactText}>
 									Return back to home
 								</span>

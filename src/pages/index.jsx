@@ -44,11 +44,11 @@ export default function Home() {
 		<>
 			<Head>
 				<title>
-					The Holding Space Jersey - Professional Support for Your Wellbeing
+					Louise Cochrane Counselling - Professional Support for Your Wellbeing
 				</title>
 				<meta
 					name="description"
-					content="The Holding Space Jersey offers professional counselling services and support for your mental health and wellbeing."
+					content="Louise Cochrane Counselling offers professional counselling services and support for your mental health and wellbeing."
 				/>
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/favicon.ico" />
@@ -58,7 +58,7 @@ export default function Home() {
 				{/* Hero Section */}
 				<section id="home" className={styles.heroSection}>
 					<h1 className={styles.visuallyHidden}>
-						The Holding Space Jersey - Professional Counselling Services
+						Louise Cochrane Counselling - Professional Counselling Services
 					</h1>
 					<div className={styles.heroBackground}></div>
 					<div className={styles.heroContainer}>
@@ -66,7 +66,7 @@ export default function Home() {
 							<div className={styles.heroLogoWrapper}>
 								<Image
 									src="/images/logo.svg"
-									alt="The Holding Space Jersey"
+									alt="Louise Cochrane Counselling"
 									width={750}
 									height={375}
 									className={styles.heroLogo}

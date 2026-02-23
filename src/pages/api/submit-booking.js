@@ -268,7 +268,7 @@ export default async function handler(req, res) {
 		// Get sender email (should be verified in Resend)
 		// Sanitize to prevent header injection
 		const rawSenderEmail =
-			process.env.RESEND_FROM_EMAIL || 'hello@theholdingspacejersey.co.uk';
+			process.env.RESEND_FROM_EMAIL || 'hello@louisecochranecounselling.com';
 		// Remove any newlines, carriage returns, or other control characters
 		const senderEmail = String(rawSenderEmail)
 			.replace(/[\r\n]/g, '')
@@ -377,7 +377,7 @@ Submitted at: ${new Date().toLocaleString('en-GB', {
 				: senderEmail; // Fallback to sender if invalid
 
 			const data = await resend.emails.send({
-				from: `Booking Form - [The Holding Space Jersey] <${senderEmail}>`,
+				from: `Booking Form - [Louise Cochrane Counselling] <${senderEmail}>`,
 				to: [recipientEmail],
 				replyTo: replyToEmail,
 				subject: emailSubject,

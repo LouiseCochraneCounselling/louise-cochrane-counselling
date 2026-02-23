@@ -1,7 +1,7 @@
 {
-	"name": "the-holding-space-website",
+	"name": "louise-cochrane-counselling-website",
 	"version": "1.0.0",
-	"description": "The Holding Space - Professional counselling services website",
+	"description": "Louise Cochrane Counselling - Professional counselling services website",
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build",

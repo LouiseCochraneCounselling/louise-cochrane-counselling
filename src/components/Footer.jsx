@@ -31,6 +31,11 @@ const Footer = () => {
 									Confidentiality
 								</Link>
 							</li>
+							<li>
+								<Link href="/privacy-policy" className={styles.quickLink}>
+									Privacy Policy
+								</Link>
+							</li>
 						</ul>
 					</div>
 					<div className={styles.locationSection}>
@@ -51,7 +56,7 @@ const Footer = () => {
 				</div>
 				<div className={styles.copyright}>
 					<p>
-						&copy; {currentYear} The Holding Space Jersey. All rights reserved.
+						&copy; {currentYear} Louise Cochrane Counselling. All rights reserved.
 					</p>
 				</div>
 			</div>
