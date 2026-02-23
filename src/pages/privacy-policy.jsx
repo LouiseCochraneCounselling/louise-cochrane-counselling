@@ -235,17 +235,14 @@ export default function PrivacyPolicy() {
 							</p>
 							<p>
 								<strong>Enquiry emails:</strong> Once your enquiry reaches our
-								email inbox, it is retained for as long as necessary to respond
-								to and resolve your enquiry. [PLACEHOLDER: specific retention
-								period to be confirmed by the practice]
+								email inbox, it is retained for no more than 7 years.
 							</p>
 							<p>
 								<strong>Client records and session notes:</strong> Records
-								relating to the counselling relationship are retained in
-								accordance with BACP (British Association for Counselling and
-								Psychotherapy) guidance and our professional obligations.
-								[PLACEHOLDER: specific retention period to be confirmed by the
-								practice]
+								relating to the counselling relationship are retained for no
+								more than 7 years in accordance with BACP (British Association
+								for Counselling and Psychotherapy) guidance and our professional
+								obligations.
 							</p>
 
 							<h2>Cookies and Website Tracking</h2>
@@ -384,7 +381,7 @@ export default function PrivacyPolicy() {
 								.
 							</p>
 							<p style={{ fontStyle: "italic" }}>
-								This policy was last updated on 12th February 2026.
+								This policy was last updated on 23rd February 2026.
 							</p>
 						</section>
 					</AnimatedSection>

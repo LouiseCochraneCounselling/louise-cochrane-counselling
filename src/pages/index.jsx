@@ -65,7 +65,7 @@ export default function Home() {
 						<div className={styles.heroContent}>
 							<div className={styles.heroLogoWrapper}>
 								<Image
-									src="/images/logo.jpg"
+									src="/images/logo.svg"
 									alt="Louise Cochrane Counselling"
 									width={750}
 									height={375}
@@ -374,7 +374,7 @@ export default function Home() {
 										thoughts, feelings, and experiences, develop understanding,
 										coping strategies, and emotional awareness, and support
 										positive change and growth in a way that feels manageable.
-										There is no fixed agenda — sessions are guided by what feels
+										There is no fixed agenda - sessions are guided by what feels
 										most important to you at the time.
 									</p>
 								</div>
