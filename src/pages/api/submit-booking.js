@@ -385,6 +385,89 @@ Submitted at: ${new Date().toLocaleString('en-GB', {
 				text: emailText,
 			});
 
+			// Send confirmation email to the enquirer
+			const confirmationHtml = `
+				<!DOCTYPE html>
+				<html>
+				<head>
+					<meta charset="utf-8">
+					<style>
+						body { font-family: Georgia, serif; line-height: 1.7; color: #444; background-color: #fdf9f7; margin: 0; padding: 0; }
+						.wrapper { background-color: #fdf9f7; padding: 40px 20px; }
+						.container { max-width: 560px; margin: 0 auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; }
+						.header { background-color: #ede8e3; padding: 36px 40px 28px; text-align: center; }
+						.header h1 { font-size: 22px; font-weight: normal; color: #5a5a5a; letter-spacing: 0.04em; margin: 0 0 4px; }
+						.header p { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #8a8a8a; margin: 0; }
+						.body { padding: 36px 40px; }
+						.body p { font-size: 15px; color: #555; margin: 0 0 18px; }
+						.summary { background-color: #faf7f5; border-left: 3px solid #c9b8aa; padding: 16px 20px; margin: 24px 0; border-radius: 0 4px 4px 0; }
+						.summary p { margin: 6px 0; font-size: 14px; color: #666; }
+						.summary strong { color: #444; }
+						.footer { padding: 24px 40px; border-top: 1px solid #ede8e3; text-align: center; }
+						.footer p { font-size: 12px; color: #999; margin: 0; line-height: 1.6; }
+					</style>
+				</head>
+				<body>
+					<div class="wrapper">
+						<div class="container">
+							<div class="header">
+								<h1>Louise Cochrane</h1>
+								<p>Counselling</p>
+							</div>
+							<div class="body">
+								<p>Dear ${sanitizedName},</p>
+								<p>Thank you for getting in touch. I've received your enquiry and will get back to you within 24–48 hours.</p>
+								<p>Here's a copy of what you submitted:</p>
+								<div class="summary">
+									<p><strong>Name:</strong> ${sanitizedName}</p>
+									<p><strong>Email:</strong> ${sanitizedEmail}</p>
+									${sanitizedPhone ? `<p><strong>Phone:</strong> ${sanitizedPhone}</p>` : ''}
+									${sanitizedMessage ? `<p><strong>Message:</strong> ${sanitizedMessage}</p>` : ''}
+								</div>
+								<p>If you have any urgent questions in the meantime, please don't hesitate to reply to this email.</p>
+								<p>Warm regards,<br>Louise Cochrane</p>
+							</div>
+							<div class="footer">
+								<p>Louise Cochrane Counselling &nbsp;·&nbsp; Suite 19 Bourne House, Francis Street, St Helier, Jersey JE2 4QB</p>
+								<p style="margin-top: 8px;">This is an automated confirmation of your enquiry.</p>
+							</div>
+						</div>
+					</div>
+				</body>
+				</html>
+			`;
+
+			const confirmationText = `
+Dear ${name},
+
+Thank you for getting in touch. I've received your enquiry and will get back to you within 24–48 hours.
+
+Here's a copy of what you submitted:
+
+Name: ${name}
+Email: ${email}
+${phone ? `Phone: ${phone}\n` : ''}${message ? `Message: ${message}\n` : ''}
+If you have any urgent questions in the meantime, please reply to this email.
+
+Warm regards,
+Louise Cochrane
+Louise Cochrane Counselling
+			`.trim();
+
+			// Send confirmation — fire and don't block success on failure
+			resend.emails.send({
+				from: `Louise Cochrane Counselling <${senderEmail}>`,
+				to: [email],
+				replyTo: recipientEmail,
+				subject: 'Your enquiry has been received — Louise Cochrane Counselling',
+				html: confirmationHtml,
+				text: confirmationText,
+			}).catch((err) => {
+				if (process.env.NODE_ENV === 'development') {
+					console.error('[API] Confirmation email failed:', err?.message);
+				}
+			});
+
 			// Success
 			return res.status(200).json({
 				message: 'Form submitted successfully',
