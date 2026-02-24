@@ -11,6 +11,14 @@ export default function Contact() {
 				title="Contact Us - Louise Cochrane Counselling"
 				description="Get in touch with Louise Cochrane Counselling. We're here to support you on your journey to better mental health."
 				path="/contact"
+				schema={{
+					'@context': 'https://schema.org',
+					'@type': 'BreadcrumbList',
+					itemListElement: [
+						{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://louisecochranecounselling.com' },
+						{ '@type': 'ListItem', position: 2, name: 'Contact', item: 'https://louisecochranecounselling.com/contact' },
+					],
+				}}
 			/>
 			<Header />
 			<main id="main-content" style={{ padding: 0, margin: 0, width: "100%", paddingBottom: "4rem" }}>

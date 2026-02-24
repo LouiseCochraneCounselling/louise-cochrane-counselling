@@ -13,6 +13,14 @@ export default function Services() {
 				title="Our Services - Louise Cochrane Counselling"
 				description="Explore Louise Cochrane Counselling's range of counselling services designed to support your mental health and wellbeing."
 				path="/services"
+				schema={{
+					'@context': 'https://schema.org',
+					'@type': 'BreadcrumbList',
+					itemListElement: [
+						{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://louisecochranecounselling.com' },
+						{ '@type': 'ListItem', position: 2, name: 'Services', item: 'https://louisecochranecounselling.com/services' },
+					],
+				}}
 			/>
 			<Header />
 			<main className={styles.main} id='main-content'>

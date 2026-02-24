@@ -13,6 +13,14 @@ export default function Approach() {
 				title="My Approach - Louise Cochrane Counselling"
 				description="Learn about Louise Cochrane's therapeutic approach to supporting your mental health and wellbeing."
 				path="/journey-approach"
+				schema={{
+					'@context': 'https://schema.org',
+					'@type': 'BreadcrumbList',
+					itemListElement: [
+						{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://louisecochranecounselling.com' },
+						{ '@type': 'ListItem', position: 2, name: 'Journey & Approach', item: 'https://louisecochranecounselling.com/journey-approach' },
+					],
+				}}
 			/>
 			<Header />
 			<main className={styles.main} id="main-content">

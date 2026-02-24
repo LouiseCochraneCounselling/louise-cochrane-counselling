@@ -40,12 +40,52 @@ export default function Home() {
 		}
 	}, []);
 
+	const faqSchema = {
+		'@context': 'https://schema.org',
+		'@type': 'FAQPage',
+		mainEntity: [
+			{
+				'@type': 'Question',
+				name: 'What if I don\'t know what to say?',
+				acceptedAnswer: {
+					'@type': 'Answer',
+					text: "That's completely normal. Many people worry about this, but you don't need to have everything figured out. We'll start where you are, and I'll help guide the conversation. Sometimes silence is valuable too, we can sit with what's unsaid.",
+				},
+			},
+			{
+				'@type': 'Question',
+				name: 'What if I get emotional?',
+				acceptedAnswer: {
+					'@type': 'Answer',
+					text: "Being emotional in counselling is normal and welcome. This is a safe space for whatever you're feeling. I won't be uncomfortable or judgemental, emotions are part of what we're here to explore.",
+				},
+			},
+			{
+				'@type': 'Question',
+				name: "What if it doesn't help?",
+				acceptedAnswer: {
+					'@type': 'Answer',
+					text: "That's a valid concern. Therapy is a collaborative process, and if something isn't working, we'll talk about it. Sometimes the approach needs to change, or it might be that another counsellor or type of support would be a better fit. The first session is a chance to see if we're a good match.",
+				},
+			},
+			{
+				'@type': 'Question',
+				name: 'Will everything I say be confidential?',
+				acceptedAnswer: {
+					'@type': 'Answer',
+					text: "Yes, everything we discuss is confidential. There are rare exceptions where I might need to share information, such as if there's a serious risk of harm, but I'll always aim to discuss this with you first. For children and young people, I'll explain confidentiality in an age-appropriate way.",
+				},
+			},
+		],
+	};
+
 	return (
 		<>
 			<SEO
 				title="Louise Cochrane Counselling - Professional Support for Your Wellbeing"
 				description="Louise Cochrane Counselling offers professional counselling services and support for your mental health and wellbeing."
 				path="/"
+				schema={faqSchema}
 			/>
 			<Header />
 			<main className={styles.main} id="main-content">

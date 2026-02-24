@@ -13,6 +13,14 @@ export default function PrivacyPolicy() {
 				title="Privacy Policy - Louise Cochrane Counselling"
 				description="Privacy policy for Louise Cochrane Counselling. Learn how we collect, use, and protect your personal data."
 				path="/privacy-policy"
+				schema={{
+					'@context': 'https://schema.org',
+					'@type': 'BreadcrumbList',
+					itemListElement: [
+						{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://louisecochranecounselling.com' },
+						{ '@type': 'ListItem', position: 2, name: 'Privacy Policy', item: 'https://louisecochranecounselling.com/privacy-policy' },
+					],
+				}}
 			/>
 			<Header />
 			<main className={styles.main} id="main-content">

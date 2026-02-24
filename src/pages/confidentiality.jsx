@@ -13,6 +13,14 @@ export default function Confidentiality() {
 				title="Confidentiality & Safeguarding - Louise Cochrane Counselling"
 				description="Learn about confidentiality, safeguarding, and privacy policies at Louise Cochrane Counselling."
 				path="/confidentiality"
+				schema={{
+					'@context': 'https://schema.org',
+					'@type': 'BreadcrumbList',
+					itemListElement: [
+						{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://louisecochranecounselling.com' },
+						{ '@type': 'ListItem', position: 2, name: 'Confidentiality', item: 'https://louisecochranecounselling.com/confidentiality' },
+					],
+				}}
 			/>
 			<Header />
 			<main className={styles.main} id="main-content">
