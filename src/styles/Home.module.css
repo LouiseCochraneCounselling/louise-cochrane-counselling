@@ -377,6 +377,40 @@
 	transform: scale(1.1);
 }
 
+.socialIconsRow {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.25rem;
+}
+
+.socialLink {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--color-text-dark);
+	text-decoration: none;
+	padding: 0.5rem;
+	border-radius: 6px;
+	transition: all 0.3s ease;
+	background-color: transparent;
+}
+
+.socialLink:hover {
+	background-color: rgba(0, 0, 0, 0.05);
+	transform: translateY(-2px);
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.socialLink svg {
+	flex-shrink: 0;
+	transition: transform 0.3s ease;
+}
+
+.socialLink:hover svg {
+	transform: scale(1.1);
+}
+
 .heroSectionTitle {
 	font-size: clamp(0.875rem, 1.5vw, 1rem);
 	font-weight: 600;
