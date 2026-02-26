@@ -1,10 +1,23 @@
 import Head from 'next/head';
+import Script from 'next/script';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import '../styles/globals.css';
 
 export default function App({ Component, pageProps }) {
   return (
     <>
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-KQH0B2WT2P"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-KQH0B2WT2P');
+        `}
+      </Script>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
         <meta name="theme-color" content="#4a90e2" />
